@@ -22,6 +22,7 @@ namespace LikendlnApi.Models
         private List<Publicacion> ListPublicaciones = new List<Publicacion>();//lista de publicaciones del candidato
 
 
+
         //Constructor por defecto
         public Candidato()
         {
