@@ -185,6 +185,8 @@
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\Publicacion.cs" />
     <Compile Include="Models\Recomendacion.cs" />
+    <Compile Include="Models\Relaciones\CandidatoGrupo.cs" />
+    <Compile Include="Models\Relaciones\CandidatoOfertaLaboral.cs" />
     <Compile Include="Models\SolicitudEmpleo.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />

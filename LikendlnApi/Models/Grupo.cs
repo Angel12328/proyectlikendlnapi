@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LikendlnApi.Models.Relaciones;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,11 +12,17 @@ namespace LikendlnApi.Models.Data
         private int _id;
         private Candidato _creadorCandidato;
         private Empresa _creadorEmpresa;
+
         private List<MiembroGrupo> _miembros;
         private List<Publicacion> _publicaciones;
+
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public bool EsPrivado { get; set; }
+
+
+        public ICollection<CandidatoGrupo> CandidadtosGrupos { get; set; }
+
 
         // Propiedades
         public int Id { get { return _id; } set { _id = value; } }
@@ -24,29 +31,7 @@ namespace LikendlnApi.Models.Data
         public List<MiembroGrupo> Miembros { get { return _miembros; } set { _miembros = value; } }
         public List<Publicacion> Publicaciones { get { return _publicaciones; } set { _publicaciones = value; } }
 
-        // Constructor por defecto
-        public Grupo() { }
-
-        // Constructor que recibe todos los parámetros
-
-        public Grupo(int id, Candidato creadorCandidato, Empresa creadorEmpresa, List<MiembroGrupo> miembros, List<Publicacion> publicaciones, string nombre, string descripcion, bool esPrivado)
-        {
-            Id = id;
-            CreadorCandidato = creadorCandidato;
-            CreadorEmpresa = creadorEmpresa;
-            Miembros = miembros;
-            Publicaciones = publicaciones;
-            Nombre = nombre;
-            Descripcion = descripcion;
-            EsPrivado = esPrivado;
-        }
-
-        // Método ToString
-        public override string ToString()
-        {
-            return $"Grupo: {Nombre}, Descripción: {Descripcion}, Privado: {EsPrivado}, Miembros: {Miembros.Count}, Publicaciones: {Publicaciones.Count}";
-        }
-
+       
 
 
 

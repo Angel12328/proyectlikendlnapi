@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LikendlnApi.Models.Relaciones;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,10 +23,14 @@ namespace LikendlnApi.Models.Data
         public DateTime FechaExpiracion { get; set; } // Fecha en que expira la oferta laboral
 
         public bool Disponible { get; set; } // Indica si la oferta laboral está disponible o no
-
-
-        public List<Candidato> postulantes { get; set; } = new List<Candidato>();//lista de candidatos postulantes a la oferta laboral
         public  List<Habilidad> HabilidadesRequeridas { get; set; } = new List<Habilidad>();//lista de habilidades requeridas para la oferta laboral
+
+
+        //Icollection
+        public ICollection<CandidatoOfertaLaboral> CandidadtosOfertas { get; set; }
+
+
+
 
         // Constructor por defecto
         public OfertaLaboral()
