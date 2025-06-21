@@ -10,10 +10,10 @@ namespace LikendlnApi.Models
     public class Candidato : Persona
     {
         //atributos
-        private int _idCandidato;
+        private int _idCandidato;//id de candidiato
         private Usuario _usuario;
-        private string _TituloProfesional;
-        private string _curriculumVitae;
+        private string _TituloProfesional;//tituo profesional del candidato
+        private string _curriculumVitae;//curriculum vitae del candidato
         private List<Habilidad> ListHabilidades = new List<Habilidad>();//lista de habilidades del candidato
         private List<ExperienciaLaboral> ListexperienciasLaborales = new List<ExperienciaLaboral>();//lista de experiencias laborales del candidato
         private List<OfertaLaboral> ListOfertasPostuladas = new List<OfertaLaboral>();//lista de ofertas laborales a las que el candidato se ha postulado
