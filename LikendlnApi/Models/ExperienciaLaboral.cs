@@ -9,38 +9,15 @@ namespace LikendlnApi.Models
     public class ExperienciaLaboral
     {
         //Atributos
-        private int _idExperienciaLaboral;
-        private string _empresa;
-        private string _cargo;
-        private DateTime _fechaInicio;
-        private DateTime _fechaFin;
-        private string _descripcion;
+        public int ID { get; set; } // Identificador único de la experiencia laboral
+        public string Empresa { get; set; } // Nombre de la empresa donde se trabajó
+        public Candidato Candidato { get; set; } // Candidato asociado a la experiencia laboral
+        public string Cargo { get; set; } // Cargo o puesto desempeñado
+        public DateTime FechaInicio { get; set; } // Fecha de inicio de la experiencia laboral
+        public DateTime FechaFin { get; set; } 
+        public string Descripcion { get; set; } 
 
-        //Constructor por defecto
-        public ExperienciaLaboral()
-        {
-        }
-        //Constructor que recibe todos los parametros
-        public ExperienciaLaboral(int idExperienciaLaboral, string empresa, string cargo, DateTime fechaInicio, DateTime fechaFin, string descripcion)
-        {
-            IdExperienciaLaboral = idExperienciaLaboral;
-            Empresa = empresa;
-            Cargo = cargo;
-            FechaInicio = fechaInicio;
-            FechaFin = fechaFin;
-            Descripcion = descripcion;
-        }
-        //Setters y Getters
-        public int IdExperienciaLaboral { get { return _idExperienciaLaboral; } set { _idExperienciaLaboral = value; } }
-        public string Empresa { get { return _empresa; } set { _empresa = value; } }
-        public string Cargo { get { return _cargo; } set { _cargo = value; } }
-        public DateTime FechaInicio { get { return _fechaInicio; } set { _fechaInicio = value; } }
-        public DateTime FechaFin { get { return _fechaFin; } set { _fechaFin = value; } }
-        public string Descripcion { get { return _descripcion; } set { _descripcion = value; } }
-        //Metodo ToString
-        public override string ToString()
-        {
-            return $"Id: {IdExperienciaLaboral}, Empresa: {Empresa}, Cargo: {Cargo}, Fecha Inicio: {FechaInicio.ToShortDateString()}, Fecha Fin: {FechaFin.ToShortDateString()}, Descripcion: {Descripcion}";
-        }
+
+
     }
 }
