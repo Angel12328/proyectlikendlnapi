@@ -18,17 +18,11 @@ namespace LikendlnApi.Models.Data
         public DbSet<Habilidad> Habilidades { get; set; }
         public DbSet<MensajeBase> Mensajes { get; set; }
         public DbSet<MensajePrivado> MensajesPrivados { get; set; }
-        public DbSet<MensajePublico> MensajesPublicos { get; set; }
         public DbSet<Publicacion> Publicaciones { get; set; }
         public DbSet<Comentario> Comentarios { get; set; }
         public DbSet<Recomendacion> Recomendaciones { get; set; }
         public DbSet<OfertaLaboral> OfertasLaborales { get; set; }
-        public DbSet<AplicacionOferta> AplicacionesOfertas { get; set; }
-        public DbSet<Relacion> Relaciones { get; set; }
-        public DbSet<RelacionEmpresaCandidato> RelacionesEmpresaCandidato { get; set; }
-        public DbSet<RelacionEmpresaUsuario> RelacionesEmpresaUsuario { get; set; }
-        public DbSet<RelacionCandidatoUsuario> RelacionesCandidatoUsuario { get; set; }
-        public DbSet<RelacionCandidatoEmpresa> RelacionesCandidatoEmpresa { get; set; }
+
 
 
 
