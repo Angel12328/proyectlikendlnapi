@@ -8,12 +8,14 @@ namespace LikendlnApi.Models.Data
 {
     public class Habilidad
     {
-        //atributos
-        private int _idHabilidad;
-        private string _nombre;
-        private string _descripcion;
-        private string _categoria;
-        private string _nivel; // Ejemplo: "Básico", "Intermedio", "Avanzado"
+        //  propiedades
+        public int ID { get; set; } // Identificador único de la habilidad
+        public int IdCandidato { get; set; } // Identificador del candidato al que pertenece la habilidad
+        public Candidato Candidato { get; set; } // Candidato asociado a la habilidad
+        public string Nombre { get; set; } 
+        public string Descripcion { get; set; } 
+        public string Categoria { get; set; } 
+        public string Nivel { get; set; } // Nivel de habilidad (por ejemplo, "Básico", "Intermedio", "Avanzado")
 
         // Constructor por defecto
         public Habilidad()
@@ -21,30 +23,18 @@ namespace LikendlnApi.Models.Data
         }
 
         // Constructor que recibe todos los parámetros
-        public Habilidad(int idHabilidad, string nombre, string descripcion, string categoria, string nivel)
+        public Habilidad(int id, int idCandidato, Candidato candidato, string nombre, string descripcion, string categoria, string nivel)
         {
-            IdHabilidad = idHabilidad;
+            ID = id;
+            IdCandidato = idCandidato;
+            Candidato = candidato;
             Nombre = nombre;
             Descripcion = descripcion;
             Categoria = categoria;
             Nivel = nivel;
         }
 
-        // Setters y Getters
-
-        public int IdHabilidad { get { return _idHabilidad; } set { _idHabilidad = value; } }
-        public string Nombre { get { return _nombre; } set { _nombre = value; } }
-        public string Descripcion { get { return _descripcion; } set { _descripcion = value; } }
-        public string Categoria { get { return _categoria; } set { _categoria = value; } }
-        public string Nivel { get { return _nivel; } set { _nivel = value; } }
-
-       //toString
-        public override string ToString()
-        {
-            return $"Id: {IdHabilidad}, Nombre: {Nombre}, Descripcion: {Descripcion}, Categoria: {Categoria}, Nivel: {Nivel}";
-        }
-
-
+      
 
     }
 }

@@ -8,37 +8,37 @@ namespace LikendlnApi.Models.Data
 {
     public class OfertaLaboral
     {
-        //atributos
-        private int _idOfertaLaboral;
-        private Empresa _empresa;
-        private string _titulo;
-        private string _descripcion;
-        private string _ubicacion;
-        private string _tipoContrato;
-        private double _salarioMin;
-        private double _salarioMax;
-        private DateTime _fechaPublicacion;
-        private DateTime _fechaExpiracion;
+        //PROPIEDADES
+        public int ID { get; set; } // Identificador único de la oferta laboral
+        public int IdEmpresa { get; set; } // Identificador de la empresa que publica la oferta laboral
+        public Empresa Empresa { get; set; } // Empresa que publica la oferta laboral
+        public string Titulo { get; set; }
+        public string Descripcion { get; set; }
+        public string Ubicacion { get; set; }
+        public string TipoContrato { get; set; } // Tipo de contrato (por ejemplo, "Tiempo completo", "Medio tiempo", "Temporal", etc.)
+        public double SalarioMin { get; set; } // Salario mínimo ofrecido para la oferta laboral
+        public double SalarioMax { get; set; } // Salario máximo ofrecido para la oferta laboral
+        public DateTime FechaPublicacion { get; set; } // Fecha en que se publica la oferta laboral
+        public DateTime FechaExpiracion { get; set; } // Fecha en que expira la oferta laboral
 
-        private bool _disponible;
-
-
-        private List<Candidato> postulantes = new List<Candidato>();//lista de candidatos postulantes a la oferta laboral
-        private  List<Habilidad> HabilidadesRequeridas = new List<Habilidad>();//lista de habilidades requeridas para la oferta laboral
-
-   
+        public bool Disponible { get; set; } // Indica si la oferta laboral está disponible o no
 
 
-        //Constructor por defecto
+        public List<Candidato> postulantes { get; set; } = new List<Candidato>();//lista de candidatos postulantes a la oferta laboral
+        public  List<Habilidad> HabilidadesRequeridas { get; set; } = new List<Habilidad>();//lista de habilidades requeridas para la oferta laboral
+
+        // Constructor por defecto
         public OfertaLaboral()
         {
         }
 
-        //Constructor que recibe todos los parametros
-        public OfertaLaboral(int idOfertaLaboral, Empresa empresa, string titulo, string descripcion, string ubicacion,
+        // Constructor que recibe todos los parámetros
+        
+        public OfertaLaboral(int id, int idEmpresa, Empresa empresa, string titulo, string descripcion, string ubicacion,
             string tipoContrato, double salarioMin, double salarioMax, DateTime fechaPublicacion, DateTime fechaExpiracion, bool disponible)
         {
-            IdOfertaLaboral = idOfertaLaboral;
+            ID = id;
+            IdEmpresa = idEmpresa;
             Empresa = empresa;
             Titulo = titulo;
             Descripcion = descripcion;
@@ -51,26 +51,11 @@ namespace LikendlnApi.Models.Data
             Disponible = disponible;
         }
 
-        //setters y getters
-        public int IdOfertaLaboral { get { return _idOfertaLaboral; } set { _idOfertaLaboral = value; } }
-        public string Titulo { get { return _titulo; } set { _titulo = value; } }
-        public string Descripcion { get { return _descripcion; } set { _descripcion = value; } }
-        public string Ubicacion { get { return _ubicacion; } set { _ubicacion = value; } }
-        public string TipoContrato { get { return _tipoContrato; } set { _tipoContrato = value; } }
-        public double SalarioMin { get { return _salarioMin; } set { _salarioMin = value; } }
-        public double SalarioMax { get { return _salarioMax; } set { _salarioMax = value; } }
-        public DateTime FechaPublicacion { get { return _fechaPublicacion; } set { _fechaPublicacion = value; } }
-        public DateTime FechaExpiracion { get { return _fechaExpiracion; } set { _fechaExpiracion = value; } }
-        public bool Disponible { get { return _disponible; } set { _disponible = value; } }
-        internal Empresa Empresa { get { return _empresa; } set { _empresa = value; } }
-        internal List<Candidato> Postulantes { get { return postulantes; } set { postulantes = value; } }
-        internal List<Habilidad> HabilidadesRequeridas1 { get { return HabilidadesRequeridas; } set { HabilidadesRequeridas = value; } }
 
-        //Metodo ToString
 
-        public override string ToString()
-        {
-            return base.ToString();
-        }
+
+
+
+
     }
 }

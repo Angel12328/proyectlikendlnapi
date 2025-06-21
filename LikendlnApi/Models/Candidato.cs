@@ -12,6 +12,7 @@ namespace LikendlnApi.Models
     {
         //Propiedades
         public int  Id { get; set; }//id del candidato
+        public int IdUsuario { get; set; } //id del usuario del candidato
         public Usuario Usuario { get; set; }//usuario del candidato
         public string TituloProfesional { get; set; }  //tituo profesional del candidato
         public string CurriculumVitae { get; set; }//curriculum vitae del candidato
