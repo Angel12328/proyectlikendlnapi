@@ -167,7 +167,28 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Candidato.cs" />
+    <Compile Include="Models\Chat.cs" />
+    <Compile Include="Models\Comentario.cs" />
     <Compile Include="Models\Data\DbContextProyect.cs" />
+    <Compile Include="Models\Empresa.cs" />
+    <Compile Include="Models\ExperienciaLaboral.cs" />
+    <Compile Include="Models\Grupo.cs" />
+    <Compile Include="Models\Habilidad.cs" />
+    <Compile Include="Models\MensajeBase.cs" />
+    <Compile Include="Models\MensajeEmpresarial.cs" />
+    <Compile Include="Models\MensajePrivado.cs" />
+    <Compile Include="Models\MiembroGrupo.cs" />
+    <Compile Include="Models\NotificacionMensaje.cs" />
+    <Compile Include="Models\OfertaLaboral.cs" />
+    <Compile Include="Models\ParticipanteChat.cs" />
+    <Compile Include="Models\Persona.cs" />
+    <Compile Include="Models\Publicacion.cs" />
+    <Compile Include="Models\Recomendacion.cs" />
+    <Compile Include="Models\SolicitudEmpleo.cs" />
+    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
+    <Compile Include="obj\Release\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +211,8 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Models\notas.txt" />
+    <Content Include="obj\Debug\LikendlnApi.csproj.FileListAbsolute.txt" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -215,6 +238,11 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="obj\Debug\build.force" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\LikendlnApi.csproj.AssemblyReference.cache" />
+    <Content Include="obj\Debug\LikendlnApi.csproj.CoreCompileInputs.cache" />
+    <Content Include="obj\Release\LikendlnApi.csproj.AssemblyReference.cache" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -238,6 +266,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\bootstrap.min.js.map" />

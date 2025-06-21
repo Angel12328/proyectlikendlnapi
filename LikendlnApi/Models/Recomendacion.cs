@@ -14,7 +14,7 @@ namespace LikendlnApi.Models.Data
         private Empresa _recomendadorEmpresa; // Empresa qe hace la recomendación
         private string _mensaje;
         private DateTime _fecha;
-
+        
         //constructor por defecto
         public Recomendacion()
         {
