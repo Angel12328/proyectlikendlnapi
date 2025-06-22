@@ -185,7 +185,10 @@
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\Publicacion.cs" />
     <Compile Include="Models\Recomendacion.cs" />
+    <Compile Include="Models\Relaciones\CandidatoCandidatoConexiones.cs" />
+    <Compile Include="Models\Relaciones\CandidatoEmpresaConexiones.cs" />
     <Compile Include="Models\Relaciones\CandidatoGrupo.cs" />
+    <Compile Include="Models\Relaciones\CandidatoHabilidad.cs" />
     <Compile Include="Models\Relaciones\CandidatoOfertaLaboral.cs" />
     <Compile Include="Models\SolicitudEmpleo.cs" />
     <Compile Include="Models\Usuario.cs" />
@@ -195,6 +198,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Http.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.dll" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\WebGrease.dll" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />

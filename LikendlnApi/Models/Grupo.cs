@@ -20,7 +20,7 @@ namespace LikendlnApi.Models.Data
         public string Descripcion { get; set; }
         public bool EsPrivado { get; set; }
 
-
+        // ICollection
         public ICollection<CandidatoGrupo> CandidadtosGrupos { get; set; }
 
 

@@ -1,2 +1,8 @@
 enable-migrations
 update-database
+
+IMPORTANTE: No olvides cambiar la cadena de conexión en el archivo web.config para que apunte a tu base de datos local o servidor SQL.
+
+IMPORTANTE:
+HACER UNA CLASE CURSOS PARA COMPLETAR EL PERFIL PROFESIONAL DEL CANDIDATO 
+Y SU RELACION ES UNO A MUCHOS CON LA CLASE CANDIDATO

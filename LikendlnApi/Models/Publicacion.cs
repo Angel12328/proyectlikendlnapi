@@ -16,12 +16,17 @@ namespace LikendlnApi.Models.Data
         private List<Comentario> _comentarios;
 
         // Propiedades
-        public int Id { get { return _id; } set { _id = value; } }
-        public string Contenido { get { return _contenido; } set { _contenido = value; } }
-        public DateTime FechaPublicacion { get { return _fechaPublicacion; } set { _fechaPublicacion = value; } }
-        public Candidato AutorCandidato { get { return _autorCandidato; } set { _autorCandidato = value; } }
-        public Empresa AutorEmpresa { get { return _autorEmpresa; } set { _autorEmpresa = value; } }
-        public List<Comentario> Comentarios { get { return _comentarios; } set { _comentarios = value; } }
+        public int Id { get; set; }
+        public int IdCandidato { get; set; }
+        public Candidato Candidato { get; set; }
+
+        public int IdEmpresa { get; set; }
+        public Empresa Empresa { get; set; }
+        public string Contenido { get; set; }
+        public DateTime FechaPublicacion { get; set; }
+        public Candidato AutorCandidato { get; set; }
+        public Empresa AutorEmpresa { get; set; }
+        public List<Comentario> Comentarios { get; set; }
 
         // Constructor por defecto
         public Publicacion() { }

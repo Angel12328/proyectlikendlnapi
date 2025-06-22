@@ -27,7 +27,7 @@ namespace LikendlnApi.Models.Data
 
 
         //Icollection
-        public ICollection<CandidatoOfertaLaboral> CandidadtosOfertas { get; set; }
+        public ICollection<CandidatoOfertaLaboral> CandidadtosOfertas { get; set; } //
 
 
 

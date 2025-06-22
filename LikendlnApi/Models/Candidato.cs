@@ -17,34 +17,33 @@ namespace LikendlnApi.Models
         public Usuario Usuario { get; set; }//usuario del candidato
         public string TituloProfesional { get; set; }  //tituo profesional del candidato
         public string CurriculumVitae { get; set; }//curriculum vitae del candidato
-        public List<Habilidad> ListHabilidades { get; set; } = new List<Habilidad>();//lista de habilidades del candidato
-        public List<ExperienciaLaboral> ListexperienciasLaborales { get; set; } = new List<ExperienciaLaboral>();//lista de experiencias laborales del candidato
-        public List<Usuario> ListConexiones { get; set; } = new List<Usuario>();//lista de usuarios que el candidato sigue
-        public List<Publicacion> ListPublicaciones { get; set; } = new List<Publicacion>();//lista de publicaciones del candidato
+        public int Seguidores { get; set; } //numero de seguidores del candidato
 
-        //Icollection 
+
+        public List<Publicacion> ListPublicaciones { get; set; } = new List<Publicacion>();//lista de publicaciones del candidato
+        
+        //Icollection uno a muchos
+        public ICollection<ExperienciaLaboral> ExperienciasLaborales { get; set; } //coleccion  de experiencias laborales del candidato
+        public ICollection<Publicacion> Publicaciones { get; set; } //coleccion de publicaciones del candidato
+        //>> una coleccion de cursos del candidato
+
+
+        //Icollection uno a muchos
         public ICollection<CandidatoOfertaLaboral> CandidadtosOfertas { get; set; }
         public ICollection<CandidatoGrupo> CandidadtosGrupos { get; set; }
+        public ICollection<CandidatoHabilidad> CandidatosHabilidades { get; set; } // Relación con habilidades
+        public ICollection<CandidatoCandidatoConexiones> CandidatosConexiones { get; set; } // Relación con habilidades
+        public ICollection<CandidatoEmpresaConexiones> CandidatosEmpresasConexiones { get; set; } // Relación con empresas
+        //>> una coleccion de candidatos seguidores del candidato
+        //>> una coleccion de empresas seguidores del candidato
 
-       // Constructor por defecto
+        // Constructor por defecto
         public Candidato()
         {
         }
         // Constructor que recibe todos los parámetros
-        public Candidato(int id, int idUsuario, Usuario usuario, string tituloProfesional, string curriculumVitae,
-            List<Habilidad> listHabilidades, List<ExperienciaLaboral> listexperienciasLaborales,
-            List<Usuario> listConexiones, List<Publicacion> listPublicaciones)
-        {
-            Id = id;
-            IdUsuario = idUsuario;
-            Usuario = usuario;
-            TituloProfesional = tituloProfesional;
-            CurriculumVitae = curriculumVitae;
-            ListHabilidades = listHabilidades;
-            ListexperienciasLaborales = listexperienciasLaborales;
-            ListConexiones = listConexiones;
-            ListPublicaciones = listPublicaciones;
-        }
+        
+
 
 
 
