@@ -23,11 +23,13 @@ namespace LikendlnApi.Models.Data
         public DateTime FechaExpiracion { get; set; } // Fecha en que expira la oferta laboral
 
         public bool Disponible { get; set; } // Indica si la oferta laboral está disponible o no
-        public  List<Habilidad> HabilidadesRequeridas { get; set; } = new List<Habilidad>();//lista de habilidades requeridas para la oferta laboral
+
+        //uno a muchos
+        public ICollection<Habilidad> HabilidadesRequeridas { get; set; } 
 
 
         //Icollection
-        public ICollection<CandidatoOfertaLaboral> CandidadtosOfertas { get; set; } //
+        public ICollection<CandidatoOfertaLaboral> CandidadtosOfertas { get; set; } 
 
 
 

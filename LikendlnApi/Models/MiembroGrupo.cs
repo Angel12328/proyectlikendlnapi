@@ -4,44 +4,35 @@ namespace LikendlnApi.Models.Data
 {
     public class MiembroGrupo
     {
-        private int _id;
-        private DateTime _fechaUnion;
+        public int ID { get; set; } // Identificador único del miembro del grupo
+        public DateTime FechaUnion { get; set; } // Fecha en que el miembro se unió al grupo
 
-
+        public int IDMiembroCandidato { get; set; } // Identificador del candidato que es miembro del grupo
 
         public Candidato MiembroCandidato { get; set; }
+        public int IDMiembroEmpresa { get; set; } // Identificador de la empresa que es miembro del grupo
         public Empresa MiembroEmpresa { get; set; }
+        public int IDGrupo { get; set; } // Identificador del grupo al que pertenece el miembro
         public Grupo Grupo { get; set; }
         public string RolGrupo { get; set; }
 
-        public int Id
+       // Constructor por defecto
+        public MiembroGrupo()
         {
-            get { return _id; }
-            set { _id = value; }
         }
-        public DateTime FechaUnion
+        // Constructor que recibe todos los parámetros
+        public MiembroGrupo(int id, DateTime fechaUnion, int idMiembroCandidato, Candidato miembroCandidato,
+            int idMiembroEmpresa, Empresa miembroEmpresa, int idGrupo, Grupo grupo, string rolGrupo)
         {
-            get { return _fechaUnion; }
-            set { _fechaUnion = value; }
-
-        }
-
-        
-        public MiembroGrupo() { }
-
-        public MiembroGrupo(Candidato miembroCandidato, Empresa miembroEmpresa, Grupo grupo, string rolGrupo, int id, DateTime fechaUnion)
-        {
+            ID = id;
+            FechaUnion = fechaUnion;
+            IDMiembroCandidato = idMiembroCandidato;
             MiembroCandidato = miembroCandidato;
+            IDMiembroEmpresa = idMiembroEmpresa;
             MiembroEmpresa = miembroEmpresa;
+            IDGrupo = idGrupo;
             Grupo = grupo;
             RolGrupo = rolGrupo;
-            Id = id;
-            FechaUnion = fechaUnion;
-        }
-
-        public override string ToString()
-        {
-            return base.ToString();
         }
     }
 }

@@ -28,36 +28,72 @@ namespace LikendlnApi.Models
         public int Seguidores { get; set; }
 
 
+        public string FotoPerfil { get; set; }
+
+
         // Icollection
-        public ICollection<CandidatoEmpresaConexiones> CandidatosEmpresasConexiones { get; set; } // Relación con candidatos
-        public ICollection<Publicacion> Publicaciones { get; set; } //coleccion de publicaciones de la empresa
+        //uno a muchos
+        public ICollection<Publicacion> Publicaciones { get; set; }
+        
+
+        //muchos a muchos
+        public ICollection<CandidatoEmpresaConexiones> CandidatosEmpresasConexiones { get; set; } // Relación con candidatos\
+        public ICollection<CandidatoSeguidorEmpresa> EmpresasSeguidores { get; set; } //Empresas que siguen a candidatos
+
         //>> una coleccion de candidatos seguidores de la empresa
+        public ICollection<EmpresaSeguidorCandidato> EmpresasCandidatosSeguidores { get; set; } //>> una coleccion de candidatos seguidores de la empresa
+
         //>> una coleccion de empresas seguidores de la empresa
+        public ICollection<EmpresaSeguidorEmpresa> EmpresasSeguidoresEmpresa { get; set; } //>> una coleccion de empresas seguidores de la empresa
 
 
         //Ofertas que la empresa ofrece
         public List<OfertaLaboral> OfertasLaborales { get; set; } = new List<OfertaLaboral>();
 
-          // Número de seguidores de la empresa
-        
-
-
-        //xd
-        // Constructor que recibe el ID y el usuario
         // Constructor por defecto
         public Empresa()
         {
-            
         }
 
-
+        public Empresa(int iD, int idUsuario, Usuario usuario, string nombreEmpresa, string descripcion, string direccion, string telefono, string correoElectronico, string sector, string sitioWeb, string tipo, DateTime fechaCreacion, int seguidores, string fotoPerfil, ICollection<Publicacion> publicaciones, ICollection<CandidatoEmpresaConexiones> candidatosEmpresasConexiones, ICollection<CandidatoSeguidorEmpresa> empresasSeguidores, 
+            ICollection<EmpresaSeguidorCandidato> empresasCandidatosSeguidores, ICollection<EmpresaSeguidorEmpresa> empresasSeguidoresEmpresa, List<OfertaLaboral> ofertasLaborales)
+        {
+            ID = iD;
+            IdUsuario = idUsuario;
+            Usuario = usuario;
+            NombreEmpresa = nombreEmpresa;
+            Descripcion = descripcion;
+            Direccion = direccion;
+            Telefono = telefono;
+            CorreoElectronico = correoElectronico;
+            Sector = sector;
+            SitioWeb = sitioWeb;
+            Tipo = tipo;
+            FechaCreacion = fechaCreacion;
+            Seguidores = seguidores;
+            FotoPerfil = fotoPerfil;
+            Publicaciones = publicaciones;
+            CandidatosEmpresasConexiones = candidatosEmpresasConexiones;
+            EmpresasSeguidores = empresasSeguidores;
+            EmpresasCandidatosSeguidores = empresasCandidatosSeguidores;
+            EmpresasSeguidoresEmpresa = empresasSeguidoresEmpresa;
+            OfertasLaborales = ofertasLaborales;
+        }
         // Constructor que recibe todos los parámetros
 
 
 
 
 
-       
+
+
+
+
+
+
+
+
+
 
 
 

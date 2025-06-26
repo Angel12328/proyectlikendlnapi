@@ -8,41 +8,33 @@ namespace LikendlnApi.Models.Data
 {
     public abstract class MensajeBase
     {
-        private int  _id;
-        
-        private DateTime _fechaEnvio;
-        private Candidato _remitenteCandidato;
-        private Empresa _remitenteEmpresa;
+        public int  Id { get; set; } // Identificador único del mensaje
 
-
-        
-
+        public DateTime FechaEnvio { get; set; } // Fecha y hora en que se envió el mensaje
+        public int IDCandidato { get; set; } // Identificador del candidato que envía el mensaje
+        public Candidato RemitenteCandidato { get; set; } // Candidato que envía el mensaje
+        public int IDEmpresa { get; set; } // Identificador de la empresa que envía el mensaje (si aplica)
+        public Empresa RemitenteEmpresa { get; set; } // Empresa que envía el mensaje (si aplica)
 
         public string Contenido {  get; set; }
         public bool Leido {  get; set; }
 
-        public int Id { get { return _id; } set { _id = value; } }
-        public DateTime FechaEnvio { get { return _fechaEnvio; } set { _fechaEnvio = value; } }
-        public Candidato RemitenteCandidato { get { return _remitenteCandidato; } set { _remitenteCandidato = value; } }
-        public Empresa RemitenteEmpresa { get { return _remitenteEmpresa; } set { _remitenteEmpresa = value; } }
-
-        // Constructor por defecto
+       // Constructor por defecto
         public MensajeBase()
         {
         }
-
         // Constructor que recibe todos los parámetros
-        public MensajeBase(int id, DateTime fechaEnvio, Candidato remitenteCandidato, Empresa remitenteEmpresa, string contenido, bool leido)
+        public MensajeBase(int id, DateTime fechaEnvio, int idCandidato, Candidato remitenteCandidato, int idEmpresa, Empresa remitenteEmpresa, string contenido, bool leido)
         {
             Id = id;
             FechaEnvio = fechaEnvio;
+            IDCandidato = idCandidato;
             RemitenteCandidato = remitenteCandidato;
+            IDEmpresa = idEmpresa;
             RemitenteEmpresa = remitenteEmpresa;
             Contenido = contenido;
             Leido = leido;
         }
-
-
 
 
     }

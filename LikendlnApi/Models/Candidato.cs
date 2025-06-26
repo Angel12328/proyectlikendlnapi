@@ -19,30 +19,64 @@ namespace LikendlnApi.Models
         public string CurriculumVitae { get; set; }//curriculum vitae del candidato
         public int Seguidores { get; set; } //numero de seguidores del candidato
 
+        public string FotoPerfil { get; set; } //foto de perfil del candidato
 
-        public List<Publicacion> ListPublicaciones { get; set; } = new List<Publicacion>();//lista de publicaciones del candidato
-        
+
+
+
         //Icollection uno a muchos
         public ICollection<ExperienciaLaboral> ExperienciasLaborales { get; set; } //coleccion  de experiencias laborales del candidato
         public ICollection<Publicacion> Publicaciones { get; set; } //coleccion de publicaciones del candidato
-        //>> una coleccion de cursos del candidato
+        // una coleccion de cursos del candidato
+        public ICollection<Curso> Cursos { get; set; } //coleccion de cursos del candidato
 
 
-        //Icollection uno a muchos
+        //Icollection muchos a muchos
         public ICollection<CandidatoOfertaLaboral> CandidadtosOfertas { get; set; }
         public ICollection<CandidatoGrupo> CandidadtosGrupos { get; set; }
         public ICollection<CandidatoHabilidad> CandidatosHabilidades { get; set; } // Relación con habilidades
-        public ICollection<CandidatoCandidatoConexiones> CandidatosConexiones { get; set; } // Relación con habilidades
+        public ICollection<CandidatoCandidatoConexiones> CandidatosConexiones { get; set; } 
         public ICollection<CandidatoEmpresaConexiones> CandidatosEmpresasConexiones { get; set; } // Relación con empresas
         //>> una coleccion de candidatos seguidores del candidato
+        public ICollection< CandidatoSeguidorCandidato> CandidatosSeguidores { get; set; } //>> una coleccion de candidatos seguidores del candidato
         //>> una coleccion de empresas seguidores del candidato
+        public ICollection<CandidatoSeguidorEmpresa> CandidatosSeguidoresEmpresas { get; set; } //>> una coleccion de empresas seguidores del candidato
+        
+        public ICollection<EmpresaSeguidorCandidato> EmpresasSeguidoresCandidatos { get; set; } //>> una coleccion de usuarios seguidores del candidato   
 
         // Constructor por defecto
         public Candidato()
         {
         }
-        // Constructor que recibe todos los parámetros
-        
+
+       // Constructor que recibe todos los parámetros
+        public Candidato(int id, int idUsuario, Usuario usuario, string tituloProfesional, string curriculumVitae, int seguidores, string fotoPerfil,
+            ICollection<ExperienciaLaboral> experienciasLaborales, ICollection<Publicacion> publicaciones, ICollection<Curso> cursos,
+            ICollection<CandidatoOfertaLaboral> candidadtosOfertas, ICollection<CandidatoGrupo> candidadtosGrupos,
+            ICollection<CandidatoHabilidad> candidatosHabilidades, ICollection<CandidatoCandidatoConexiones> candidatosConexiones,
+            ICollection<CandidatoEmpresaConexiones> candidatosEmpresasConexiones, ICollection<CandidatoSeguidorCandidato> candidatosSeguidores,
+            ICollection<CandidatoSeguidorEmpresa> candidatosSeguidoresEmpresas, ICollection<EmpresaSeguidorCandidato> empresasSeguidoresCandidatos)
+        {
+            Id = id;
+            IdUsuario = idUsuario;
+            Usuario = usuario;
+            TituloProfesional = tituloProfesional;
+            CurriculumVitae = curriculumVitae;
+            Seguidores = seguidores;
+            FotoPerfil = fotoPerfil;
+            ExperienciasLaborales = experienciasLaborales;
+            Publicaciones = publicaciones;
+            Cursos = cursos;
+            CandidadtosOfertas = candidadtosOfertas;
+            CandidadtosGrupos = candidadtosGrupos;
+            CandidatosHabilidades = candidatosHabilidades;
+            CandidatosConexiones = candidatosConexiones;
+            CandidatosEmpresasConexiones = candidatosEmpresasConexiones;
+            CandidatosSeguidores = candidatosSeguidores;
+            CandidatosSeguidoresEmpresas = candidatosSeguidoresEmpresas;
+            EmpresasSeguidoresCandidatos = empresasSeguidoresCandidatos;
+        }
+
 
 
 

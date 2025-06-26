@@ -9,38 +9,39 @@ namespace LikendlnApi.Models
 {
     public class Chat
     {
-        private int _id;
-        
-        private DateTime _fechaCreacion;
-        private DateTime _ultimaActividad;
+        // Propiedades
+        public int ID { get; set; } // Identificador único del chat
+
+        public DateTime FechaCreacion { get; set; } // Fecha y hora en que se creó el chat
+        public DateTime UltimaActividad { get; set; } // Fecha y hora de la última actividad en el chat
 
 
         public string Titulo { get; set; }
-        public List<ParticipanteChat> Participantes { get; set; }
 
-        public List<MensajeBase> Mensajes { get; set; }
 
-        public int Id { get { return _id; } set { _id = value; } }
-        public DateTime FechaCreacion { get { return _fechaCreacion; } set { _fechaCreacion = value; } }
-        public DateTime UltimaActividad { get { return _ultimaActividad; } set { _ultimaActividad = value; } }
+        public ICollection<ParticipanteChat> Participantes { get; set; } // Colección de participantes en el chat
+
+        public ICollection<MensajeBase> Mensajes { get; set; }
+
 
         // Constructor por defecto
         public Chat()
         {
+            Participantes = new List<ParticipanteChat>();
+            Mensajes = new List<MensajeBase>();
         }
 
         // Constructor que recibe todos los parámetros
-        public Chat(int id, DateTime fechaCreacion, DateTime ultimaActividad, string titulo, List<ParticipanteChat> participantes, List<MensajeBase> mensajes)
+        public Chat(int iD, DateTime fechaCreacion, DateTime ultimaActividad, string titulo, ICollection<ParticipanteChat> participantes, ICollection<MensajeBase> mensajes)
         {
-            Id = id;
+            ID = iD;
             FechaCreacion = fechaCreacion;
             UltimaActividad = ultimaActividad;
             Titulo = titulo;
-            Participantes = participantes ?? new List<ParticipanteChat>();
-            Mensajes = mensajes ?? new List<MensajeBase>();
+            Participantes = participantes;
+            Mensajes = mensajes;
         }
 
-        
 
 
     }

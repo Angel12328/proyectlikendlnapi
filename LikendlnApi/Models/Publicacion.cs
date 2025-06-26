@@ -8,12 +8,7 @@ namespace LikendlnApi.Models.Data
 {
     public class Publicacion
     {
-        private int _id;
-        private string _contenido;
-        private DateTime _fechaPublicacion;
-        private Candidato _autorCandidato;
-        private Empresa _autorEmpresa;
-        private List<Comentario> _comentarios;
+       
 
         // Propiedades
         public int Id { get; set; }
@@ -22,34 +17,36 @@ namespace LikendlnApi.Models.Data
 
         public int IdEmpresa { get; set; }
         public Empresa Empresa { get; set; }
+        public int IdGrupo { get; set; } // Id del grupo al que pertenece la publicación, si es que pertenece a uno
+        public Grupo Grupo { get; set; } // Objeto del grupo al que pertenece la publicación, si es que pertenece a uno
         public string Contenido { get; set; }
         public DateTime FechaPublicacion { get; set; }
-        public Candidato AutorCandidato { get; set; }
-        public Empresa AutorEmpresa { get; set; }
+     
         public List<Comentario> Comentarios { get; set; }
+
+        public string ImagenURL { get; set; } // Imagen de la publicación, si es que tiene
 
         // Constructor por defecto
         public Publicacion() { }
 
-        // Constructor que recibe todos los parámetros
-        public Publicacion(int id, string contenido, DateTime fechaPublicacion, Candidato autorCandidato, Empresa autorEmpresa, List<Comentario> comentarios)
+        public Publicacion(int id, int idCandidato, Candidato candidato, int idEmpresa, Empresa empresa, int idGrupo, Grupo grupo,
+            string contenido, DateTime fechaPublicacion, List<Comentario> comentarios, string imagenURL)
         {
             Id = id;
+            IdCandidato = idCandidato;
+            Candidato = candidato;
+            IdEmpresa = idEmpresa;
+            Empresa = empresa;
+            IdGrupo = idGrupo;
+            Grupo = grupo;
             Contenido = contenido;
             FechaPublicacion = fechaPublicacion;
-            AutorCandidato = autorCandidato;
-            AutorEmpresa = autorEmpresa;
             Comentarios = comentarios;
+            ImagenURL = imagenURL;
         }
 
-        // Método ToString
-        public override string ToString()
-        {
-            return $"Id: {Id}, Contenido: {Contenido}, Fecha de Publicación: {FechaPublicacion.ToShortDateString()}, Autor Candidato: {AutorCandidato?.ToString() ?? "N/A"}, Autor Empresa: {AutorEmpresa?.ToString() ?? "N/A"}, Comentarios: {Comentarios.Count}";
+        // Constructor que recibe todos los parámetros  
 
-
-
-        }
 
 
     }

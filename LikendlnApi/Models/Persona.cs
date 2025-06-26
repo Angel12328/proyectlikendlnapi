@@ -9,6 +9,7 @@ namespace LikendlnApi.Models.Data
     public abstract class Persona
     {
         //  Propiedades
+        public int Id { get; set; } // Identificador único de la persona
         public string  Nombre { get; set; }
         public string Apellido { get; set; }
         public string CoreoElectronico { get; set; }
@@ -19,19 +20,15 @@ namespace LikendlnApi.Models.Data
         public Persona()
         {
         }
-        //Constructor que recibe todos los parametros
-        public Persona(string nombre, string apellido, string coreoElectronico, string telefono)
+
+        // Constructor que recibe todos los parámetros
+        public Persona(int id, string nombre, string apellido, string coreoElectronico, string telefono)
         {
+            Id = id;
             Nombre = nombre;
             Apellido = apellido;
             CoreoElectronico = coreoElectronico;
             Telefono = telefono;
         }
-        //Metodo ToString
-        public override string ToString()
-        {
-            return $"Nombre: {Nombre}, Apellido: {Apellido}, Correo Electronico: {CoreoElectronico}, Telefono: {Telefono}";
-        }
-
     }
 }

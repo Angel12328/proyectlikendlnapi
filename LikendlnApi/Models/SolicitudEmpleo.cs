@@ -9,49 +9,38 @@ namespace LikendlnApi.Models.Data
     public class SolicitudEmpleo
     {
         //atributos
-        private int _idSolicitudEmpleo;
-        private Candidato _candidato;
-        private Empresa _empresa;
-        private string _titulo;
-        private string _descripcion;
-        private OfertaLaboral _ofertaLaboral;
-        private DateTime _fechaSolicitud;
-        private string _estado; // Ejemplo: "Pendiente", "Aceptada", "Rechazada"
+        public int ID { get; set; }
+        public int IdCandidato { get; set; } // Identificador del candidato que realiza la solicitud
+        public Candidato Candidato { get; set; } // Candidato que realiza la solicitud
+        public int IdEmpresa { get; set; } // Identificador de la empresa a la que se solicita el empleo
+        private Empresa Empresa { get; set; }
+        public string Titulo { get; set; } // Título de la solicitud de empleo
+        public string Descripcion { get; set; } // Descripción de la solicitud de empleo
+        public int IdOfertaLaboral { get; set; } // Identificador de la oferta laboral a la que se está solicitando empleo
+        public OfertaLaboral OfertaLaboral { get; set; } // Oferta laboral a la que se está solicitando empleo
+        public DateTime FechaSolicitud { get; set; } // Fecha en que se realiza la solicitud de empleo
+        public string Estado { get; set; } // Ejemplo: "Pendiente", "Aceptada", "Rechazada"
+
 
         // Constructor por defecto
         public SolicitudEmpleo()
         {
         }
 
-        // Constructor que recibe todos los parámetros
-        public SolicitudEmpleo(int idSolicitudEmpleo, Candidato candidato, Empresa empresa, string titulo, string descripcion, OfertaLaboral ofertaLaboral, DateTime fechaSolicitud, string estado)
+        public SolicitudEmpleo(int iD, int idCandidato, Candidato candidato, int idEmpresa, Empresa empresa, string titulo,
+            string descripcion, int idOfertaLaboral, OfertaLaboral ofertaLaboral, DateTime fechaSolicitud, string estado)
         {
-            IdSolicitudEmpleo = idSolicitudEmpleo;
+            ID = iD;
+            IdCandidato = idCandidato;
             Candidato = candidato;
+            IdEmpresa = idEmpresa;
             Empresa = empresa;
             Titulo = titulo;
             Descripcion = descripcion;
+            IdOfertaLaboral = idOfertaLaboral;
             OfertaLaboral = ofertaLaboral;
             FechaSolicitud = fechaSolicitud;
             Estado = estado;
         }
-
-        // Setters y Getters
-        public int IdSolicitudEmpleo { get { return _idSolicitudEmpleo; } set { _idSolicitudEmpleo = value; } }
-        public string Titulo { get { return _titulo; } set { _titulo = value; } }
-        public string Descripcion { get { return _descripcion; } set { _descripcion = value; } }
-        public DateTime FechaSolicitud { get { return _fechaSolicitud; } set { _fechaSolicitud = value; } }
-        public string Estado { get { return _estado; } set { _estado = value; } }
-        internal Candidato Candidato { get { return _candidato; } set { _candidato = value; } }
-        internal Empresa Empresa { get { return _empresa; } set { _empresa = value; } }
-        internal OfertaLaboral OfertaLaboral { get { return _ofertaLaboral; } set { _ofertaLaboral = value; } }
-
-      //toString
-        public override string ToString()
-        {
-            return $"Id: {IdSolicitudEmpleo}, Candidato: {Candidato.Nombre}, Empresa: {Empresa.NombreEmpresa}, Titulo: {Titulo}, Descripcion: {Descripcion}, Fecha Solicitud: {FechaSolicitud.ToShortDateString()}, Estado: {Estado}";
-        }
-
-
     }
 }

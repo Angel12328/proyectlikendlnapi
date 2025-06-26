@@ -4,41 +4,31 @@ namespace LikendlnApi.Models.Data
 {
     public class ParticipanteChat
     {
-        private int _id;
-        private DateTime _fechaUnion;
-        
+        // Propiedades
+        public int ID { get; set; } // Identificador único del participante en el chat
+        public DateTime FechaUnion { get; set; } // Fecha en que el participante se unió al chat
 
+        public int IdCandidato { get; set; } // Identificador del candidato que es participante del chat
 
         public Candidato ParticipanteCandidato { get; set; }
+        public int IdEmpresa { get; set; } // Identificador de la empresa que es participante del chat
         public Empresa ParticipanteEmpresa { get; set; }
 
 
-        public int Id
+        //constructor por defecto
+        public ParticipanteChat()
         {
-            get { return _id; }
-            set { _id = value; }
         }
-        public DateTime FechaUnion
-        {
-            get { return _fechaUnion; }
-            set { _fechaUnion = value; }
-        }
-
-
-
-        // Constructor por defecto
-        public ParticipanteChat() { }
-
         // Constructor que recibe todos los parámetros
-        public ParticipanteChat(int id, DateTime fechaUnion, Candidato participanteCandidato, Empresa participanteEmpresa)
+        public ParticipanteChat(int id, DateTime fechaUnion, int idCandidato, Candidato participanteCandidato, int idEmpresa, Empresa participanteEmpresa)
         {
-            Id = id;
+            ID = id;
             FechaUnion = fechaUnion;
+            IdCandidato = idCandidato;
             ParticipanteCandidato = participanteCandidato;
+            IdEmpresa = idEmpresa;
             ParticipanteEmpresa = participanteEmpresa;
         }
-
-
 
 
 
