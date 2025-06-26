@@ -193,6 +193,7 @@
     <Compile Include="Models\Relaciones\CandidatoOfertaLaboral.cs" />
     <Compile Include="Models\Relaciones\CandidatoSeguidorCandidato.cs" />
     <Compile Include="Models\Relaciones\CandidatoSeguidorEmpresa.cs" />
+    <Compile Include="Models\Relaciones\ChatParticipante.cs" />
     <Compile Include="Models\Relaciones\EmpresaSeguidorCandidato.cs" />
     <Compile Include="Models\Relaciones\EmpresaSeguidorEmpresa.cs" />
     <Compile Include="Models\SolicitudEmpleo.cs" />

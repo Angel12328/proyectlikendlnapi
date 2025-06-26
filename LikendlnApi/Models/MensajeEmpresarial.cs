@@ -28,21 +28,23 @@ namespace LikendlnApi.Models.Data
         {
         }
         // Constructor que recibe todos los parámetros
-        public MensajeEmpresarial(int id, DateTime fechaEnvio, int idCandidato, Candidato remitenteCandidato, int idEmpresa, Empresa remitenteEmpresa, string contenido, bool leido, int idCandidatoDestinatario, Candidato destinatarioCandidato, int idRemitenteCandidato, Candidato remitenteCandidato1, int idRemitenteEmpresa, Empresa remitenteEmpresa1, int idDestinatarioEmpresa, Empresa destinatarioEmpresa, int idOfertaLbrl, OfertaLaboral ofertaLaboralRelacinada)
+        public MensajeEmpresarial(int id, DateTime fechaEnvio, int idCandidato, Candidato remitenteCandidato, int idEmpresa, Empresa remitenteEmpresa, string contenido, bool leido, int idCandidatoDestinatario, Candidato destinatarioCandidato, int idRemitenteCandidato, Candidato remitenteCandidato2, int idRemitenteEmpresa, Empresa remitenteEmpresa2, int idDestinatarioEmpresa, Empresa destinatarioEmpresa, int idOfertaLaboral, OfertaLaboral ofertaLaboralRelacinada)
             : base(id, fechaEnvio, idCandidato, remitenteCandidato, idEmpresa, remitenteEmpresa, contenido, leido)
         {
             ID = id;
             IDCandidatoDestinatario = idCandidatoDestinatario;
             DestinatarioCandidato = destinatarioCandidato;
             IDRemitenteCandidato = idRemitenteCandidato;
-            RemitenteCandidato = remitenteCandidato1;
+            RemitenteCandidato = remitenteCandidato2;
             IDRemitenteEmpresa = idRemitenteEmpresa;
-            RemitenteEmpresa = remitenteEmpresa1;
+            RemitenteEmpresa = remitenteEmpresa2;
             IDDestinatarioEmpresa = idDestinatarioEmpresa;
             DestinatarioEmpresa = destinatarioEmpresa;
-            IDOfertaLbrl = idOfertaLbrl;
+            IDOfertaLbrl = idOfertaLaboral;
             OfertaLaboralRelacinada = ofertaLaboralRelacinada;
         }
+
+
 
 
 

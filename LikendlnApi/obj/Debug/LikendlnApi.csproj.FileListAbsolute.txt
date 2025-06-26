@@ -1,2 +1,4 @@
 C:\Users\angel\Documents\Angel\UNAH\ll_PAC_2025\POO\proyecto\Likendln_Entrega2Clonado\LikendlnApi\obj\Debug\LikendlnApi.csproj.AssemblyReference.cache
 C:\Users\angel\Documents\Angel\UNAH\ll_PAC_2025\POO\proyecto\Likendln_Entrega2Clonado\LikendlnApi\obj\Debug\LikendlnApi.csproj.CoreCompileInputs.cache
+C:\Users\USER\Documents\LinkedIn-Clonado\LikendlnApi\obj\Debug\LikendlnApi.csproj.AssemblyReference.cache
+C:\Users\USER\Documents\LinkedIn-Clonado\LikendlnApi\obj\Debug\LikendlnApi.csproj.CoreCompileInputs.cache

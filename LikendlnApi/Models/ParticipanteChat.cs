@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LikendlnApi.Models.Relaciones;
+using System;
+using System.Collections.Generic;
 
 namespace LikendlnApi.Models.Data
 {
@@ -14,13 +16,18 @@ namespace LikendlnApi.Models.Data
         public int IdEmpresa { get; set; } // Identificador de la empresa que es participante del chat
         public Empresa ParticipanteEmpresa { get; set; }
 
+        //uno a muchos
+        public ICollection<ChatParticipante> Participantes { get; set; } // Colección de participantes en el chat
+
 
         //constructor por defecto
         public ParticipanteChat()
         {
         }
+
         // Constructor que recibe todos los parámetros
-        public ParticipanteChat(int id, DateTime fechaUnion, int idCandidato, Candidato participanteCandidato, int idEmpresa, Empresa participanteEmpresa)
+        public ParticipanteChat(int id, DateTime fechaUnion, int idCandidato, Candidato participanteCandidato,
+            int idEmpresa, Empresa participanteEmpresa, ICollection<ChatParticipante> participantes)
         {
             ID = id;
             FechaUnion = fechaUnion;
@@ -28,10 +35,9 @@ namespace LikendlnApi.Models.Data
             ParticipanteCandidato = participanteCandidato;
             IdEmpresa = idEmpresa;
             ParticipanteEmpresa = participanteEmpresa;
+            Participantes = participantes;
+
+
         }
-
-
-
-
     }
 }

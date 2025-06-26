@@ -36,6 +36,8 @@ namespace LikendlnApi.Models.Data
           
         }
 
+        // Constructor que recibe todos los parámetros
+
         public Grupo(int iD, int iDCreador, Candidato creadorCandidato, int idEmpresa, Empresa creadorEmpresa, string fotoPerfil, string nombre, string descripcion, bool esPrivado,
             ICollection<MiembroGrupo> miembros, ICollection<Publicacion> publicaciones, ICollection<CandidatoGrupo> candidadtosGrupos)
         {
@@ -53,7 +55,7 @@ namespace LikendlnApi.Models.Data
             CandidadtosGrupos = candidadtosGrupos;
         }
 
-        // Constructor que recibe todos los parámetros
+   
 
 
 

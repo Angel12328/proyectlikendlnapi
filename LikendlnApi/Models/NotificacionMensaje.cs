@@ -8,41 +8,37 @@ namespace LikendlnApi.Models.Data
 {
     public class NotificacionMensaje
     {
-        private int _id;
-        private DateTime _fechaNotificacion;
+        public int ID { get; set; } // Identificador único de la notificación de mensaje
+        public DateTime FechaNotificacion { get; set; } // Fecha y hora de la notificación
 
-
+        public int IDCandidato { get; set; } // Identificador del candidato al que se le envía la notificación
 
         public Candidato Candidato { get; set; }
+        public int IDEmpresa { get; set; } // Identificador de la empresa que envía la notificación (si aplica)
         public Empresa Empresa { get; set; }
+        public int IdMensajeBase { get; set; } // Identificador del mensaje asociado a la notificación
         public MensajeBase Mensaje { get; set; }
         public bool Leido { get; set; }
 
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-        public DateTime FechaNotificacion
-        {
-            get { return _fechaNotificacion; }
-            set { _fechaNotificacion = value; }
-        }
 
-        // Constructor por defecto
-        public NotificacionMensaje() { }
+       // Constructor por defecto
+        public NotificacionMensaje()
+        {
+        }
 
         // Constructor que recibe todos los parámetros
-        public NotificacionMensaje(int id, DateTime fechaNotificacion, Candidato candidato, Empresa empresa, MensajeBase mensaje, bool leido)
+        public NotificacionMensaje(int id, DateTime fechaNotificacion, int iDCandidato, Candidato candidato, int iDEmpresa, Empresa empresa, int idMensajeBase, MensajeBase mensaje, bool leido)
         {
-            Id = id;
+            ID = id;
             FechaNotificacion = fechaNotificacion;
+            IDCandidato = iDCandidato;
             Candidato = candidato;
+            IDEmpresa = iDEmpresa;
             Empresa = empresa;
+            IdMensajeBase = idMensajeBase;
             Mensaje = mensaje;
             Leido = leido;
         }
-
 
     }
 }

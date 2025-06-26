@@ -1,4 +1,5 @@
 ﻿using LikendlnApi.Models.Data;
+using LikendlnApi.Models.Relaciones;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,30 +19,32 @@ namespace LikendlnApi.Models
 
         public string Titulo { get; set; }
 
-
-        public ICollection<ParticipanteChat> Participantes { get; set; } // Colección de participantes en el chat
-
+        //UNO A MUCHOS
         public ICollection<MensajeBase> Mensajes { get; set; }
+
+        //muchos a muchos
+        public ICollection<ChatParticipante> Participantes { get; set; } // Colección de participantes en el chat
+
+
+       
 
 
         // Constructor por defecto
         public Chat()
         {
-            Participantes = new List<ParticipanteChat>();
-            Mensajes = new List<MensajeBase>();
+          
         }
 
-        // Constructor que recibe todos los parámetros
-        public Chat(int iD, DateTime fechaCreacion, DateTime ultimaActividad, string titulo, ICollection<ParticipanteChat> participantes, ICollection<MensajeBase> mensajes)
+       // Constructor que recibe todos los parámetros
+        public Chat(int id, DateTime fechaCreacion, DateTime ultimaActividad, string titulo, ICollection<MensajeBase> mensajes, ICollection<ChatParticipante> participantes)
         {
-            ID = iD;
+            ID = id;
             FechaCreacion = fechaCreacion;
             UltimaActividad = ultimaActividad;
             Titulo = titulo;
-            Participantes = participantes;
             Mensajes = mensajes;
+            Participantes = participantes;
         }
-
 
 
     }

@@ -29,6 +29,8 @@ namespace LikendlnApi.Models.Data
         // Constructor por defecto
         public Publicacion() { }
 
+
+        // Constructor que recibe todos los parámetros  
         public Publicacion(int id, int idCandidato, Candidato candidato, int idEmpresa, Empresa empresa, int idGrupo, Grupo grupo,
             string contenido, DateTime fechaPublicacion, List<Comentario> comentarios, string imagenURL)
         {
@@ -45,7 +47,7 @@ namespace LikendlnApi.Models.Data
             ImagenURL = imagenURL;
         }
 
-        // Constructor que recibe todos los parámetros  
+       
 
 
 

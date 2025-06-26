@@ -18,10 +18,14 @@ namespace LikendlnApi.Models.Data
         public DateTime Fecha { get; set; } // Fecha de la recomendación
 
 
-     
+        // Constructor por defecto
+
         public Recomendacion()
         {
         }
+
+
+
         // Constructor que recibe todos los parámetros
         public Recomendacion(int id, int idCandidato, Candidato candidato, int idEmpresa, Empresa empresa, string mensaje, DateTime fecha)
         {

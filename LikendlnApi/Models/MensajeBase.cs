@@ -15,6 +15,8 @@ namespace LikendlnApi.Models.Data
         public Candidato RemitenteCandidato { get; set; } // Candidato que envía el mensaje
         public int IDEmpresa { get; set; } // Identificador de la empresa que envía el mensaje (si aplica)
         public Empresa RemitenteEmpresa { get; set; } // Empresa que envía el mensaje (si aplica)
+        public int IDChat { get; set; } // Identificador del chat al que pertenece el mensaje (si aplica)
+        public Chat Chat { get; set; } // Chat al que pertenece el mensaje (si aplica)
 
         public string Contenido {  get; set; }
         public bool Leido {  get; set; }
@@ -23,7 +25,8 @@ namespace LikendlnApi.Models.Data
         public MensajeBase()
         {
         }
-        // Constructor que recibe todos los parámetros
+
+       // Constructor que recibe todos los parámetros
         public MensajeBase(int id, DateTime fechaEnvio, int idCandidato, Candidato remitenteCandidato, int idEmpresa, Empresa remitenteEmpresa, string contenido, bool leido)
         {
             Id = id;
