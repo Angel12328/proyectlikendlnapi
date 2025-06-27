@@ -1,4 +1,4 @@
-﻿using LikendlnApi.Models.Data;
+﻿
 using System;
 
 namespace LikendlnApi.Models

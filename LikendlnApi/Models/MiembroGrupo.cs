@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LikendlnApi.Models.Data
+namespace LikendlnApi.Models
 {
     public class MiembroGrupo
     {

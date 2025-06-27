@@ -1,8 +1,8 @@
-﻿using LikendlnApi.Models.Relaciones;
+﻿
 using System;
 using System.Collections.Generic;
 
-namespace LikendlnApi.Models.Data
+namespace LikendlnApi.Models
 {
     public class ParticipanteChat
     {

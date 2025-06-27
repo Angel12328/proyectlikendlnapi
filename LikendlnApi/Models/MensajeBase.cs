@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LikendlnApi.Models.Data
+namespace LikendlnApi.Models
 {
     public abstract class MensajeBase
     {
@@ -21,23 +21,34 @@ namespace LikendlnApi.Models.Data
         public string Contenido {  get; set; }
         public bool Leido {  get; set; }
 
-       // Constructor por defecto
+        // Constructor por defecto
         public MensajeBase()
         {
         }
 
-       // Constructor que recibe todos los parámetros
-        public MensajeBase(int id, DateTime fechaEnvio, int idCandidato, Candidato remitenteCandidato, int idEmpresa, Empresa remitenteEmpresa, string contenido, bool leido)
+        protected MensajeBase(int id, DateTime fechaEnvio, int iDCandidato, Candidato remitenteCandidato, int iDEmpresa, Empresa remitenteEmpresa, int iDChat, Chat chat, string contenido, bool leido)
         {
             Id = id;
             FechaEnvio = fechaEnvio;
-            IDCandidato = idCandidato;
+            IDCandidato = iDCandidato;
             RemitenteCandidato = remitenteCandidato;
-            IDEmpresa = idEmpresa;
+            IDEmpresa = iDEmpresa;
             RemitenteEmpresa = remitenteEmpresa;
+            IDChat = iDChat;
+            Chat = chat;
             Contenido = contenido;
             Leido = leido;
         }
+
+        // Constructor que recibe todos los parámetros
+
+
+
+
+
+
+
+
 
 
     }

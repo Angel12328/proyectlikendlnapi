@@ -1,11 +1,11 @@
-﻿using LikendlnApi.Models.Relaciones;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LikendlnApi.Models.Data
+namespace LikendlnApi.Models
 {
     public class Grupo
     {
