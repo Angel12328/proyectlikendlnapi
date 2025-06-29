@@ -11,7 +11,7 @@ namespace LikendlnApi.Models
     public class Candidato : Persona
     {
         //Propiedades
-        //cambio prueba
+        //cambio prueba heho por allanproyecto
         public int IdUsuario { get; set; } //id del usuario del candidato
         public Usuario Usuario { get; set; }//usuario del candidato
         public string TituloProfesional { get; set; }  //tituo profesional del candidato
