@@ -1,5 +1,4 @@
-﻿using LikendlnApi.Models.Data;
-using LikendlnApi.Models.Relaciones;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +11,9 @@ namespace LikendlnApi.Models
     public class Candidato : Persona
     {
         //Propiedades
-        public int  Id { get; set; }//id del candidato
+        //cambio prueba heho por allanproyecto
+        //cambio2
+        //cambio3
         public int IdUsuario { get; set; } //id del usuario del candidato
         public Usuario Usuario { get; set; }//usuario del candidato
         public string TituloProfesional { get; set; }  //tituo profesional del candidato
@@ -33,7 +34,7 @@ namespace LikendlnApi.Models
 
         //Icollection muchos a muchos
         public ICollection<CandidatoOfertaLaboral> CandidadtosOfertas { get; set; }
-        public ICollection<CandidatoGrupo> CandidadtosGrupos { get; set; }
+        public ICollection<CandidatoGrupo> CandidatosGrupos { get; set; }
         public ICollection<CandidatoHabilidad> CandidatosHabilidades { get; set; } // Relación con habilidades
         public ICollection<CandidatoCandidatoConexiones> CandidatosConexiones { get; set; } 
         public ICollection<CandidatoEmpresaConexiones> CandidatosEmpresasConexiones { get; set; } // Relación con empresas
@@ -50,14 +51,14 @@ namespace LikendlnApi.Models
         }
 
        // Constructor que recibe todos los parámetros
-        public Candidato(int id, int idUsuario, Usuario usuario, string tituloProfesional, string curriculumVitae, int seguidores, string fotoPerfil,
+        public Candidato(int idUsuario, Usuario usuario, string tituloProfesional, string curriculumVitae, int seguidores, string fotoPerfil,
             ICollection<ExperienciaLaboral> experienciasLaborales, ICollection<Publicacion> publicaciones, ICollection<Curso> cursos,
             ICollection<CandidatoOfertaLaboral> candidadtosOfertas, ICollection<CandidatoGrupo> candidadtosGrupos,
             ICollection<CandidatoHabilidad> candidatosHabilidades, ICollection<CandidatoCandidatoConexiones> candidatosConexiones,
             ICollection<CandidatoEmpresaConexiones> candidatosEmpresasConexiones, ICollection<CandidatoSeguidorCandidato> candidatosSeguidores,
             ICollection<CandidatoSeguidorEmpresa> candidatosSeguidoresEmpresas, ICollection<EmpresaSeguidorCandidato> empresasSeguidoresCandidatos)
         {
-            Id = id;
+            
             IdUsuario = idUsuario;
             Usuario = usuario;
             TituloProfesional = tituloProfesional;
@@ -68,7 +69,7 @@ namespace LikendlnApi.Models
             Publicaciones = publicaciones;
             Cursos = cursos;
             CandidadtosOfertas = candidadtosOfertas;
-            CandidadtosGrupos = candidadtosGrupos;
+            CandidatosGrupos = candidadtosGrupos;
             CandidatosHabilidades = candidatosHabilidades;
             CandidatosConexiones = candidatosConexiones;
             CandidatosEmpresasConexiones = candidatosEmpresasConexiones;
