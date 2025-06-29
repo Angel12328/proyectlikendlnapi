@@ -11,7 +11,7 @@ namespace LikendlnApi.Models
 
         //cambio2
         //cambio3
-
+        //cambio4
 
         public int ID { get; set; } // Identificador único de la relación
         public int IdCandidato { get; set; }
