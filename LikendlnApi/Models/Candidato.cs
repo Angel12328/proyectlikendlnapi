@@ -13,6 +13,7 @@ namespace LikendlnApi.Models
         //Propiedades
         //cambio prueba heho por allanproyecto
         //cambio2
+        //cambio3
         public int IdUsuario { get; set; } //id del usuario del candidato
         public Usuario Usuario { get; set; }//usuario del candidato
         public string TituloProfesional { get; set; }  //tituo profesional del candidato
