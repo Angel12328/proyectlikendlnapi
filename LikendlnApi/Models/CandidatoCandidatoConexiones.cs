@@ -8,7 +8,10 @@ namespace LikendlnApi.Models
     public class CandidatoCandidatoConexiones
     {
         //cambio heho por angelproyecto
+<<<<<<< HEAD
         //cambio2
+=======
+>>>>>>> a354db83c2dce3879e3ed4ea1f32bc2cda7cd901
         public int ID { get; set; } // Identificador único de la relación
         public int IdCandidato { get; set; }
         public Candidato Candidato { get; set; } // Candidato que inicia la relación
