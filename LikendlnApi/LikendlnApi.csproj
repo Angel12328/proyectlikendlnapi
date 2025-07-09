@@ -162,14 +162,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-<<<<<<< HEAD
-    <Compile Include="Controllers\EmpresaController.cs" />
-    <Compile Include="Controllers\EmpresaSeguidorCandidatoController.cs" />
-    <Compile Include="Controllers\EmpresaSeguidorEmpresaController.cs" />
-    <Compile Include="Controllers\ExperienciaLaboralController.cs" />
-    <Compile Include="Controllers\GrupoController.cs" />
-    <Compile Include="Controllers\HabilidadController.cs" />
-=======
+
     <Compile Include="Controllers\CandidatoCandidatoConexionesController.cs" />
     <Compile Include="Controllers\CandidatoController.cs" />
     <Compile Include="Controllers\CandidatoEmpresaConexionesController.cs" />
@@ -182,17 +175,7 @@
     <Compile Include="Controllers\ChatParticipanteController.cs" />
     <Compile Include="Controllers\ComentarioController.cs" />
     <Compile Include="Controllers\CursoController.cs" />
->>>>>>> 4f6fcd2e43d1a7594b6b360a44f01361fbc05ef1
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MensajeEmpresarialController.cs" />
-    <Compile Include="Controllers\MensajePrivadoController.cs" />
-    <Compile Include="Controllers\MiembroGrupoController.cs" />
-    <Compile Include="Controllers\NotificacionMensajeController.cs" />
-    <Compile Include="Controllers\OfertaLaboralController.cs" />
-    <Compile Include="Controllers\ParticipanteChatController.cs" />
-    <Compile Include="Controllers\PublicacionController.cs" />
-    <Compile Include="Controllers\RecomendacionController.cs" />
-    <Compile Include="Controllers\SolicitudEmpleoController.cs" />
+
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
