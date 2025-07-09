@@ -1,1 +1,42 @@
+# Archivos de compilación
+bin/
+obj/
+
+# Archivos de usuario de Visual Studio
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos de configuración local
+*.vspscc
+*.vssscc
 .vs/
+
+# Paquetes NuGet
+packages/
+*.nupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Archivos de publicación
+*.publish.xml
+
+# Archivos de log y temporales
+*.log
+*.tmp
+
+# Archivos de configuración de IIS Express
+.vsconfig
+*.dbmdl
+
+# Archivos de test
+TestResults/
+*.TestResults
+
+# Archivos de configuración de Rider
+.idea/
+
+# Archivos de configuración de usuario de Resharper
+*.DotSettings.user
