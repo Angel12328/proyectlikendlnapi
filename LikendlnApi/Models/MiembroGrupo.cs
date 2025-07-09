@@ -4,6 +4,7 @@ namespace LikendlnApi.Models
 {
     public class MiembroGrupo
     {
+        //Cambio en la rama main
         public int ID { get; set; } // Identificador único del miembro del grupo
         public DateTime FechaUnion { get; set; } // Fecha en que el miembro se unió al grupo
 
