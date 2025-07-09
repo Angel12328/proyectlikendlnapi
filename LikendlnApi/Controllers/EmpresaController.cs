@@ -15,7 +15,7 @@ namespace LikendlnApi.Controllers
 {
     public class EmpresaController : ApiController
     {
-        private DbContextProyect db = new DbContextProyect();
+        private readonly DbContextProyect db = new DbContextProyect();
 
         // GET: api/Empresa
         public IQueryable<Empresa> GetEmpresas()
