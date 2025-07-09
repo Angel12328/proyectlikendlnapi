@@ -8,10 +8,11 @@ obj/
 *.userosscache
 *.sln.docstates
 
-# Archivos de configuración local
-*.vspscc
-*.vssscc
-.vs/
+# Configuraciones locales y sensibles  
+web.config  
+.vs/  
+bin/  
+obj/  
 
 # Paquetes NuGet
 packages/
