@@ -24,10 +24,10 @@ namespace LikendlnApi.Models
 
 
         //uno  a muchos
-        public ICollection<MiembroGrupo> Miembros { get; set; } // Colección de miembros del grupo
-        public ICollection<Publicacion> Publicaciones { get; set; } // Colección de publicaciones del grupo
+        public virtual ICollection<MiembroGrupo> Miembros { get; set; } // Colección de miembros del grupo
+        public virtual ICollection<Publicacion> Publicaciones { get; set; } // Colección de publicaciones del grupo
 
-        public ICollection<CandidatoGrupo> CandidadtosGrupos { get; set; }
+        public virtual ICollection<CandidatoGrupo> CandidadtosGrupos { get; set; }
 
 
         // Constructor por defecto

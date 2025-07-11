@@ -19,10 +19,10 @@ namespace LikendlnApi.Models
         public string Titulo { get; set; }
 
         //UNO A MUCHOS
-        public ICollection<MensajeBase> Mensajes { get; set; }
+        public virtual ICollection<MensajeBase> Mensajes { get; set; }
 
         //muchos a muchos
-        public ICollection<ChatParticipante> Participantes { get; set; } // Colección de participantes en el chat
+        public virtual ICollection<ChatParticipante> Participantes { get; set; } // Colección de participantes en el chat
 
 
        

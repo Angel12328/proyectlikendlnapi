@@ -27,24 +27,24 @@ namespace LikendlnApi.Models
 
 
         //Icollection uno a muchos
-        public ICollection<ExperienciaLaboral> ExperienciasLaborales { get; set; } //coleccion  de experiencias laborales del candidato
-        public ICollection<Publicacion> Publicaciones { get; set; } //coleccion de publicaciones del candidato
+        public virtual ICollection<ExperienciaLaboral> ExperienciasLaborales { get; set; } //coleccion  de experiencias laborales del candidato
+        public virtual ICollection<Publicacion> Publicaciones { get; set; } //coleccion de publicaciones del candidato
         // una coleccion de cursos del candidato
-        public ICollection<Curso> Cursos { get; set; } //coleccion de cursos del candidato
+        public virtual ICollection<Curso> Cursos { get; set; } //coleccion de cursos del candidato
 
 
         //Icollection muchos a muchos
-        public ICollection<CandidatoOfertaLaboral> CandidadtosOfertas { get; set; }
-        public ICollection<CandidatoGrupo> CandidatosGrupos { get; set; }
-        public ICollection<CandidatoHabilidad> CandidatosHabilidades { get; set; } // Relación con habilidades
-        public ICollection<CandidatoCandidatoConexiones> CandidatosConexiones { get; set; } 
-        public ICollection<CandidatoEmpresaConexiones> CandidatosEmpresasConexiones { get; set; } // Relación con empresas
+        public virtual ICollection<CandidatoOfertaLaboral> CandidadtosOfertas { get; set; }
+        public virtual ICollection<CandidatoGrupo> CandidatosGrupos { get; set; }
+        public virtual ICollection<CandidatoHabilidad> CandidatosHabilidades { get; set; } // Relación con habilidades
+        public virtual ICollection<CandidatoCandidatoConexiones> CandidatosConexiones { get; set; } 
+        public virtual ICollection<CandidatoEmpresaConexiones> CandidatosEmpresasConexiones { get; set; } // Relación con empresas
         //>> una coleccion de candidatos seguidores del candidato
-        public ICollection< CandidatoSeguidorCandidato> CandidatosSeguidores { get; set; } //>> una coleccion de candidatos seguidores del candidato
+        public virtual ICollection< CandidatoSeguidorCandidato> CandidatosSeguidores { get; set; } //>> una coleccion de candidatos seguidores del candidato
         //>> una coleccion de empresas seguidores del candidato
-        public ICollection<CandidatoSeguidorEmpresa> CandidatosSeguidoresEmpresas { get; set; } //>> una coleccion de empresas seguidores del candidato
+        public virtual ICollection<CandidatoSeguidorEmpresa> CandidatosSeguidoresEmpresas { get; set; } //>> una coleccion de empresas seguidores del candidato
         
-        public ICollection<EmpresaSeguidorCandidato> EmpresasSeguidoresCandidatos { get; set; } //>> una coleccion de usuarios seguidores del candidato   
+        public virtual ICollection<EmpresaSeguidorCandidato> EmpresasSeguidoresCandidatos { get; set; } //>> una coleccion de usuarios seguidores del candidato   
 
         // Constructor por defecto
         public Candidato()

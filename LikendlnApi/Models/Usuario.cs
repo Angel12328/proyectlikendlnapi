@@ -12,7 +12,7 @@ namespace LikendlnApi.Models
         public int ID { get; set; } // Identificador único del usuario
         public string ContrasenIa { get; set; } // Contraseña del usuario
 
-        public ICollection<Empresa> Empresas { get; set; } // Colección de empresas asociadas al usuario
+        public virtual ICollection<Empresa> Empresas { get; set; } // Colección de empresas asociadas al usuario
 
         //Constructor por defecto
         public Usuario()

@@ -17,7 +17,7 @@ namespace LikendlnApi.Models
         public Empresa ParticipanteEmpresa { get; set; }
 
         //uno a muchos
-        public ICollection<ChatParticipante> Participantes { get; set; } // Colección de participantes en el chat
+        public virtual ICollection<ChatParticipante> Participantes { get; set; } // Colección de participantes en el chat
 
 
         //constructor por defecto

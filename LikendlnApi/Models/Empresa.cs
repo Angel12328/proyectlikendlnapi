@@ -1,4 +1,5 @@
 ﻿
+using LikendlnApi.Controllers;
 using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
@@ -32,30 +33,29 @@ namespace LikendlnApi.Models
 
         // Icollection
         //uno a muchos
-        public ICollection<Publicacion> Publicaciones { get; set; }
+        public virtual ICollection<Publicacion> Publicaciones { get; set; }
         
 
         //muchos a muchos
-        public ICollection<CandidatoEmpresaConexiones> CandidatosEmpresasConexiones { get; set; } // Relación con candidatos\
-        public ICollection<CandidatoSeguidorEmpresa> EmpresasSeguidores { get; set; } //Empresas que siguen a candidatos
+        public virtual ICollection<CandidatoEmpresaConexiones> CandidatosEmpresasConexiones { get; set; } // Relación con candidatos\
+        public virtual ICollection<CandidatoSeguidorEmpresa> CandidatosSeguidoresEmpresas { get; set; } //>> una coleccion de empresas seguidores del candidato
 
         //>> una coleccion de candidatos seguidores de la empresa
-        public ICollection<EmpresaSeguidorCandidato> EmpresasCandidatosSeguidores { get; set; } //>> una coleccion de candidatos seguidores de la empresa
+        public virtual ICollection<EmpresaSeguidorCandidato> EmpresasCandidatosSeguidores { get; set; } //>> una coleccion de candidatos seguidores de la empresa
 
         //>> una coleccion de empresas seguidores de la empresa
-        public ICollection<EmpresaSeguidorEmpresa> EmpresasSeguidoresEmpresa { get; set; } //>> una coleccion de empresas seguidores de la empresa
+        public virtual ICollection<EmpresaSeguidorEmpresa> EmpresasSeguidoresEmpresa { get; set; } //>> una coleccion de empresas seguidores de la empresa
 
 
         //Ofertas que la empresa ofrece
-        public List<OfertaLaboral> OfertasLaborales { get; set; } = new List<OfertaLaboral>();
+        public virtual ICollection<OfertaLaboral> OfertasLaborales { get; set; }
 
         // Constructor por defecto
         public Empresa()
         {
         }
 
-        public Empresa(int iD, int idUsuario, Usuario usuario, string nombreEmpresa, string descripcion, string direccion, string telefono, string correoElectronico, string sector, string sitioWeb, string tipo, DateTime fechaCreacion, int seguidores, string fotoPerfil, ICollection<Publicacion> publicaciones, ICollection<CandidatoEmpresaConexiones> candidatosEmpresasConexiones, ICollection<CandidatoSeguidorEmpresa> empresasSeguidores, 
-            ICollection<EmpresaSeguidorCandidato> empresasCandidatosSeguidores, ICollection<EmpresaSeguidorEmpresa> empresasSeguidoresEmpresa, List<OfertaLaboral> ofertasLaborales)
+        public Empresa(int iD, int idUsuario, Usuario usuario, string nombreEmpresa, string descripcion, string direccion, string telefono, string correoElectronico, string sector, string sitioWeb, string tipo, DateTime fechaCreacion, int seguidores, string fotoPerfil, ICollection<Publicacion> publicaciones, ICollection<CandidatoEmpresaConexiones> candidatosEmpresasConexiones, ICollection<CandidatoSeguidorEmpresa> candidatosSeguidoresEmpresas, ICollection<EmpresaSeguidorCandidato> empresasCandidatosSeguidores, ICollection<EmpresaSeguidorEmpresa> empresasSeguidoresEmpresa, ICollection<OfertaLaboral> ofertasLaborales)
         {
             ID = iD;
             IdUsuario = idUsuario;
@@ -73,11 +73,14 @@ namespace LikendlnApi.Models
             FotoPerfil = fotoPerfil;
             Publicaciones = publicaciones;
             CandidatosEmpresasConexiones = candidatosEmpresasConexiones;
-            EmpresasSeguidores = empresasSeguidores;
+            CandidatosSeguidoresEmpresas = candidatosSeguidoresEmpresas;
             EmpresasCandidatosSeguidores = empresasCandidatosSeguidores;
             EmpresasSeguidoresEmpresa = empresasSeguidoresEmpresa;
             OfertasLaborales = ofertasLaborales;
         }
+
+
+
         // Constructor que recibe todos los parámetros
 
 
