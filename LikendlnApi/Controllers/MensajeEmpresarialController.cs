@@ -80,7 +80,7 @@ namespace LikendlnApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.MensajeBases.Add(mensajeEmpresarial);
+            db.MensajesEmpresariales.Add(mensajeEmpresarial);
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = mensajeEmpresarial.Id }, mensajeEmpresarial);
@@ -96,7 +96,7 @@ namespace LikendlnApi.Controllers
                 return NotFound();
             }
 
-            db.MensajeBases.Remove(mensajeEmpresarial);
+            db.MensajesEmpresariales.Remove(mensajeEmpresarial);
             await db.SaveChangesAsync();
 
             return Ok(mensajeEmpresarial);
@@ -113,7 +113,7 @@ namespace LikendlnApi.Controllers
 
         private bool MensajeEmpresarialExists(int id)
         {
-            return db.MensajeBases.Count(e => e.Id == id) > 0;
+            return db.MensajesEmpresariales.Count(e => e.Id == id) > 0;
         }
     }
 }

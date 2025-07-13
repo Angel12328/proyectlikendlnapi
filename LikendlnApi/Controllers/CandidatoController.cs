@@ -16,7 +16,10 @@ namespace LikendlnApi.Controllers
     public class CandidatoController : ApiController
     {
         private readonly DbContextProyect db = new DbContextProyect();
-
+        /// <summary>
+        /// Obtiene todos los elementos.
+        /// </summary>
+        /// <returns>Los Candidatos registrados en el sistema</returns>
         // GET: api/Candidato
         public IQueryable<Candidato> GetCandidatos()
         {

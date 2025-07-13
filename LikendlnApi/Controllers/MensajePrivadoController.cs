@@ -80,7 +80,7 @@ namespace LikendlnApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.MensajeBases.Add(mensajePrivado);
+            db.MensajesPrivados.Add(mensajePrivado);
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = mensajePrivado.Id }, mensajePrivado);
@@ -96,7 +96,7 @@ namespace LikendlnApi.Controllers
                 return NotFound();
             }
 
-            db.MensajeBases.Remove(mensajePrivado);
+            db.MensajesPrivados.Remove(mensajePrivado);
             await db.SaveChangesAsync();
 
             return Ok(mensajePrivado);
@@ -113,7 +113,7 @@ namespace LikendlnApi.Controllers
 
         private bool MensajePrivadoExists(int id)
         {
-            return db.MensajeBases.Count(e => e.Id == id) > 0;
+            return db.MensajesPrivados.Count(e => e.Id == id) > 0;
         }
     }
 }

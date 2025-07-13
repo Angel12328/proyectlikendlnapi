@@ -20,6 +20,7 @@ namespace LikendlnApi.Models
         public DbSet<Candidato> Candidatos { get; set; }
         public DbSet<Habilidad> Habilidades { get; set; }
         
+        //public DbSet<MensajeBase> MensajeBases { get; set; }
         public DbSet<MensajePrivado> MensajesPrivados { get; set; }
         public DbSet<MensajeEmpresarial> MensajesEmpresariales { get; set; }
         public DbSet<NotificacionMensaje> NotificacionesMensajes { get; set; }
