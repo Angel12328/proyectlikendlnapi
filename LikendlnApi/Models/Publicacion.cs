@@ -22,7 +22,7 @@ namespace LikendlnApi.Models
         public string Contenido { get; set; }
         public DateTime FechaPublicacion { get; set; }
      
-        public List<Comentario> Comentarios { get; set; }
+        public virtual ICollection<Comentario> Comentarios { get; set; }
 
         public string ImagenURL { get; set; } // Imagen de la publicación, si es que tiene
 
@@ -32,7 +32,7 @@ namespace LikendlnApi.Models
 
         // Constructor que recibe todos los parámetros  
         public Publicacion(int id, int idCandidato, Candidato candidato, int idEmpresa, Empresa empresa, int idGrupo, Grupo grupo,
-            string contenido, DateTime fechaPublicacion, List<Comentario> comentarios, string imagenURL)
+            string contenido, DateTime fechaPublicacion, ICollection<Comentario> comentarios, string imagenURL)
         {
             Id = id;
             IdCandidato = idCandidato;

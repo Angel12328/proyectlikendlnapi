@@ -25,11 +25,11 @@ namespace LikendlnApi.Models
         public bool Disponible { get; set; } // Indica si la oferta laboral está disponible o no
 
         //uno a muchos
-        public ICollection<Habilidad> HabilidadesRequeridas { get; set; } 
+        public virtual ICollection<Habilidad> HabilidadesRequeridas { get; set; } 
 
 
         //Icollection
-        public ICollection<CandidatoOfertaLaboral> CandidadtosOfertas { get; set; } 
+        public virtual ICollection<CandidatoOfertaLaboral> CandidadtosOfertas { get; set; } 
 
 
 
