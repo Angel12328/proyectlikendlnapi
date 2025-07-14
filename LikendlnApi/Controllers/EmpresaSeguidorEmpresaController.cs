@@ -16,7 +16,10 @@ namespace LikendlnApi.Controllers
     public class EmpresaSeguidorEmpresaController : ApiController
     {
         private readonly DbContextProyect db = new DbContextProyect();
-
+        /// <summary>
+        /// Obtiene todos las empresas seguidores de otras empresas.
+        /// </summary>
+        /// <returns>Una lista de empresas seguidores de empresas.</returns>
         // GET: api/EmpresaSeguidorEmpresa
         public IQueryable<EmpresaSeguidorEmpresa> GetEmpresaSeguidoresEmpresas()
         {

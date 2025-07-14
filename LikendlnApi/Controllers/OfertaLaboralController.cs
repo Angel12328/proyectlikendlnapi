@@ -17,12 +17,29 @@ namespace LikendlnApi.Controllers
     {
         private readonly DbContextProyect db = new DbContextProyect();
 
+        /// <summary>
+        /// Obtiene todas las ofertas laborales.
+        /// </summary>
+        /// <returns>Una lista de ofertas laborales</returns>
         // GET: api/OfertaLaboral
         public IQueryable<OfertaLaboral> GetOfertasLaborales()
         {
             return db.OfertasLaborales;
         }
 
+        /// <summary>
+        /// Obtiene una oferta laboral específica.
+        /// </summary>
+        /// <remarks>
+        /// Ejemplo de solicitud:
+        ///
+        ///     // GET: api/OfertaLaboral/5
+        ///
+        /// </remarks>
+        /// <param name="id">El id de la oferta laboral a obtener</param>
+        /// <returns>Información de la oferta laboral</returns>
+        /// <response code="404">Si la oferta laboral no fue encontrada</response>
+        /// <response code="200">Si la oferta laboral fue encontrada</response>
         // GET: api/OfertaLaboral/5
         [ResponseType(typeof(OfertaLaboral))]
         public async Task<IHttpActionResult> GetOfertaLaboral(int id)
@@ -36,6 +53,22 @@ namespace LikendlnApi.Controllers
             return Ok(ofertaLaboral);
         }
 
+        /// <summary>
+        /// Actualiza completamente una oferta laboral.
+        /// </summary>
+        /// <remarks>
+        /// Ejemplo de solicitud:
+        ///
+        ///     // PUT: api/OfertaLaboral/5
+        ///
+        /// </remarks>
+        /// <param name="id">El id de la oferta laboral a actualizar</param>
+        /// <param name="ofertaLaboral">La información de la oferta laboral a reemplazar</param>
+        /// <returns>Vacío si el proceso es exitoso</returns>
+        /// <response code="400">Si los datos ingresados no son válidos</response>
+        /// <response code="400">Si el id no coincide con la oferta laboral</response>
+        /// <response code="404">Si la oferta laboral no fue encontrada</response>
+        /// <response code="204">Si la oferta laboral fue actualizada</response>
         // PUT: api/OfertaLaboral/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutOfertaLaboral(int id, OfertaLaboral ofertaLaboral)
@@ -71,6 +104,19 @@ namespace LikendlnApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        /// <summary>
+        /// Crea una nueva oferta laboral.
+        /// </summary>
+        /// <remarks>
+        /// Ejemplo de solicitud:
+        ///
+        ///     // POST: api/OfertaLaboral
+        ///
+        /// </remarks>
+        /// <param name="ofertaLaboral">La información de la oferta laboral a crear</param>
+        /// <returns>La oferta laboral recién creada</returns>
+        /// <response code="400">Si los datos ingresados no son válidos</response>
+        /// <response code="201">Si la oferta laboral fue creada exitosamente</response>
         // POST: api/OfertaLaboral
         [ResponseType(typeof(OfertaLaboral))]
         public async Task<IHttpActionResult> PostOfertaLaboral(OfertaLaboral ofertaLaboral)
@@ -86,6 +132,19 @@ namespace LikendlnApi.Controllers
             return CreatedAtRoute("DefaultApi", new { id = ofertaLaboral.ID }, ofertaLaboral);
         }
 
+        /// <summary>
+        /// Elimina una oferta laboral específica.
+        /// </summary>
+        /// <remarks>
+        /// Ejemplo de solicitud:
+        ///
+        ///     // DELETE: api/OfertaLaboral/5
+        ///
+        /// </remarks>
+        /// <param name="id">El id de la oferta laboral a eliminar</param>
+        /// <returns>La oferta laboral eliminada</returns>
+        /// <response code="404">Si la oferta laboral no fue encontrada</response>
+        /// <response code="200">Si la oferta laboral fue eliminada exitosamente</response>
         // DELETE: api/OfertaLaboral/5
         [ResponseType(typeof(OfertaLaboral))]
         public async Task<IHttpActionResult> DeleteOfertaLaboral(int id)

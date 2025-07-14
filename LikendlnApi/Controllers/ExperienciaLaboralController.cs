@@ -16,13 +16,29 @@ namespace LikendlnApi.Controllers
     public class ExperienciaLaboralController : ApiController
     {
         private readonly DbContextProyect db = new DbContextProyect();
-
+        /// <summary>
+        /// Obtiene todas las experiencias laborales registradas.
+        /// </summary>
+        /// <returns>Una lista de exprencias laborales.</returns>
         // GET: api/ExperienciaLaboral
         public IQueryable<ExperienciaLaboral> GetExperienciasLaborales()
         {
             return db.ExperienciasLaborales;
         }
+        /// <summary>
+        /// Obtine una experiencia laboral por id.
+        /// </summary>
+        /// <remarks>
+        /// Ejemplo de solicitud:
+        ///
+        ///    // GET: api/ExperienciaLaboral/5
+        ///
+        /// </remarks>
+        /// <param name="id">El id de la empresa a buscar.</param>
 
+        /// <returns>Una experiencia laboral</returns>
+        /// <response code="404">Si la experiencia laboral a modificar no fue encontrada</response>
+        /// <response code="200">Si la experiencia laboral fue enocontrada</response>
         // GET: api/ExperienciaLaboral/5
         [ResponseType(typeof(ExperienciaLaboral))]
         public async Task<IHttpActionResult> GetExperienciaLaboral(int id)
@@ -35,7 +51,22 @@ namespace LikendlnApi.Controllers
 
             return Ok(experienciaLaboral);
         }
-
+        /// <summary>
+        /// Actualiza completamente una empresa .
+        /// </summary>
+        /// <remarks>
+        /// Ejemplo de solicitud:
+        ///
+        ///     // PUT: api/ExperienciaLaboral/5
+        ///
+        /// </remarks>
+        /// <param name="id">El id de la empresa a actualizar.</param>
+        /// <param name="experienciaLaboral">La informacion de la experiencia laboral a reemplazar</param>
+        /// <returns>Vacio si el proceso es hecho con exito</returns>
+        /// <response code="400">Los datos ingresados no estan completos</response>
+        /// <response code="400">Si el id a actualizar no coincide con el id de informacion a modificar</response>
+        /// <response code="404">Si la experiencia laboral a modificar no fue encontrada</response>
+        /// <response code="204">Si la experiencia laboral fue modificada</response>
         // PUT: api/ExperienciaLaboral/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutExperienciaLaboral(int id, ExperienciaLaboral experienciaLaboral)
@@ -70,7 +101,19 @@ namespace LikendlnApi.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
+        /// <summary>
+        /// Crea una experiencia laboral .
+        /// </summary>
+        /// <remarks>
+        /// Ejemplo de solicitud:
+        ///
+        ///     // POST: api/ExperienciaLaboral
+        ///
+        /// </remarks>
+        /// <param name="experienciaLaboral">La informacion de la empresa a ingresar</param>
+        /// <response code="400">Los datos ingresados no estan completos</response>
+        /// <response code="400">Si el id a actualizar no coincide con el id de informacion a modificar</response>
+        /// <response code="201">Si la empresa fue ingresada</response>
         // POST: api/ExperienciaLaboral
         [ResponseType(typeof(ExperienciaLaboral))]
         public async Task<IHttpActionResult> PostExperienciaLaboral(ExperienciaLaboral experienciaLaboral)
@@ -85,7 +128,19 @@ namespace LikendlnApi.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = experienciaLaboral.ID }, experienciaLaboral);
         }
-
+        /// <summary>
+        /// Actualiza completamente una empresa .
+        /// </summary>
+        /// <remarks>
+        /// Ejemplo de solicitud:
+        ///
+        ///     // DELETE: api/ExperienciaLaboral/5
+        ///
+        /// </remarks>
+        /// <param name="id">El id de la empresa a actualizar.</param>
+        /// <returns>La experiencia laboral eliminada</returns>
+        /// <response code="404">Si la empresa a modificar no fue encontrada</response>
+        /// <response code="200">Si la empresa fue modificada</response>
         // DELETE: api/ExperienciaLaboral/5
         [ResponseType(typeof(ExperienciaLaboral))]
         public async Task<IHttpActionResult> DeleteExperienciaLaboral(int id)
