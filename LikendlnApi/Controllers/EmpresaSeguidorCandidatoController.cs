@@ -16,7 +16,10 @@ namespace LikendlnApi.Controllers
     public class EmpresaSeguidorCandidatoController : ApiController
     {
         private readonly DbContextProyect db = new DbContextProyect();
-
+        /// <summary>
+        /// Obtiene todos los candidatos seguidores de empresas.
+        /// </summary>
+        /// <returns>Una lista de candidatos seguidores de empresas.</returns>
         // GET: api/EmpresaSeguidorCandidato
         public IQueryable<EmpresaSeguidorCandidato> GetEmpresaSeguidoresCandidatos()
         {

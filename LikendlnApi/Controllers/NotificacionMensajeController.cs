@@ -17,12 +17,29 @@ namespace LikendlnApi.Controllers
     {
         private readonly DbContextProyect db = new DbContextProyect();
 
+        /// <summary>
+        /// Obtiene todas las notificaciones de mensajes.
+        /// </summary>
+        /// <returns>Una lista de notificaciones de mensajes</returns>
         // GET: api/NotificacionMensaje
         public IQueryable<NotificacionMensaje> GetNotificacionesMensajes()
         {
             return db.NotificacionesMensajes;
         }
 
+        /// <summary>
+        /// Obtiene una notificación de mensaje específica.
+        /// </summary>
+        /// <remarks>
+        /// Ejemplo de solicitud:
+        ///
+        ///     // GET: api/NotificacionMensaje/5
+        ///
+        /// </remarks>
+        /// <param name="id">El id de la notificación de mensaje a obtener</param>
+        /// <returns>Información de la notificación de mensaje</returns>
+        /// <response code="404">Si la notificación de mensaje no fue encontrada</response>
+        /// <response code="200">Si la notificación de mensaje fue encontrada</response>
         // GET: api/NotificacionMensaje/5
         [ResponseType(typeof(NotificacionMensaje))]
         public async Task<IHttpActionResult> GetNotificacionMensaje(int id)
@@ -36,6 +53,22 @@ namespace LikendlnApi.Controllers
             return Ok(notificacionMensaje);
         }
 
+        /// <summary>
+        /// Actualiza completamente una notificación de mensaje.
+        /// </summary>
+        /// <remarks>
+        /// Ejemplo de solicitud:
+        ///
+        ///     // PUT: api/NotificacionMensaje/5
+        ///
+        /// </remarks>
+        /// <param name="id">El id de la notificación de mensaje a actualizar</param>
+        /// <param name="notificacionMensaje">La información de la notificación de mensaje a reemplazar</param>
+        /// <returns>Vacío si el proceso es exitoso</returns>
+        /// <response code="400">Si los datos ingresados no son válidos</response>
+        /// <response code="400">Si el id no coincide con la notificación de mensaje</response>
+        /// <response code="404">Si la notificación de mensaje no fue encontrada</response>
+        /// <response code="204">Si la notificación de mensaje fue actualizada</response>
         // PUT: api/NotificacionMensaje/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutNotificacionMensaje(int id, NotificacionMensaje notificacionMensaje)
@@ -71,6 +104,19 @@ namespace LikendlnApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        /// <summary>
+        /// Crea una nueva notificación de mensaje.
+        /// </summary>
+        /// <remarks>
+        /// Ejemplo de solicitud:
+        ///
+        ///     // POST: api/NotificacionMensaje
+        ///
+        /// </remarks>
+        /// <param name="notificacionMensaje">La información de la notificación de mensaje a crear</param>
+        /// <returns>La notificación de mensaje recién creada</returns>
+        /// <response code="400">Si los datos ingresados no son válidos</response>
+        /// <response code="201">Si la notificación de mensaje fue creada exitosamente</response>
         // POST: api/NotificacionMensaje
         [ResponseType(typeof(NotificacionMensaje))]
         public async Task<IHttpActionResult> PostNotificacionMensaje(NotificacionMensaje notificacionMensaje)
@@ -86,6 +132,19 @@ namespace LikendlnApi.Controllers
             return CreatedAtRoute("DefaultApi", new { id = notificacionMensaje.ID }, notificacionMensaje);
         }
 
+        /// <summary>
+        /// Elimina una notificación de mensaje específica.
+        /// </summary>
+        /// <remarks>
+        /// Ejemplo de solicitud:
+        ///
+        ///     // DELETE: api/NotificacionMensaje/5
+        ///
+        /// </remarks>
+        /// <param name="id">El id de la notificación de mensaje a eliminar</param>
+        /// <returns>La notificación de mensaje eliminada</returns>
+        /// <response code="404">Si la notificación de mensaje no fue encontrada</response>
+        /// <response code="200">Si la notificación de mensaje fue eliminada exitosamente</response>
         // DELETE: api/NotificacionMensaje/5
         [ResponseType(typeof(NotificacionMensaje))]
         public async Task<IHttpActionResult> DeleteNotificacionMensaje(int id)
