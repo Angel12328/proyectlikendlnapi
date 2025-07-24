@@ -42,9 +42,9 @@ namespace LikendlnApi.Models
             ICollection<MiembroGrupo> miembros, ICollection<Publicacion> publicaciones, ICollection<CandidatoGrupo> candidadtosGrupos)
         {
             ID = iD;
-            IDCreador = iDCreador;
+            IdCreadorCandidato = iDCreador;
             CreadorCandidato = creadorCandidato;
-            IdEmpresa = idEmpresa;
+            IdCreadorEmpresa = idEmpresa;
             CreadorEmpresa = creadorEmpresa;
             FotoPerfil = fotoPerfil;
             Nombre = nombre;

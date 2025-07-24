@@ -406,7 +406,7 @@ namespace LikendlnApi.Models
             modelBuilder.Entity<Chat>()
                 .HasMany(m => m.Mensajes)
                 .WithRequired(ch => ch.Chat)
-                .HasForeignKey(ch => ch.IDChat);
+                .HasForeignKey(ch => ch.IdChat);
             
             //muchos a muchos
 
@@ -469,7 +469,7 @@ namespace LikendlnApi.Models
             modelBuilder.Entity<Grupo>()
                 .HasMany(mg => mg.Miembros)
                 .WithRequired(e => e.Grupo)
-                .HasForeignKey(e => e.IDGrupo);
+                .HasForeignKey(e => e.IdGrupo);
 
             //Grupo -> Publicacion
             modelBuilder.Entity<Grupo>()

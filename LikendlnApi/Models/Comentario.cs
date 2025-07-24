@@ -26,9 +26,9 @@ namespace LikendlnApi.Models
             ID = id;
             Texto = texto;
             Fecha = fecha;
-            IdCandidato = idCandidato;
+            IdAutorCandidato = idCandidato;
             AutorCandidato = autorCandidato;
-            IdEmpresa = idEmpresa;
+            IdAutorEmpresa = idEmpresa;
             AutorEmpresa = autorEmpresa;
             IdPublicacion = idPublicacion;
             Publicacion = publicacion;

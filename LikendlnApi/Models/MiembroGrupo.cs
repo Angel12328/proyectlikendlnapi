@@ -27,11 +27,11 @@ namespace LikendlnApi.Models
         {
             ID = id;
             FechaUnion = fechaUnion;
-            IDMiembroCandidato = idMiembroCandidato;
+            IdMiembroCandidato = idMiembroCandidato;
             MiembroCandidato = miembroCandidato;
-            IDMiembroEmpresa = idMiembroEmpresa;
+            IdMiembroEmpresa = idMiembroEmpresa;
             MiembroEmpresa = miembroEmpresa;
-            IDGrupo = idGrupo;
+            IdGrupo = idGrupo;
             Grupo = grupo;
             RolGrupo = rolGrupo;
         }

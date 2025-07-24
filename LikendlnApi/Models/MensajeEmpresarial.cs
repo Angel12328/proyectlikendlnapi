@@ -47,12 +47,12 @@ namespace LikendlnApi.Models
             OfertaLaboral ofertaLaboralRelacinada)
             : base(id, fechaEnvio, idCandidatoEmisor, emisorCandidato, idEmpresaEmisor, emisorEmpresa, idChat, chat, contenido, leido)
         {
-            
-            IDCandidatoDestinatario = idCandidatoDestinatario;
+
+            IDDestinatarioCandidato = idCandidatoDestinatario;
             DestinatarioCandidato = destinatarioCandidato;
             IDDestinatarioEmpresa = idDestinatarioEmpresa;
             DestinatarioEmpresa = destinatarioEmpresa;
-            IDOfertaLbrl = idOfertaLbrl;
+            IDOfertaLaboralRelacinada = idOfertaLbrl;
             OfertaLaboralRelacinada = ofertaLaboralRelacinada;
         }
 

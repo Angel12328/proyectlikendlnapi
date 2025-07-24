@@ -30,11 +30,11 @@ namespace LikendlnApi.Models
         {
             Id = id;
             FechaEnvio = fechaEnvio;
-            IDCandidato = iDCandidato;
+            IdRemitenteCandidato = iDCandidato;
             RemitenteCandidato = remitenteCandidato;
-            IDEmpresa = iDEmpresa;
+            IdRemitenteEmpresa = iDEmpresa;
             RemitenteEmpresa = remitenteEmpresa;
-            IDChat = iDChat;
+            IdChat = iDChat;
             Chat = chat;
             Contenido = contenido;
             Leido = leido;

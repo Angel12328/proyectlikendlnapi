@@ -31,9 +31,9 @@ namespace LikendlnApi.Models
         {
             ID = id;
             FechaUnion = fechaUnion;
-            IdCandidato = idCandidato;
+            IdParticipanteCandidato = idCandidato;
             ParticipanteCandidato = participanteCandidato;
-            IdEmpresa = idEmpresa;
+            IdParticipanteEmpresa = idEmpresa;
             ParticipanteEmpresa = participanteEmpresa;
             Participantes = participantes;
 
