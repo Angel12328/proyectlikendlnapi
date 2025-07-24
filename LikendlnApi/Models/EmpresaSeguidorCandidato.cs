@@ -9,9 +9,9 @@ namespace LikendlnApi.Models
     {
         public int Id { get; set; } // Identificador único de la relación
         public int IdEmpresa { get; set; } // Identificador de la empresa que es seguida
-        public Empresa Empresa { get; set; } // Empresa que es seguida
+        public virtual Empresa Empresa { get; set; } // Empresa que es seguida
         public int IdCandidato { get; set; } // Identificador del candidato que sigue a la empresa
-        public Candidato Candidato { get; set; } // Candidato que sigue a la empresa
+        public virtual Candidato Candidato { get; set; } // Candidato que sigue a la empresa
         // Constructor por defecto
         public EmpresaSeguidorCandidato()
         {

@@ -12,7 +12,7 @@ namespace LikendlnApi.Models
         //PROPIEDADES
         public int ID { get; set; } // Identificador único de la oferta laboral
         public int IdEmpresa { get; set; } // Identificador de la empresa que publica la oferta laboral
-        public Empresa Empresa { get; set; } // Empresa que publica la oferta laboral
+        public virtual Empresa Empresa { get; set; } // Empresa que publica la oferta laboral
         public string Titulo { get; set; }
         public string Descripcion { get; set; }
         public string Ubicacion { get; set; }

@@ -13,12 +13,12 @@ namespace LikendlnApi.Models
         // Propiedades
         public int Id { get; set; }
         public int IdCandidato { get; set; }
-        public Candidato Candidato { get; set; }
+        public virtual Candidato Candidato { get; set; }
 
         public int IdEmpresa { get; set; }
-        public Empresa Empresa { get; set; }
+        public virtual Empresa Empresa { get; set; }
         public int IdGrupo { get; set; } // Id del grupo al que pertenece la publicación, si es que pertenece a uno
-        public Grupo Grupo { get; set; } // Objeto del grupo al que pertenece la publicación, si es que pertenece a uno
+        public virtual Grupo Grupo { get; set; } // Objeto del grupo al que pertenece la publicación, si es que pertenece a uno
         public string Contenido { get; set; }
         public DateTime FechaPublicacion { get; set; }
      

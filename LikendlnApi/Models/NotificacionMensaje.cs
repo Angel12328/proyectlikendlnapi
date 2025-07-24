@@ -13,11 +13,11 @@ namespace LikendlnApi.Models
 
         public int IDCandidato { get; set; } // Identificador del candidato al que se le envía la notificación
 
-        public Candidato Candidato { get; set; }
+        public virtual Candidato Candidato { get; set; }
         public int IDEmpresa { get; set; } // Identificador de la empresa que envía la notificación (si aplica)
-        public Empresa Empresa { get; set; }
+        public virtual Empresa Empresa { get; set; }
         public int IdMensajeBase { get; set; } // Identificador del mensaje asociado a la notificación
-        public MensajeBase Mensaje { get; set; }
+        public virtual MensajeBase Mensaje { get; set; }
         public bool Leido { get; set; }
 
 

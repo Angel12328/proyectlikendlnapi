@@ -53,16 +53,280 @@ namespace LikendlnApi.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<MensajeEmpresarial>().ToTable("MensajesEmpresariales");
             modelBuilder.Entity<MensajePrivado>().ToTable("MensajesPrivados");            
             modelBuilder.Entity<Candidato>().ToTable("Candidatos");
 
-            // Configuración de las relaciones entre entidades
+            /* TABLAS UNION RELACIONES*/
+
+            //Uno a uno
+
+            //CandidfatoCandidatoConexiones
+            modelBuilder.Entity<CandidatoCandidatoConexiones>()
+                .HasRequired(c => c.Candidato)
+                .WithOptional();
+
+            modelBuilder.Entity<CandidatoCandidatoConexiones>()
+                .HasRequired(c => c.CandidatoConexion)
+                .WithOptional();
+
+            //CandidatoEmpresaConexiones
+            modelBuilder.Entity<CandidatoEmpresaConexiones>()
+                .HasRequired(c => c.Candidato)
+                .WithOptional();
+            modelBuilder.Entity<CandidatoEmpresaConexiones>()
+                .HasRequired(c => c.Empresa)
+                .WithOptional();
+
+            //CandidatoGrupo
+            modelBuilder.Entity<CandidatoGrupo>()
+                .HasRequired(c => c.Candidato)
+                .WithOptional();
+            modelBuilder.Entity<CandidatoGrupo>()
+                .HasRequired(c => c.Grupo)
+                .WithOptional();
+
+            //CandidatoHabilidad
+            modelBuilder.Entity<CandidatoHabilidad>()
+                .HasRequired(c => c.Candidato)
+                .WithOptional();
+            modelBuilder.Entity<CandidatoHabilidad>()
+                .HasRequired(c => c.Habilidad)
+                .WithOptional();
+
+            //CandidatoOfertaLaboral
+            modelBuilder.Entity<CandidatoOfertaLaboral>()
+                .HasRequired(c => c.Candidato)
+                .WithOptional();
+            modelBuilder.Entity<CandidatoOfertaLaboral>()
+                .HasRequired(c => c.OfertaLaboral)
+                .WithOptional();
+
+            //CandidatoSeguidorCandidato
+            modelBuilder.Entity<CandidatoSeguidorCandidato>()
+                .HasRequired(c => c.Candidato)
+                .WithOptional();
+            modelBuilder.Entity<CandidatoSeguidorCandidato>()
+                .HasRequired(c => c.Seguidor)
+                .WithOptional();
+
+            //CandidatoSeguidorEmpresa
+            modelBuilder.Entity<CandidatoSeguidorEmpresa>()
+                .HasRequired(c => c.Candidato)
+                .WithOptional();
+            modelBuilder.Entity<CandidatoSeguidorEmpresa>()
+                .HasRequired(c => c.Empresa)
+                .WithOptional();
+
+            //ChatParticipante
+            modelBuilder.Entity<ChatParticipante>()
+                .HasRequired(cp => cp.Chat)
+                .WithOptional();
+            modelBuilder.Entity<ChatParticipante>()
+                .HasRequired(cp => cp.ParticipanteChat)
+                .WithOptional();
+
+            //EmpresaSeguidorCandidato
+            modelBuilder.Entity<EmpresaSeguidorCandidato>()
+                .HasRequired(e => e.Candidato)
+                .WithOptional();
+            modelBuilder.Entity<EmpresaSeguidorCandidato>()
+                .HasRequired(e => e.Empresa)
+                .WithOptional();
+
+            //EmpresaSeguidorEmpresa
+            modelBuilder.Entity<EmpresaSeguidorEmpresa>()
+                .HasRequired(e => e.EmpresaSeguidora)
+                .WithOptional();
+            modelBuilder.Entity<EmpresaSeguidorEmpresa>()
+                .HasRequired(e => e.EmpresaSeguido)
+                .WithOptional();
+
+            /*Entidades Relaciones propiedad compuesta*/
+
+            //Uno a uno
+
+            //Comentario
+            modelBuilder.Entity<Comentario>()
+                .HasRequired(c => c.AutorCandidato)
+                .WithOptional()
+                .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
+            modelBuilder.Entity<Comentario>()
+                .HasRequired(c => c.AutorEmpresa)
+                .WithOptional()
+                .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
+            modelBuilder.Entity<Comentario>()
+                .HasRequired(c => c.Publicacion)
+                .WithOptional()
+                .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
+
+            //Curso
+            modelBuilder.Entity<Curso>()
+                .HasRequired(c => c.Candidato)
+                .WithOptional()
+                .WillCascadeOnDelete(false);
+
+            //Empresa
+            modelBuilder.Entity<Empresa>()
+                .HasRequired(e => e.Usuario)
+                .WithOptional();
+            //ExperienciaLaboral
+            modelBuilder.Entity<ExperienciaLaboral>()
+                .HasRequired(e => e.Candidato)
+                .WithOptional()
+                .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
+            //Grupo
+            modelBuilder.Entity<Grupo>()
+                .HasRequired(c =>c.CreadorCandidato)
+                .WithOptional()
+                .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
+            modelBuilder.Entity<Grupo>()
+                .HasRequired(c =>c.CreadorEmpresa)
+                .WithOptional()
+                .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
+            
+            //Habilidad
+            modelBuilder.Entity<Habilidad>()
+                .HasRequired(c => c.Candidato)
+                .WithOptional()
+                .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
+            modelBuilder.Entity<Habilidad>()
+                .HasRequired(c => c.OfertaLaboral)
+                .WithOptional()
+                .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
+
+            //MensajeBase
+            modelBuilder.Entity<MensajeBase>()
+                .HasRequired(r => r.RemitenteCandidato) 
+                .WithOptional()
+                .WillCascadeOnDelete(false); 
+            modelBuilder.Entity<MensajeBase>()
+                .HasRequired(r => r.RemitenteEmpresa) 
+                .WithOptional()
+                .WillCascadeOnDelete(false); 
+            modelBuilder.Entity<MensajeBase>()
+                .HasRequired(r => r.Chat) 
+                .WithOptional()
+                .WillCascadeOnDelete(false);
+
+            //MensajeEmpresarial
+            modelBuilder.Entity<MensajeEmpresarial>()
+                .HasRequired(m => m.DestinatarioCandidato)
+                .WithOptional()
+                .WillCascadeOnDelete(false); 
+            modelBuilder.Entity<MensajeEmpresarial>()
+                .HasRequired(m => m.DestinatarioEmpresa)
+                .WithOptional()
+                .WillCascadeOnDelete(false); 
+            modelBuilder.Entity<MensajeEmpresarial>()
+                .HasRequired(m => m.OfertaLaboralRelacinada)
+                .WithOptional()
+                .WillCascadeOnDelete(false);
+
+            //MensajePrivado
+            modelBuilder.Entity<MensajePrivado>()
+                .HasRequired(m => m.DestinatarioCandidato)
+                .WithOptional()
+                .WillCascadeOnDelete(false);
+
+            //MiembroGrupo
+            modelBuilder.Entity<MiembroGrupo>()
+                .HasRequired(m => m.MiembroCandidato)
+                .WithOptional()
+                .WillCascadeOnDelete(false); 
+            modelBuilder.Entity<MiembroGrupo>()
+                .HasRequired(m => m.MiembroEmpresa)
+                .WithOptional()
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<MiembroGrupo>()
+                .HasRequired(m => m.Grupo)
+                .WithOptional()
+                .WillCascadeOnDelete(false);
+
+
+            //NotificacionMensaje
+            modelBuilder.Entity<NotificacionMensaje>()
+                .HasRequired(n => n.Candidato)
+                .WithOptional()
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<NotificacionMensaje>()
+                .HasRequired(n => n.Empresa)
+                .WithOptional()
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<NotificacionMensaje>()
+                .HasRequired(n => n.Mensaje)
+                .WithOptional()
+                .WillCascadeOnDelete(false);
+
+            //OfertaLaboral
+            modelBuilder.Entity<OfertaLaboral>()
+                .HasRequired(o => o.Empresa)
+                .WithOptional()
+                .WillCascadeOnDelete(false); // Evitar borrado en cascada
+
+            //ParticipanteChat
+            modelBuilder.Entity<ParticipanteChat>()
+                .HasRequired(p => p.ParticipanteCandidato)
+                .WithOptional()
+                .WillCascadeOnDelete(false); 
+            modelBuilder.Entity<ParticipanteChat>()
+                .HasRequired(p => p.ParticipanteEmpresa)
+                .WithOptional()
+                .WillCascadeOnDelete(false);
+
+            //Publicacion
+            modelBuilder.Entity<Publicacion>()
+                .HasRequired(p => p.Candidato)
+                .WithOptional()
+                .WillCascadeOnDelete(false); 
+            modelBuilder.Entity<Publicacion>()
+                .HasRequired(p => p.Empresa)
+                .WithOptional()
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Publicacion>()
+                .HasRequired(p => p.Grupo)
+                .WithOptional()
+                .WillCascadeOnDelete(false);
+
+            //Recomendacion
+            modelBuilder.Entity<Recomendacion>()
+                .HasRequired(r => r.Candidato)
+                .WithOptional()
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Recomendacion>()
+                .HasRequired(r => r.Empresa)
+                .WithOptional()
+                .WillCascadeOnDelete(false);
+
+            //SolicitudEmpleo
+            modelBuilder.Entity<SolicitudEmpleo>()
+                .HasRequired(s => s.Candidato)
+                .WithOptional()
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<SolicitudEmpleo>()
+                .HasRequired(s => s.Empresa)
+                .WithOptional()
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<SolicitudEmpleo>()
+                .HasRequired(s => s.OfertaLaboral)
+                .WithOptional()
+                .WillCascadeOnDelete(false);
+
+
+            /*--------------------------------------------------------------------------*/
+            // Configuración de las relaciones entre entidades con Icollections
 
             //Candidato -> ExperienciaLaboral
 
             //Candidato
+
+            // Uno a uno 
+            modelBuilder.Entity<Candidato>()
+                .HasRequired(c => c.Usuario)    
+                .WithOptional();
+                
+
 
             //Uno a muchos
 

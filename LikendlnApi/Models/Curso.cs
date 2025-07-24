@@ -9,7 +9,7 @@ namespace LikendlnApi.Models
     {
         public int Id { get; set; } // Identificador único del curso
         public int IdCandidato { get; set; } // Identificador del candidato al que pertenece el curso
-        public Candidato Candidato { get; set; } // Candidato asociado al curso
+        public virtual Candidato Candidato { get; set; } // Candidato asociado al curso
         public string Nombre { get; set; } // Nombre del curso
 
         public string Descripcion { get; set; } // Descripción del curso

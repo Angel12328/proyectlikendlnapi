@@ -9,9 +9,9 @@ namespace LikendlnApi.Models
     {
         public int Id { get; set; } // Identificador único de la relación
         public int IdCandidato { get; set; } // Identificador del candidato que es seguido
-        public Candidato Candidato { get; set; } // Candidato que es seguido
+        public virtual Candidato Candidato { get; set; } // Candidato que es seguido
         public int IdSeguidor { get; set; } // Identificador del seguidor (otro candidato)
-        public Candidato Seguidor { get; set; } // Candidato que sigue al otro candidato
+        public virtual Candidato Seguidor { get; set; } // Candidato que sigue al otro candidato
         // Constructor por defecto
         public CandidatoSeguidorCandidato()
         {

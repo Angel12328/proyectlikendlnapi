@@ -11,7 +11,7 @@ namespace LikendlnApi.Models
     {
       
         public int IDDestinatarioCandidato { get; set; } // Identificador del candidato que envía el mensaje
-        public Candidato DestinatarioCandidato { get; set; }
+        public virtual Candidato DestinatarioCandidato { get; set; }
 
 
 

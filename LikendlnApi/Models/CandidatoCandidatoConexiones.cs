@@ -15,9 +15,9 @@ namespace LikendlnApi.Models
 
         public int ID { get; set; } // Identificador único de la relación
         public int IdCandidato { get; set; }
-        public Candidato Candidato { get; set; } // Candidato que inicia la relación
+        public virtual Candidato Candidato { get; set; } // Candidato que inicia la relación
         public int IdCandidatoConexion { get; set; }
-        public Candidato CandidatoConexion { get; set; } // Candidato que recibe la relación
+        public virtual Candidato CandidatoConexion { get; set; } // Candidato que recibe la relación
 
 
         //constructor por defecto

@@ -11,9 +11,9 @@ namespace LikendlnApi.Models
         //  propiedades
         public int ID { get; set; } // Identificador único de la habilidad
         public int IdCandidato { get; set; } // Identificador del candidato al que pertenece la habilidad
-        public Candidato Candidato { get; set; } // Candidato asociado a la habilidad
+        public virtual Candidato Candidato { get; set; } // Candidato asociado a la habilidad
         public int IdOfertaLaboral { get; set; } // Identificador de la oferta laboral relacionada (opcional)
-        public OfertaLaboral OfertaLaboral { get; set; } // Oferta laboral relacionada (opcional)
+        public virtual OfertaLaboral OfertaLaboral { get; set; } // Oferta laboral relacionada (opcional)
         public string Nombre { get; set; } 
         public string Descripcion { get; set; } 
         public string Categoria { get; set; } 

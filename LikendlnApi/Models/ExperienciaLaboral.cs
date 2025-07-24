@@ -11,7 +11,7 @@ namespace LikendlnApi.Models
         //Atributos
         public int ID { get; set; } // Identificador único de la experiencia laboral
         public int IdCandidato { get; set; } // Identificador del candidato al que pertenece la experiencia laboral
-        public Candidato Candidato { get; set; } // Candidato asociado a la experiencia laboral
+        public virtual Candidato Candidato { get; set; } // Candidato asociado a la experiencia laboral
         public string Empresa { get; set; } // Nombre de la empresa donde se trabajó
         public string Cargo { get; set; } // Cargo o puesto desempeñado
         public DateTime FechaInicio { get; set; } // Fecha de inicio de la experiencia laboral

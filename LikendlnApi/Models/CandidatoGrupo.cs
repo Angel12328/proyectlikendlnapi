@@ -11,9 +11,9 @@ namespace LikendlnApi.Models
         //properties
         public int ID { get; set; } // Identificador único de la relación
         public int IdCandidato { get; set; } // Identificador del candidato
-        public Candidato Candidato { get; set; } // Candidato asociado al grupo
+        public virtual Candidato Candidato { get; set; } // Candidato asociado al grupo
         public int IdGrupo { get; set; } // Identificador del grupo
-        public Grupo Grupo { get; set; } // Grupo asociado al candidato
+        public virtual Grupo Grupo { get; set; } // Grupo asociado al candidato
 
         // Constructor por defecto
         public CandidatoGrupo()

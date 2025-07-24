@@ -10,9 +10,9 @@ namespace LikendlnApi.Models
     {
         public int Id { get; set; }
         public int ChatId { get; set; } // Identificador del chat al que pertenece el participante
-        public Chat Chat { get; set; } // Referencia al chat al que pertenece el participante
+        public virtual Chat Chat { get; set; } // Referencia al chat al que pertenece el participante
         public int ParticipanteId { get; set; } // Identificador del participante (Candidato o Empresa)
-        public ParticipanteChat ParticipanteChat { get; set; } // Referencia al participante del chat (Candidato o Empresa)
+        public virtual ParticipanteChat ParticipanteChat { get; set; } // Referencia al participante del chat (Candidato o Empresa)
 
         // Constructor por defecto
         public ChatParticipante()

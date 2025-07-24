@@ -11,9 +11,9 @@ namespace LikendlnApi.Models
         //properties
         public int ID { get; set; } // Identificador único de la relación
         public int IdCandidato { get; set; } // Identificador del candidato
-        public Candidato Candidato { get; set; } // Candidato asociado a la habilidad
+        public virtual Candidato Candidato { get; set; } // Candidato asociado a la habilidad
         public int IdHabilidad { get; set; } // Identificador de la habilidad
-        public Habilidad Habilidad { get; set; } // Habilidad asociada al candidato
+        public virtual Habilidad Habilidad { get; set; } // Habilidad asociada al candidato
         // Constructor por defecto
         public CandidatoHabilidad()
         {

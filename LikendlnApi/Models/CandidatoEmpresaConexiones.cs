@@ -9,9 +9,9 @@ namespace LikendlnApi.Models
     {
         public int Id { get; set; }
         public int IdCandidato { get; set; }
-        public Candidato Candidato { get; set; } // Candidato asociado a la conexión
+        public virtual Candidato Candidato { get; set; } // Candidato asociado a la conexión
         public int IdEmpresa { get; set; }
-        public Empresa Empresa { get; set; } // Empresa asociada a la conexión
+        public virtual Empresa Empresa { get; set; } // Empresa asociada a la conexión
 
         // Constructor por defecto
         public CandidatoEmpresaConexiones()

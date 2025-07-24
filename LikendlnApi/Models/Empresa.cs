@@ -14,7 +14,7 @@ namespace LikendlnApi.Models
         //Propiedades
         public int ID { get; set; }
         public int IdUsuario { get; set; } // Identificador del usuario que creó la empresa
-        public Usuario Usuario { get; set; }
+        public virtual Usuario Usuario { get; set; }
         
         public string NombreEmpresa { get; set; } 
         public string Descripcion { get; set; }

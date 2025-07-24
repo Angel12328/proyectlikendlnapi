@@ -11,9 +11,9 @@ namespace LikendlnApi.Models
         //  properties
         public int ID { get; set; } // Identificador único de la relación
         public int IdCandidato { get; set; } // Identificador del candidato
-        public Candidato Candidato { get; set; } // Candidato asociado a la oferta laboral
+        public virtual Candidato Candidato { get; set; } // Candidato asociado a la oferta laboral
         public int IdOfertaLaboral { get; set; } // Identificador de la oferta laboral
-        public OfertaLaboral OfertaLaboral { get; set; } // Oferta laboral asociada al candidato
+        public virtual OfertaLaboral OfertaLaboral { get; set; } // Oferta laboral asociada al candidato
         // Constructor por defecto
         public CandidatoOfertaLaboral()
         {

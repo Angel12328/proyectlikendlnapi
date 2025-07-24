@@ -8,13 +8,13 @@ namespace LikendlnApi.Models
         public int ID { get; set; } // Identificador único del miembro del grupo
         public DateTime FechaUnion { get; set; } // Fecha en que el miembro se unió al grupo
 
-        public int IDMiembroCandidato { get; set; } // Identificador del candidato que es miembro del grupo
+        public int IdMiembroCandidato { get; set; } // Identificador del candidato que es miembro del grupo
 
-        public Candidato MiembroCandidato { get; set; }
-        public int IDMiembroEmpresa { get; set; } // Identificador de la empresa que es miembro del grupo
-        public Empresa MiembroEmpresa { get; set; }
-        public int IDGrupo { get; set; } // Identificador del grupo al que pertenece el miembro
-        public Grupo Grupo { get; set; }
+        public virtual Candidato MiembroCandidato { get; set; }
+        public int IdMiembroEmpresa { get; set; } // Identificador de la empresa que es miembro del grupo
+        public virtual Empresa MiembroEmpresa { get; set; }
+        public int IdGrupo { get; set; } // Identificador del grupo al que pertenece el miembro
+        public virtual Grupo Grupo { get; set; }
         public string RolGrupo { get; set; }
 
        // Constructor por defecto
