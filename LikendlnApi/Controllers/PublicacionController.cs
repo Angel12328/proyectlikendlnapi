@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LikendlnApi.Models;
+using Swashbuckle.Swagger.Annotations;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -9,7 +11,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using LikendlnApi.Models;
 
 namespace LikendlnApi.Controllers
 {
@@ -25,6 +26,57 @@ namespace LikendlnApi.Controllers
         public IQueryable<Publicacion> GetPublicaciones()
         {
             return db.Publicaciones;
+        }
+
+        /// <summary>
+        /// obtiene todas las publicaciones con sus comentarios de un candidato 
+        /// </summary>
+        /// <returns>Una lista de publicaciones y comentarios</returns>
+        // GET api/GetCandidatoPublicacines/id
+        [HttpGet]
+        [SwaggerOperation("GetPublicionacionesFeedById")]
+        [Route("api/GetPublicacionesFeed/{tipo}")]
+        public async Task<IHttpActionResult> GetPublicacionesFeed(int tipo)
+        {
+            DateTime Hoy = DateTime.Now;
+            var publicaciones = await db.Publicaciones
+                .Where(p => (Hoy-p.FechaPublicacion).TotalDays<=180) // Filtrar publicaciones de los últimos 180 días
+                .Include(p => p.Candidato)
+                .Include(p => p.Empresa)
+                .Include(p => p.Comentarios.Select(com => com.AutorCandidato))
+                .Include(p => p.Comentarios.Select(com => com.AutorEmpresa))
+                .Include(p => p.Comentarios.Select(com => com.Fecha))
+                .Select(
+                    p => new
+                    {
+                        p.FechaPublicacion,
+                        AutorCandidato = new
+                        {
+
+                            p.Candidato.Nombre,
+                            p.Candidato.Apellido,
+
+                        },
+                        p.Empresa.NombreEmpresa,
+                        Comentarios = p.Comentarios.Select(
+                                c => new
+                                {
+                                    AutorCandidato = c.AutorCandidato.Nombre,
+
+                                }
+                            )
+
+
+                    }
+
+                ).ToListAsync();
+
+            if (publicaciones == null || publicaciones.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(publicaciones);
         }
 
         /// <summary>
