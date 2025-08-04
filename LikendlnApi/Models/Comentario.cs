@@ -8,9 +8,9 @@ namespace LikendlnApi.Models
         public int ID { get; set; } // Identificador único del comentario
         public string Texto { get; set; } // Texto del comentario
         public DateTime Fecha { get; set; } // Fecha y hora en que se realizó el comentario
-        public int IdAutorCandidato { get; set; } // Identificador del candidato que realizó el comentario (si aplica)
+        public int? IdAutorCandidato { get; set; } // Identificador del candidato que realizó el comentario (si aplica)
         public  virtual Candidato AutorCandidato { get; set; } // Candidato que realizó el comentario (si aplica)
-        public int IdAutorEmpresa { get; set; } // Identificador de la empresa que realizó el comentario (si aplica)
+        public int? IdAutorEmpresa { get; set; } // Identificador de la empresa que realizó el comentario (si aplica)
         public virtual Empresa AutorEmpresa { get; set; } // Empresa que realizó el comentario (si aplica)
         public int IdPublicacion { get; set; } // Identificador de la publicación a la que pertenece el comentario
 

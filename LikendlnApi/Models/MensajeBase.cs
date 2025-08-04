@@ -11,9 +11,9 @@ namespace LikendlnApi.Models
         public int  Id { get; set; } // Identificador único del mensaje
 
         public DateTime FechaEnvio { get; set; } // Fecha y hora en que se envió el mensaje
-        public int IdRemitenteCandidato { get; set; } // Identificador del candidato que envía el mensaje
+        public int? IdRemitenteCandidato { get; set; } // Identificador del candidato que envía el mensaje
         public virtual Candidato RemitenteCandidato { get; set; } // Candidato que envía el mensaje
-        public int IdRemitenteEmpresa { get; set; } // Identificador de la empresa que envía el mensaje (si aplica)
+        public int? IdRemitenteEmpresa { get; set; } // Identificador de la empresa que envía el mensaje (si aplica)
         public virtual Empresa RemitenteEmpresa { get; set; } // Empresa que envía el mensaje (si aplica)
         public int IdChat { get; set; } // Identificador del chat al que pertenece el mensaje (si aplica)
         public virtual Chat Chat { get; set; } // Chat al que pertenece el mensaje (si aplica)

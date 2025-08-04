@@ -11,9 +11,9 @@ namespace LikendlnApi.Models
     {
         // Propiedades
         public int ID { get; set; }
-        public int IdCreadorCandidato { get; set; } // Identificador del creador del grupo
+        public int? IdCreadorCandidato { get; set; } // Identificador del creador del grupo
         public virtual Candidato CreadorCandidato { get; set; }
-        public int IdCreadorEmpresa { get; set; } // Identificador de la empresa que crea el grupo
+        public int? IdCreadorEmpresa { get; set; } // Identificador de la empresa que crea el grupo
         public virtual Empresa CreadorEmpresa { get; set; }
 
         public string FotoPerfil { get; set; }

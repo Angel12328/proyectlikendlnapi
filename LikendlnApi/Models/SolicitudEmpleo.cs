@@ -10,9 +10,9 @@ namespace LikendlnApi.Models
     {
         //atributos
         public int ID { get; set; }
-        public int IdCandidato { get; set; } // Identificador del candidato que realiza la solicitud
+        public int? IdCandidato { get; set; } // Identificador del candidato que realiza la solicitud
         public virtual Candidato Candidato { get; set; } // Candidato que realiza la solicitud
-        public int IdEmpresa { get; set; } // Identificador de la empresa a la que se solicita el empleo
+        public int? IdEmpresa { get; set; } // Identificador de la empresa a la que se solicita el empleo
         public virtual Empresa Empresa { get; set; }
         public string Titulo { get; set; } // Título de la solicitud de empleo
         public string Descripcion { get; set; } // Descripción de la solicitud de empleo

@@ -193,7 +193,7 @@ namespace LikendlnApi.Controllers
         [HttpPost]
         [Route("api/PublicarFeed/{id}")]
         [ResponseType(typeof(Publicacion))]
-        public async Task<IHttpActionResult> PublicarFeed(Publicacion publicacion)
+        public async Task<IHttpActionResult> PublicarFeed(PublicacionFeedRequest publicacionRequest)
         {
             if (!ModelState.IsValid)
             {
@@ -201,6 +201,13 @@ namespace LikendlnApi.Controllers
             }
             try
             {
+                var publicacion = new Publicacion
+                {
+                    Contenido = publicacionRequest.Contenido,
+                    FechaPublicacion = publicacionRequest.FechaPublicacion,
+                    IdCandidato = publicacionRequest.IdCandidato,
+                   
+                };
                 db.Publicaciones.Add(publicacion);
                 await db.SaveChangesAsync();
                 return CreatedAtRoute("DefaultApi", new { id = publicacion.Id }, publicacion);

@@ -181,3 +181,6 @@ C:\Users\angel\Source\Repos\proyectlikendlnapi\LikendlnApi\obj\Debug\LikendlnApi
 C:\Users\angel\Source\Repos\proyectlikendlnapi\LikendlnApi\obj\Debug\Likendln.1EB67687.Up2Date
 C:\Users\angel\Source\Repos\proyectlikendlnapi\LikendlnApi\obj\Debug\LikendlnApi.dll
 C:\Users\angel\Source\Repos\proyectlikendlnapi\LikendlnApi\obj\Debug\LikendlnApi.pdb
+C:\Users\angel\Source\Repos\proyectlikendlnapi\LikendlnApi\obj\Debug\LikendlnApi.Migrations.migpe.resources
+C:\Users\angel\Source\Repos\proyectlikendlnapi\LikendlnApi\obj\Debug\LikendlnApi.csproj.GenerateResource.cache
+C:\Users\angel\Source\Repos\proyectlikendlnapi\LikendlnApi\obj\Debug\LikendlnApi.Migrations.migpe2.resources

@@ -10,10 +10,10 @@ namespace LikendlnApi.Models
         public int ID { get; set; } // Identificador único del participante en el chat
         public DateTime FechaUnion { get; set; } // Fecha en que el participante se unió al chat
 
-        public int IdParticipanteCandidato { get; set; } // Identificador del candidato que es participante del chat
+        public int? IdParticipanteCandidato { get; set; } // Identificador del candidato que es participante del chat
 
         public virtual Candidato ParticipanteCandidato { get; set; }
-        public int IdParticipanteEmpresa { get; set; } // Identificador de la empresa que es participante del chat
+        public int? IdParticipanteEmpresa { get; set; } // Identificador de la empresa que es participante del chat
         public virtual Empresa ParticipanteEmpresa { get; set; }
 
         //uno a muchos

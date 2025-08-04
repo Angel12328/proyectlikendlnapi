@@ -11,10 +11,10 @@ namespace LikendlnApi.Models
         public int ID { get; set; } // Identificador único de la notificación de mensaje
         public DateTime FechaNotificacion { get; set; } // Fecha y hora de la notificación
 
-        public int IDCandidato { get; set; } // Identificador del candidato al que se le envía la notificación
+        public int? IDCandidato { get; set; } // Identificador del candidato al que se le envía la notificación
 
         public virtual Candidato Candidato { get; set; }
-        public int IDEmpresa { get; set; } // Identificador de la empresa que envía la notificación (si aplica)
+        public int? IDEmpresa { get; set; } // Identificador de la empresa que envía la notificación (si aplica)
         public virtual Empresa Empresa { get; set; }
         public int IdMensajeBase { get; set; } // Identificador del mensaje asociado a la notificación
         public virtual MensajeBase Mensaje { get; set; }

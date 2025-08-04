@@ -10,10 +10,10 @@ namespace LikendlnApi.Models
     public class MensajeEmpresarial : MensajeBase
     {
         
-        public int IDDestinatarioCandidato { get; set; } // Identificador del candidato que envía el mensaje
+        public int? IDDestinatarioCandidato { get; set; } // Identificador del candidato que envía el mensaje
         public Candidato DestinatarioCandidato { get; set; }
 
-        public int IDDestinatarioEmpresa { get; set; } // Identificador de la empresa que recibe el mensaje (si aplica)
+        public int? IDDestinatarioEmpresa { get; set; } // Identificador de la empresa que recibe el mensaje (si aplica)
         public Empresa DestinatarioEmpresa { get; set; }
         public int IDOfertaLaboralRelacinada { get; set; } // Identificador de la empresa que envía el mensaje (si aplica)
         public OfertaLaboral OfertaLaboralRelacinada { get; set; }

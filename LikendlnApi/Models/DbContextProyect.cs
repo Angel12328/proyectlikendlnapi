@@ -57,6 +57,7 @@ namespace LikendlnApi.Models
             modelBuilder.Entity<MensajeEmpresarial>().ToTable("MensajesEmpresariales");
             modelBuilder.Entity<MensajePrivado>().ToTable("MensajesPrivados");            
             modelBuilder.Entity<Candidato>().ToTable("Candidatos");
+            modelBuilder.Entity<Publicacion>().ToTable("Publicaciones");
 
             /* TABLAS UNION RELACIONES*/
 
@@ -196,12 +197,12 @@ namespace LikendlnApi.Models
 
             //Comentario
             modelBuilder.Entity<Comentario>()
-                .HasRequired(c => c.AutorCandidato)
+                .HasOptional(c => c.AutorCandidato)
                 .WithMany()
                 .HasForeignKey(csc => csc.IdAutorCandidato)
                 .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
             modelBuilder.Entity<Comentario>()
-                .HasRequired(c => c.AutorEmpresa)
+                .HasOptional(c => c.AutorEmpresa)
                 .WithMany()
                 .HasForeignKey(csc => csc.IdAutorEmpresa)
                 .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
@@ -232,12 +233,12 @@ namespace LikendlnApi.Models
                 .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
             //Grupo
             modelBuilder.Entity<Grupo>()
-                .HasRequired(c =>c.CreadorCandidato)
+                .HasOptional(c =>c.CreadorCandidato)
                 .WithMany()
                 .HasForeignKey(csc => csc.IdCreadorCandidato)
                 .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
             modelBuilder.Entity<Grupo>()
-                .HasRequired(c =>c.CreadorEmpresa)
+                .HasOptional(c =>c.CreadorEmpresa)
                 .WithMany()
                 .HasForeignKey(csc => csc.IdCreadorEmpresa)
                 .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
@@ -256,12 +257,12 @@ namespace LikendlnApi.Models
 
             //MensajeBase
             modelBuilder.Entity<MensajeBase>()
-                .HasRequired(r => r.RemitenteCandidato)
+                .HasOptional(r => r.RemitenteCandidato)
                 .WithMany()
                 .HasForeignKey(csc => csc.IdRemitenteCandidato)
                 .WillCascadeOnDelete(false);
             modelBuilder.Entity<MensajeBase>()
-                .HasRequired(r => r.RemitenteEmpresa)
+                .HasOptional(r => r.RemitenteEmpresa)
                 .WithMany()
                 .HasForeignKey(csc => csc.IdRemitenteEmpresa)
                 .WillCascadeOnDelete(false);
@@ -273,12 +274,12 @@ namespace LikendlnApi.Models
 
             //MensajeEmpresarial
             modelBuilder.Entity<MensajeEmpresarial>()
-                .HasRequired(m => m.DestinatarioCandidato)
+                .HasOptional(m => m.DestinatarioCandidato)
                 .WithMany()
                 .HasForeignKey(csc => csc.IDDestinatarioCandidato)
                 .WillCascadeOnDelete(false);
             modelBuilder.Entity<MensajeEmpresarial>()
-                .HasRequired(m => m.DestinatarioEmpresa)
+                .HasOptional(m => m.DestinatarioEmpresa)
                 .WithMany()
                 .HasForeignKey(csc => csc.IDDestinatarioEmpresa)
                 .WillCascadeOnDelete(false);
@@ -297,12 +298,13 @@ namespace LikendlnApi.Models
 
             //MiembroGrupo
             modelBuilder.Entity<MiembroGrupo>()
-                .HasRequired(m => m.MiembroCandidato)
+                .HasOptional(m => m.MiembroCandidato)  // Cambiado de HasRequired
                 .WithMany()
                 .HasForeignKey(csc => csc.IdMiembroCandidato)
                 .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<MiembroGrupo>()
-                .HasRequired(m => m.MiembroEmpresa)
+                .HasOptional(m => m.MiembroEmpresa)  // Cambiado de HasRequired
                 .WithMany()
                 .HasForeignKey(csc => csc.IdMiembroEmpresa)
                 .WillCascadeOnDelete(false);
@@ -315,12 +317,13 @@ namespace LikendlnApi.Models
 
             //NotificacionMensaje
             modelBuilder.Entity<NotificacionMensaje>()
-                .HasRequired(n => n.Candidato)
+                .HasOptional(n => n.Candidato)  // Cambiado de HasRequired
                 .WithMany()
                 .HasForeignKey(csc => csc.IDCandidato)
                 .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<NotificacionMensaje>()
-                .HasRequired(n => n.Empresa)
+                .HasOptional(n => n.Empresa)  // Cambiado de HasRequired
                 .WithMany()
                 .HasForeignKey(csc => csc.IDEmpresa)
                 .WillCascadeOnDelete(false);
@@ -330,62 +333,65 @@ namespace LikendlnApi.Models
                 .HasForeignKey(csc => csc.IdMensajeBase)
                 .WillCascadeOnDelete(false);
 
-            //OfertaLaboral
+            // OfertaLaboral
             modelBuilder.Entity<OfertaLaboral>()
-                .HasRequired(o => o.Empresa)
+                .HasRequired(o => o.Empresa)  // Cambiado de HasRequired a HasOptional
                 .WithMany()
                 .HasForeignKey(s => s.IdEmpresa)
                 .WillCascadeOnDelete(false); // Evitar borrado en cascada
 
-            //ParticipanteChat
+            // ParticipanteChat
             modelBuilder.Entity<ParticipanteChat>()
-                .HasRequired(p => p.ParticipanteCandidato)
+                .HasOptional(p => p.ParticipanteCandidato)  // Cambiado de HasRequired a HasOptional
                 .WithMany()
                 .HasForeignKey(s => s.IdParticipanteCandidato)
                 .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<ParticipanteChat>()
-                .HasRequired(p => p.ParticipanteEmpresa)
+                .HasOptional(p => p.ParticipanteEmpresa)  // Cambiado de HasRequired a HasOptional
                 .WithMany()
                 .HasForeignKey(s => s.IdParticipanteEmpresa)
                 .WillCascadeOnDelete(false);
 
             //Publicacion
             modelBuilder.Entity<Publicacion>()
-                .HasRequired(p => p.Candidato)
+                .HasOptional(p => p.Candidato)  // ← Cambiado de HasRequired
                 .WithMany()
                 .HasForeignKey(s => s.IdCandidato)
                 .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Publicacion>()
-                .HasRequired(p => p.Empresa)
+                .HasOptional(p => p.Empresa)  // ← Cambiado de HasRequired
                 .WithMany()
                 .HasForeignKey(s => s.IdEmpresa)
                 .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Publicacion>()
-                .HasRequired(p => p.Grupo)
+                .HasOptional(p => p.Grupo)  // ← Cambiado de HasRequired
                 .WithMany()
                 .HasForeignKey(s => s.IdGrupo)
                 .WillCascadeOnDelete(false);
 
             //Recomendacion
             modelBuilder.Entity<Recomendacion>()
-                .HasRequired(r => r.Candidato)
+                .HasOptional(r => r.Candidato)
                 .WithMany()
                 .HasForeignKey(s => s.IdCandidato)
                 .WillCascadeOnDelete(false);
             modelBuilder.Entity<Recomendacion>()
-                .HasRequired(r => r.Empresa)
+                .HasOptional(r => r.Empresa)
                 .WithMany()
                 .HasForeignKey(s => s.IdEmpresa)
                 .WillCascadeOnDelete(false);
 
             //SolicitudEmpleo
             modelBuilder.Entity<SolicitudEmpleo>()
-                .HasRequired(s => s.Candidato)
+                .HasOptional(s => s.Candidato)
                 .WithMany()
                 .HasForeignKey(s => s.IdCandidato)
                 .WillCascadeOnDelete(false);
             modelBuilder.Entity<SolicitudEmpleo>()
-                .HasRequired(s => s.Empresa)
+                .HasOptional(s => s.Empresa)
                 .WithMany()
                 .HasForeignKey(s => s.IdEmpresa)
                 .WillCascadeOnDelete(false);
@@ -423,7 +429,7 @@ namespace LikendlnApi.Models
             //Candidato -> Publicacion
             modelBuilder.Entity<Candidato>()
                 .HasMany(c => c.Publicaciones )
-                .WithRequired(p=>p.Candidato)
+                .WithOptional(p=>p.Candidato)
                 .HasForeignKey(p=> p.IdCandidato);
             //Candidato -> Curso
             modelBuilder.Entity<Candidato>()
@@ -508,7 +514,7 @@ namespace LikendlnApi.Models
             //Empresa -> Publicacion
             modelBuilder.Entity<Empresa>()
                 .HasMany(pe => pe.Publicaciones)
-                .WithRequired(e => e.Empresa)
+                .WithOptional(e => e.Empresa)
                 .HasForeignKey(e => e.IdEmpresa);
 
             //muchos a muchos
@@ -558,7 +564,7 @@ namespace LikendlnApi.Models
             //Grupo -> Publicacion
             modelBuilder.Entity<Grupo>()
                 .HasMany(p => p.Publicaciones)
-                .WithRequired(g => g.Grupo)
+                .WithOptional(g => g.Grupo)
                 .HasForeignKey(g => g.IdGrupo);
 
             //Grupo -> CandidatoGrupo
