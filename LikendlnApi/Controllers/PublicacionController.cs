@@ -188,12 +188,12 @@ namespace LikendlnApi.Controllers
         /// Crea una nueva publicación.
         /// </summary>
         /// <returns>Codigo de estado 201 si fue creada</returns>
-        // POST api/PublicarFeed/1
+        // POST api/Publicacion/Crear
 
         [HttpPost]
-        [Route("api/PublicarFeed/{id}")]
+        [Route("api/Publicacion/Crear")]
         [ResponseType(typeof(Publicacion))]
-        public async Task<IHttpActionResult> PublicarFeed(PublicacionFeedRequest publicacionRequest)
+        public async Task<IHttpActionResult> CrearPublicacion(PublicacionFeedRequest publicacionRequest)
         {
             if (!ModelState.IsValid)
             {
@@ -210,7 +210,8 @@ namespace LikendlnApi.Controllers
                 };
                 db.Publicaciones.Add(publicacion);
                 await db.SaveChangesAsync();
-                return CreatedAtRoute("DefaultApi", new { id = publicacion.Id }, publicacion);
+                return Created(new Uri($"{Request.RequestUri}/Crear/{publicacion.Id}"), publicacion);
+            
 
             }
             catch (Exception ex)
