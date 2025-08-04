@@ -21,7 +21,10 @@ namespace LikendlnApi.Models
         public virtual Grupo Grupo { get; set; } // Objeto del grupo al que pertenece la publicación, si es que pertenece a uno
         public string Contenido { get; set; }
         public DateTime FechaPublicacion { get; set; }
-     
+
+        public int CantidadMeGusta { get; set; }
+        public int CantidadComentarios { get; set; }
+        public int CantidadCompartidos { get; set; }
         public virtual ICollection<Comentario> Comentarios { get; set; }
 
         public string ImagenURL { get; set; } // Imagen de la publicación, si es que tiene

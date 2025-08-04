@@ -186,6 +186,7 @@
     <Compile Include="Controllers\EmpresaSeguidorCandidatoController.cs" />
     <Compile Include="Controllers\EmpresaSeguidorEmpresaController.cs" />
     <Compile Include="Controllers\ExperienciaLaboralController.cs" />
+    <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Controllers\GrupoController.cs" />
     <Compile Include="Controllers\HabilidadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -215,10 +216,12 @@
     <Compile Include="Models\Candidato.cs" />
     <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\Comentario.cs" />
+    <Compile Include="Models\ComentarioResponse.cs" />
     <Compile Include="Models\Curso.cs" />
     <Compile Include="Models\DbContextProyect.cs" />
     <Compile Include="Models\Empresa.cs" />
     <Compile Include="Models\ExperienciaLaboral.cs" />
+    <Compile Include="Models\FeedResponse.cs" />
     <Compile Include="Models\Grupo.cs" />
     <Compile Include="Models\Habilidad.cs" />
     <Compile Include="Models\MensajeBase.cs" />
@@ -231,6 +234,7 @@
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\Publicacion.cs" />
     <Compile Include="Models\PublicacionFeedRequest.cs" />
+    <Compile Include="Models\PublicacionResponse.cs" />
     <Compile Include="Models\Recomendacion.cs" />
     <Compile Include="Models\CandidatoCandidatoConexiones.cs" />
     <Compile Include="Models\CandidatoEmpresaConexiones.cs" />
