@@ -134,17 +134,26 @@ namespace LikendlnApi.Controllers
         /// <response code="400">Los datos proporcionados son inválidos</response>
         // POST: api/Comentario
         [ResponseType(typeof(Comentario))]
-        public async Task<IHttpActionResult> PostComentario(Comentario comentario)
+        public async Task<IHttpActionResult> PostComentario(ComentarioRequest comentario)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            comentario.Fecha = DateTime.Now;
-            db.Comentarios.Add(comentario);
+            Comentario _comentario = new Comentario
+            {
+                IdPublicacion = comentario.IdPublicacion,
+                IdAutorCandidato = comentario.IdCandidato,
+                IdAutorEmpresa = comentario.IdEmpresa,
+                Texto = comentario.Comentario,
+                Fecha = DateTime.Now
+            };
+            
+            db.Comentarios.Add(_comentario);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = comentario.ID }, comentario);
+            return Created(new Uri($"{Request.RequestUri}/Comentario/{_comentario.ID}"), _comentario);
+
         }
 
 

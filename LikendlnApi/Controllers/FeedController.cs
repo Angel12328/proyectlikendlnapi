@@ -64,7 +64,7 @@ namespace LikendlnApi.Controllers
                         ImagenPublicacion = p.ImagenURL,
                         IdCandidato = (int)p.IdCandidato,
                         IdEmpresa = (int)p.IdEmpresa,
-
+                        Contenido=p.Contenido,
 
 
                         NombreCandP = p.Candidato.Nombre,

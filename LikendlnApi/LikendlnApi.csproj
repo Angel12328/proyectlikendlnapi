@@ -216,6 +216,7 @@
     <Compile Include="Models\Candidato.cs" />
     <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\Comentario.cs" />
+    <Compile Include="Models\ComentarioRequest.cs" />
     <Compile Include="Models\ComentarioResponse.cs" />
     <Compile Include="Models\Curso.cs" />
     <Compile Include="Models\DbContextProyect.cs" />
