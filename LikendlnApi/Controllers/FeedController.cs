@@ -50,7 +50,7 @@ namespace LikendlnApi.Controllers
 
             DateTime Hoy = DateTime.Now;
             var publicaciones = await db.Publicaciones
-                .Where(p => (Hoy - p.FechaPublicacion).TotalDays <= 180) // Filtrar publicaciones de los últimos 180 días
+                .Where(p => DbFunctions.DiffDays(p.FechaPublicacion, Hoy) <= 180) // Filtrar publicaciones de los últimos 180 días
                 .Include(p => p.Candidato)
                 .Include(p => p.Empresa)
                 .Include(p => p.Comentarios)
@@ -99,14 +99,15 @@ namespace LikendlnApi.Controllers
                             ).ToList(),
 
 
-                        CantidadMeGusta = p.CantidadMeGusta,
-                        CantidadComentarios = p.CantidadComentarios
+                        CantidadMeGusta = (int)p.CantidadMeGusta,
+                        CantidadComentarios = (int)p.CantidadComentarios
 
 
                     }
 
                 ).ToListAsync();
             feedResponse.Publicaciones = publicaciones;
+            //Hacer una consulta para enviar las recomendaciones al candidato en el feed
 
 
             return Ok(feedResponse);

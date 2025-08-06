@@ -140,7 +140,7 @@ namespace LikendlnApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            comentario.Fecha = DateTime.Now;
             db.Comentarios.Add(comentario);
             await db.SaveChangesAsync();
 

@@ -5,8 +5,8 @@ namespace LikendlnApi.Models
 {
     public class PublicacionResponse
     {
-        public int IdCandidato { get; set; }
-        public int IdEmpresa { get; set; }
+        public int? IdCandidato { get; set; }
+        public int? IdEmpresa { get; set; }
         public string Contenido { get; set; }
         public DateTime FechaPublicacion { get; set; }
         public string NombreCandP { get; set; }
@@ -19,9 +19,9 @@ namespace LikendlnApi.Models
 
 
         // Propiedades adicionales para la respuesta
-        public int CantidadMeGusta { get; set; }
-        public int CantidadComentarios { get; set; }
-        public int CantidadCompartidos { get; set; }
+        public int? CantidadMeGusta { get; set; }
+        public int? CantidadComentarios { get; set; }
+        public int? CantidadCompartidos { get; set; }
         public List<ComentarioResponse> Comentarios { get; set; }
         public PublicacionResponse()
         {
