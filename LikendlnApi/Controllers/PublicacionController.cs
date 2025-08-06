@@ -221,6 +221,44 @@ namespace LikendlnApi.Controllers
             }
         }
 
+        /// <summary>
+        /// aumenta los likes de una publicacion.
+        /// </summary>
+        /// <returns>Codigo de estado 201 si fue generado el like</returns>
+        // POST api/Publicacion/Like
+        [HttpPost]
+        [Route("api/Publicacion/Like")]
+        [ResponseType(typeof(void))]
+        public async Task<IHttpActionResult> LikePublicacion(int id)
+        {
+            var publicacion = await db.Publicaciones.FindAsync(id);
+            if (publicacion == null)
+            {
+                return NotFound();
+            }
+            publicacion.CantidadMeGusta++;
+            db.Entry(publicacion).State = EntityState.Modified;
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                if (!PublicacionExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return StatusCode(HttpStatusCode.NoContent);
+
+        }
+
+
+
 
         /// <summary>
         /// Elimina una publicación específica.

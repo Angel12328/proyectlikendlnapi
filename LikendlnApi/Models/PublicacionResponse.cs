@@ -5,6 +5,7 @@ namespace LikendlnApi.Models
 {
     public class PublicacionResponse
     {
+        public int IdPublicacion { get; set; }
         public int? IdCandidato { get; set; }
         public int? IdEmpresa { get; set; }
         public string Contenido { get; set; }

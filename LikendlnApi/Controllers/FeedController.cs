@@ -59,6 +59,7 @@ namespace LikendlnApi.Controllers
                 .Select(
                     p => new PublicacionResponse
                     {
+                        IdPublicacion = p.Id,
                         FechaPublicacion = p.FechaPublicacion,
                         ImagenPublicacion = p.ImagenURL,
                         IdCandidato = (int)p.IdCandidato,
