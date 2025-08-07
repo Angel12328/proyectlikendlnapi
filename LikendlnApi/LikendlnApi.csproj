@@ -193,6 +193,7 @@
     <Compile Include="Controllers\MensajeEmpresarialController.cs" />
     <Compile Include="Controllers\MensajePrivadoController.cs" />
     <Compile Include="Controllers\MiembroGrupoController.cs" />
+    <Compile Include="Controllers\MiRedController.cs" />
     <Compile Include="Controllers\NotificacionMensajeController.cs" />
     <Compile Include="Controllers\OfertaLaboralController.cs" />
     <Compile Include="Controllers\ParticipanteChatController.cs" />
@@ -229,6 +230,9 @@
     <Compile Include="Models\MensajeEmpresarial.cs" />
     <Compile Include="Models\MensajePrivado.cs" />
     <Compile Include="Models\MiembroGrupo.cs" />
+    <Compile Include="Models\MiRedDataCCCResponse.cs" />
+    <Compile Include="Models\MiRedDataCECResponse.cs" />
+    <Compile Include="Models\MiRedResponse.cs" />
     <Compile Include="Models\NotificacionMensaje.cs" />
     <Compile Include="Models\OfertaLaboral.cs" />
     <Compile Include="Models\ParticipanteChat.cs" />

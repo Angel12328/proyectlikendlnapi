@@ -56,6 +56,9 @@ namespace LikendlnApi.Controllers
         }
 
 
+
+
+
         /// <summary>
         /// obtiene todas las publicaciones con sus comentarios de un candidato 
         /// </summary>

@@ -242,7 +242,6 @@ namespace LikendlnApi.Controllers
             {
                 await db.SaveChangesAsync();
                 
-
             }
             catch (Exception)
             {
