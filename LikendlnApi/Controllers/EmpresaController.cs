@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using LikendlnApi.Models;
+using LikendlnApi.Models.DtoEmpresa;
+using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using LikendlnApi.Models;
 
 namespace LikendlnApi.Controllers
 {
@@ -17,30 +15,22 @@ namespace LikendlnApi.Controllers
     {
         private readonly DbContextProyect db = new DbContextProyect();
 
-        /// <summary>
-        /// Obtiene todas las empresas.
-        /// </summary>
-        /// <returns>Una lista de empresas.</returns>
         // GET: api/Empresa
-        public IQueryable<Empresa> GetEmpresas()
+        public IQueryable<EmpresaDto> GetEmpresas()
         {
-            return db.Empresas;
+            return db.Empresas.Select(e => new EmpresaDto
+            {
+                ID = e.ID,
+                NombreEmpresa = e.NombreEmpresa,
+                Correo = e.CorreoElectronico,
+                SitioWeb = e.SitioWeb,
+                Descripcion = e.Descripcion,
+                IdUsuario = e.IdUsuario
+            });
         }
-        /// <summary>
-        /// Obtiene una empresa por su  id.
-        /// </summary>
-        /// <remarks>
-        /// Ejemplo de solicitud:
-        ///
-        ///     // GET: api/Empresa/5
-        ///
-        /// </remarks>
-        /// <param name="id">El id para buscar la empresa.</param>
-        /// <returns>Informacion de la empresa</returns>
-        /// <response code="200">Devuelve la empresa encontrada</response>
-        /// <response code="404">Si la empresa no es encontrada</response>
+
         // GET: api/Empresa/5
-        [ResponseType(typeof(Empresa))]
+        [ResponseType(typeof(EmpresaDto))]
         public async Task<IHttpActionResult> GetEmpresa(int id)
         {
             Empresa empresa = await db.Empresas.FindAsync(id);
@@ -49,38 +39,39 @@ namespace LikendlnApi.Controllers
                 return NotFound();
             }
 
-            return Ok(empresa);
+            var dto = new EmpresaDto
+            {
+                ID = empresa.ID,
+                NombreEmpresa = empresa.NombreEmpresa,
+                Correo = empresa.CorreoElectronico,
+                SitioWeb = empresa.SitioWeb,
+                Descripcion = empresa.Descripcion,
+                IdUsuario = empresa.IdUsuario
+            };
+
+            return Ok(dto);
         }
-        /// <summary>
-        /// Actualiza completamente una empresa .
-        /// </summary>
-        /// <remarks>
-        /// Ejemplo de solicitud:
-        ///
-        ///     // PUT: api/Empresa/5
-        ///
-        /// </remarks>
-        /// <param name="id">El id de la empresa a actualizar.</param>
-        /// <param name="empresa">La informacion de la empresa a reemplazar</param>
-        /// <returns>Vacio si el proceso es hecho con exito</returns>
-        /// <response code="400">Los datos ingresados no estan completos</response>
-        /// <response code="400">Si el id a actualizar no coincide con el id de informacion a modificar</response>
-        /// <response code="404">Si la empresa a modificar no fue encontrada</response>
-        /// <response code="204">Si la empresa fue modificada</response>
-        
+
         // PUT: api/Empresa/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutEmpresa(int id, Empresa empresa)
+        public async Task<IHttpActionResult> PutEmpresa(int id, CrearEmpresaDto dto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != empresa.ID)
+            Empresa empresa = await db.Empresas.FindAsync(id);
+            if (empresa == null)
             {
-                return BadRequest();
+                return NotFound();
             }
+
+            empresa.NombreEmpresa = dto.NombreEmpresa;
+            empresa.CorreoElectronico = dto.Correo;
+            empresa.SitioWeb = dto.SitioWeb;
+            empresa.Descripcion = dto.Descripcion;
+            empresa.IdUsuario = dto.IdUsuario;
 
             db.Entry(empresa).State = EntityState.Modified;
 
@@ -102,49 +93,51 @@ namespace LikendlnApi.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-        /// <summary>
-        /// Crea una empresa.
-        /// </summary>
-        /// <remarks>
-        /// Ejemplo de solicitud:
-        ///
-        ///     // POST: api/Empresa
-        ///
-        /// </remarks>
-        /// <param name="empresa">La informacion de la empresa a crear</param>
-        /// <returns>La</returns>
-        /// <response code="400">Los datos ingresados no estan completos</response>
-        /// <response code="200">La empresa fue creada</response>
+
         // POST: api/Empresa
-        [ResponseType(typeof(Empresa))]
-        public async Task<IHttpActionResult> PostEmpresa(Empresa empresa)
+        [HttpPost]
+        [ResponseType(typeof(EmpresaDto))]
+        public async Task<IHttpActionResult> PostEmpresa(CrearEmpresaDto dto)
         {
             if (!ModelState.IsValid)
+                return BadRequest("Datos inválidos");
+
+            var nueva = new Empresa
             {
-                return BadRequest(ModelState);
+                IdUsuario = dto.IdUsuario,
+                NombreEmpresa = dto.NombreEmpresa,
+                CorreoElectronico = dto.Correo,
+                SitioWeb = dto.SitioWeb,
+                Descripcion = dto.Descripcion,
+                FechaCreacion = DateTime.Now
+            };
+
+            db.Empresas.Add(nueva);
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
             }
 
-            db.Empresas.Add(empresa);
-            await db.SaveChangesAsync();
+            var resultDto = new EmpresaDto
+            {
+                ID = nueva.ID,
+                NombreEmpresa = nueva.NombreEmpresa,
+                Correo = nueva.CorreoElectronico,
+                SitioWeb = nueva.SitioWeb,
+                Descripcion = nueva.Descripcion,
+                IdUsuario = nueva.IdUsuario
+            };
 
-            return CreatedAtRoute("DefaultApi", new { id = empresa.ID }, empresa);
+            return CreatedAtRoute("DefaultApi", new { id = nueva.ID }, resultDto);
         }
 
-        /// <summary>
-        /// Elimina una empresa por su  id.
-        /// </summary>
-        /// <remarks>
-        /// Ejemplo de solicitud:
-        ///
-        ///     // DELETE: api/Empresa/5
-        ///
-        /// </remarks>
-        /// <param name="id">El id de empresa a eliminar.</param>
-        /// <returns>La informacion de la empresa eliminada</returns>
-        /// <response code="200">Devuelve la empresa eliminada</response>
-        /// <response code="404">La empresa no fue encontrada</response>
         // DELETE: api/Empresa/5
-        [ResponseType(typeof(Empresa))]
+        [ResponseType(typeof(EmpresaDto))]
         public async Task<IHttpActionResult> DeleteEmpresa(int id)
         {
             Empresa empresa = await db.Empresas.FindAsync(id);
@@ -156,7 +149,15 @@ namespace LikendlnApi.Controllers
             db.Empresas.Remove(empresa);
             await db.SaveChangesAsync();
 
-            return Ok(empresa);
+            return Ok(new EmpresaDto
+            {
+                ID = empresa.ID,
+                NombreEmpresa = empresa.NombreEmpresa,
+                Correo = empresa.CorreoElectronico,
+                SitioWeb = empresa.SitioWeb,
+                Descripcion = empresa.Descripcion,
+                IdUsuario = empresa.IdUsuario
+            });
         }
 
         protected override void Dispose(bool disposing)
@@ -170,7 +171,7 @@ namespace LikendlnApi.Controllers
 
         private bool EmpresaExists(int id)
         {
-            return db.Empresas.Count(e => e.ID == id) > 0;
+            return db.Empresas.Any(e => e.ID == id);
         }
     }
 }

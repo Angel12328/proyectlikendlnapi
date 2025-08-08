@@ -221,6 +221,10 @@
     <Compile Include="Models\ComentarioResponse.cs" />
     <Compile Include="Models\Curso.cs" />
     <Compile Include="Models\DbContextProyect.cs" />
+    <Compile Include="Models\DtoEmpresa\CrearEmpresaDto.cs" />
+    <Compile Include="Models\DtoEmpresa\EmpresaDto.cs" />
+    <Compile Include="Models\DtoOfertaLbrl\CrearOfertaDto.cs" />
+    <Compile Include="Models\DtoOfertaLbrl\DtoOfertaLaboral.cs" />
     <Compile Include="Models\Empresa.cs" />
     <Compile Include="Models\ExperienciaLaboral.cs" />
     <Compile Include="Models\FeedResponse.cs" />
@@ -235,6 +239,7 @@
     <Compile Include="Models\MiRedResponse.cs" />
     <Compile Include="Models\NotificacionMensaje.cs" />
     <Compile Include="Models\OfertaLaboral.cs" />
+    <Compile Include="Models\OfertaLaboralDto.cs" />
     <Compile Include="Models\ParticipanteChat.cs" />
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\Publicacion.cs" />
