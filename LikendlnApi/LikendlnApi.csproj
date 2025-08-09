@@ -226,6 +226,7 @@
     <Compile Include="Models\FeedResponse.cs" />
     <Compile Include="Models\Grupo.cs" />
     <Compile Include="Models\Habilidad.cs" />
+    <Compile Include="Models\LikeRequest.cs" />
     <Compile Include="Models\MensajeBase.cs" />
     <Compile Include="Models\MensajeEmpresarial.cs" />
     <Compile Include="Models\MensajePrivado.cs" />
@@ -251,6 +252,8 @@
     <Compile Include="Models\ChatParticipante.cs" />
     <Compile Include="Models\EmpresaSeguidorCandidato.cs" />
     <Compile Include="Models\EmpresaSeguidorEmpresa.cs" />
+    <Compile Include="Models\SCMiRedRequest.cs" />
+    <Compile Include="Models\SEMiRedRequest.cs" />
     <Compile Include="Models\SolicitudEmpleo.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

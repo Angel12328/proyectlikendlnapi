@@ -15,23 +15,23 @@ namespace LikendlnApi.Controllers
 {
     public class MiRedController : ApiController
     {
-        private DbContextProyect db = new DbContextProyect();
+        private readonly DbContextProyect db = new DbContextProyect();
 
-        // GET: api/MiRed
+        // GET: api/MiRed%
         public IQueryable<Candidato> GetCandidatos()
         {
             return db.Candidatos;
         }
 
         // GET: api/MiRed/5
-        [ResponseType(typeof(Candidato))]
+        [ResponseType(typeof(MiRedResponse))]
         public async Task<IHttpActionResult> GetMiRed(int id)
         {
             MiRedResponse miRedResponse = new MiRedResponse();
             var candidatoConexiones = await db.CandidatoCandidatoConexiones
                 .Where(cc => cc.IdCandidato == id)
                 .Include(cc => cc.CandidatoConexion)
-
+                
                 .Select(cc => new MiRedDataCCCResponse
                 {
                     IdCandidato = cc.IdCandidatoConexion,
@@ -103,36 +103,55 @@ namespace LikendlnApi.Controllers
         // POST api/MiRed/SeguirCandidato
         [HttpPost]
         [Route("api/MiRed/SeguirCandidato")]
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> SeguirCandidatoMiRed(int id)
+        [ResponseType(typeof(bool))]
+        public async Task<IHttpActionResult> SeguirCandidatoMiRed([FromBody]SCMiRedRequest scMiRedRequest)
         {
-            var candidato = await db.Candidatos.FindAsync(id);
+            int idCandidatoSeguido = scMiRedRequest.IdCandidatoSeguido;
+            int idCandidtoSeguidor = scMiRedRequest.IdCandidtoSeguidor;
+            var candidato = await db.Candidatos.FindAsync(idCandidatoSeguido);
             if (candidato == null)
             {
                 return NotFound();
             }
+            CandidatoCandidatoConexiones _registro = await CandidatosSiguenExists(idCandidatoSeguido, idCandidtoSeguidor);
+            if (_registro.ID>=0)
+            {
+                candidato.Seguidores++;
+                db.Entry(candidato).State = EntityState.Modified;
+                db.CandidatoSeguidoresCandidatos.Add(new CandidatoSeguidorCandidato
+                {
+                    IdCandidato = idCandidatoSeguido,
+                    IdSeguidor = idCandidtoSeguidor
+                });
+                //Elimina con la conexion porque el cadidato es seguidor
+                db.CandidatoCandidatoConexiones.Remove(_registro);
+                try
+                {
+
+                    await db.SaveChangesAsync();
+
+
+                }
+                catch (Exception)
+                {
+                    if (!CandidatoExists(idCandidatoSeguido))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return Ok(true);
+
+            }
             candidato.Seguidores++;
             db.Entry(candidato).State = EntityState.Modified;
-            try
-            {
-                await db.SaveChangesAsync();
-
-
-            }
-            catch (Exception)
-            {
-                if (!CandidatoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(false);
 
         }
+
 
         /// <summary>
         /// aumenta los seguidores de una empresa
@@ -141,34 +160,50 @@ namespace LikendlnApi.Controllers
         // POST api/MiRed/SeguirCandidato
         [HttpPost]
         [Route("api/MiRed/SeguirEmpresa")]
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> SeguirEmpresaMiRed(int id)
+        [ResponseType(typeof(bool))]
+        public async Task<IHttpActionResult> SeguirEmpresaMiRed(int idEmpresaSeguida, int idCandidatoSeguidor)
         {
-            var candidato = await db.Candidatos.FindAsync(id);
-            if (candidato == null)
+            var empresa = await db.Empresas.FindAsync(idEmpresaSeguida);
+            if (empresa == null)
             {
                 return NotFound();
             }
-            candidato.Seguidores++;
-            db.Entry(candidato).State = EntityState.Modified;
-            try
+            
+            CandidatoEmpresaConexiones _registro = await EmpresaSiguenExists(idEmpresaSeguida, idCandidatoSeguidor);
+            if (_registro.Id>=0)
             {
-                await db.SaveChangesAsync();
+                empresa.Seguidores++;
+                db.Entry(empresa).State = EntityState.Modified;
+                db.CandidatosSeguidoresEmpresas.Add(new CandidatoSeguidorEmpresa
+                {
+                    IdEmpresa = idEmpresaSeguida,
+                    IdCandidato = idCandidatoSeguidor
+                });
+                //Elimina la conexion ya que ahora es seguidor
+                
+                db.CandidatoEmpresaConexiones.Remove(_registro);
+                try
+                {
+                    await db.SaveChangesAsync();
 
 
-            }
-            catch (Exception)
-            {
-                if (!EmpresaExists(id))
-                {
-                    return NotFound();
                 }
-                else
+                catch (Exception)
                 {
-                    throw;
+                    if (!EmpresaExists(idEmpresaSeguida))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
+                return Ok(true);
             }
-            return StatusCode(HttpStatusCode.NoContent);
+            empresa.Seguidores++;
+            db.Entry(empresa).State = EntityState.Modified;
+            return Ok(false);
 
         }
 
@@ -216,7 +251,22 @@ namespace LikendlnApi.Controllers
         {
             return db.Candidatos.Count(e => e.Id == id) > 0;
         }
+        private async Task<CandidatoCandidatoConexiones> CandidatosSiguenExists(int idCandidatoSeguido,int idCandidatoSegudor )
+        {
+            //bool seguido = db.CandidatoSeguidoresCandidatos.Count(e => (e.IdCandidato == idCandidatoSeguido && e.IdSeguidor == idCandidatoSegudor)) > 0;
+            return await db.CandidatoCandidatoConexiones
+                .FirstOrDefaultAsync(e => (e.IdCandidato == idCandidatoSegudor && e.IdCandidatoConexion == idCandidatoSeguido));
+   
+            
+        }
+        private async Task<CandidatoEmpresaConexiones> EmpresaSiguenExists(int idEmpresaSeguida, int idCandidatoSeguidor)
+        {
+            //return db.CandidatosSeguidoresEmpresas.Count(e => (e.IdEmpresa == idEmpresaSeguida && e.IdCandidato==idCandidatoSeguidor)) > 0;
 
+            return await db.CandidatoEmpresaConexiones
+                .FirstOrDefaultAsync(e => (e.IdEmpresa == idEmpresaSeguida && e.IdCandidato == idCandidatoSeguidor));
+
+        }
         private bool EmpresaExists(int id)
         {
             return db.Empresas.Count(e => e.ID == id) > 0;

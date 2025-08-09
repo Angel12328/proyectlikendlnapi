@@ -9,7 +9,7 @@ namespace LikendlnApi.Models
     {
         public int IdCandidato { get; set; }        
         public string Contenido { get; set; }
-        public DateTime FechaPublicacion { get; set; }
+        
         public string ImagenURL { get; set; }
     }
 }

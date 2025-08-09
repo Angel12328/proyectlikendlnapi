@@ -40,7 +40,7 @@ namespace LikendlnApi.Controllers
         {
             DateTime Hoy = DateTime.Now;
             var publicaciones = await db.Publicaciones
-                .Where(p => (Hoy-p.FechaPublicacion).TotalDays<=180) // Filtrar publicaciones de los últimos 180 días
+                .Where(p => (Hoy - p.FechaPublicacion).TotalDays <= 180) // Filtrar publicaciones de los últimos 180 días
                 .Include(p => p.Candidato)
                 .Include(p => p.Empresa)
                 .Include(p => p.Comentarios.Select(com => com.AutorCandidato))
@@ -204,14 +204,14 @@ namespace LikendlnApi.Controllers
                 var publicacion = new Publicacion
                 {
                     Contenido = publicacionRequest.Contenido,
-                    FechaPublicacion = publicacionRequest.FechaPublicacion,
+                    FechaPublicacion = DateTime.Now,
                     IdCandidato = publicacionRequest.IdCandidato,
-                   
+
                 };
                 db.Publicaciones.Add(publicacion);
                 await db.SaveChangesAsync();
                 return Created(new Uri($"{Request.RequestUri}/Crear/{publicacion.Id}"), publicacion);
-            
+
 
             }
             catch (Exception ex)
@@ -229,23 +229,130 @@ namespace LikendlnApi.Controllers
         [HttpPost]
         [Route("api/Publicacion/Like")]
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> LikePublicacion(int id)
+        public async Task<IHttpActionResult> LikePublicacion(LikeRequest likeRequest)
         {
-            var publicacion = await db.Publicaciones.FindAsync(id);
+
+            int idPublicacion = likeRequest.IdPublicacion;
+            int idCandidatoLog = likeRequest.IdCandidatoLog;
+            var publicacion = await db.Publicaciones.FindAsync(idPublicacion);
             if (publicacion == null)
             {
                 return NotFound();
             }
             publicacion.CantidadMeGusta++;
             db.Entry(publicacion).State = EntityState.Modified;
+            //Si la publicacion es de un candidato
+            if (publicacion.IdEmpresa == null)
+            {
+                if (publicacion.IdCandidato == idCandidatoLog)
+                {
+                    try
+                    {
+                        await db.SaveChangesAsync();
+
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+
+                    }
+
+                    return StatusCode(HttpStatusCode.NoContent);
+                }
+
+                if (!ConexionCCExists(idCandidatoLog, (int)publicacion.IdCandidato))
+                {
+                    if (!EstoyseguiendoCandidato(idCandidatoLog, publicacion.IdCandidato.Value))
+                    {
+                        db.CandidatoCandidatoConexiones.Add(new CandidatoCandidatoConexiones
+                        {
+                            IdCandidato = idCandidatoLog,
+                            IdCandidatoConexion = publicacion.IdCandidato.Value
+
+                        });
+                        try
+                        {
+                            await db.SaveChangesAsync();
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                        return StatusCode(HttpStatusCode.NoContent);
+                    }
+
+                    try
+                    {
+                        await db.SaveChangesAsync();
+
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                    return StatusCode(HttpStatusCode.NoContent);
+                }
+
+
+                try
+                {
+                    await db.SaveChangesAsync();
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+
+                }
+                return StatusCode(HttpStatusCode.NoContent);
+            }
+
+
+            if (!ConexionCEExists(idCandidatoLog, (int)publicacion.IdEmpresa))
+            {
+                if (!EstoyseguiendoEmpresa(idCandidatoLog, publicacion.IdEmpresa.Value))
+                {
+                    db.CandidatoEmpresaConexiones.Add(new CandidatoEmpresaConexiones
+                    {
+                        IdCandidato = idCandidatoLog,
+                        IdEmpresa = publicacion.IdEmpresa.Value
+                    });
+                    try
+                    {
+                        await db.SaveChangesAsync();
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                    return StatusCode(HttpStatusCode.NoContent);
+                }
+
+                try
+                {
+                    await db.SaveChangesAsync();
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+
+                }
+                return StatusCode(HttpStatusCode.NoContent);
+            }
+
+
             try
             {
                 await db.SaveChangesAsync();
-                
+
             }
             catch (Exception)
             {
-                if (!PublicacionExists(id))
+                if (!PublicacionExists(idPublicacion))
                 {
                     return NotFound();
                 }
@@ -302,6 +409,25 @@ namespace LikendlnApi.Controllers
         private bool PublicacionExists(int id)
         {
             return db.Publicaciones.Count(e => e.Id == id) > 0;
+        }
+
+        private bool ConexionCCExists(int idCandidato, int idCandidatoConexion)
+        {
+            return db.CandidatoCandidatoConexiones.Count(e => e.IdCandidato == idCandidato && e.IdCandidatoConexion == idCandidatoConexion) > 0;
+        }
+        private bool ConexionCEExists(int idCandidato, int idEmpresaConexion)
+        {
+            return db.CandidatoEmpresaConexiones.Count(e => e.IdCandidato == idCandidato && e.IdEmpresa == idEmpresaConexion) > 0;
+        }
+
+        private bool EstoyseguiendoCandidato(int idCandidatLog, int idCandidatoPublicacion)
+        {
+            return db.CandidatoSeguidoresCandidatos.Count(e => e.IdCandidato == idCandidatoPublicacion && e.IdSeguidor == idCandidatLog) > 0;
+        }
+
+        private bool EstoyseguiendoEmpresa(int idCandidatLog, int idEmpresaPublicacion)
+        {
+            return db.CandidatosSeguidoresEmpresas.Count(e => e.IdEmpresa == idEmpresaPublicacion && e.IdCandidato == idCandidatLog) > 0;
         }
     }
 }

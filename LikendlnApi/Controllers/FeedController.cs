@@ -25,7 +25,7 @@ namespace LikendlnApi.Controllers
             //trae la información del candidato
             FeedResponse feedResponse = new FeedResponse();
             var candidato = await (from item in db.Candidatos
-                                   where item.Id == id
+                                   where item.Id == id 
                                    select new
                                    {
                                        _Id = item.Id,
@@ -50,7 +50,7 @@ namespace LikendlnApi.Controllers
 
             DateTime Hoy = DateTime.Now;
             var publicaciones = await db.Publicaciones
-                .Where(p => DbFunctions.DiffDays(p.FechaPublicacion, Hoy) <= 180) // Filtrar publicaciones de los últimos 180 días
+                .Where(p => DbFunctions.DiffDays(p.FechaPublicacion, Hoy) <= 180 && p.IdCandidato!=id) // Filtrar publicaciones de los últimos 180 días
                 .Include(p => p.Candidato)
                 .Include(p => p.Empresa)
                 .Include(p => p.Comentarios)
