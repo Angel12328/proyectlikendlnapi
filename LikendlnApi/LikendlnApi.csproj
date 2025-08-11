@@ -196,6 +196,7 @@
     <Compile Include="Controllers\MiRedController.cs" />
     <Compile Include="Controllers\NotificacionMensajeController.cs" />
     <Compile Include="Controllers\OfertaLaboralController.cs" />
+    <Compile Include="Controllers\OfertaLaboralHabilidadsController.cs" />
     <Compile Include="Controllers\ParticipanteChatController.cs" />
     <Compile Include="Controllers\PublicacionController.cs" />
     <Compile Include="Controllers\RecomendacionController.cs" />
@@ -213,6 +214,10 @@
     <Compile Include="Migrations\202508040110380_migpe2.Designer.cs">
       <DependentUpon>202508040110380_migpe2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202508110135199_Migracion8Agosto2.cs" />
+    <Compile Include="Migrations\202508110135199_Migracion8Agosto2.Designer.cs">
+      <DependentUpon>202508110135199_Migracion8Agosto2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Candidato.cs" />
     <Compile Include="Models\Chat.cs" />
@@ -221,11 +226,13 @@
     <Compile Include="Models\ComentarioResponse.cs" />
     <Compile Include="Models\Curso.cs" />
     <Compile Include="Models\DbContextProyect.cs" />
+    <Compile Include="Models\EmpleosController.cs" />
     <Compile Include="Models\Empresa.cs" />
     <Compile Include="Models\ExperienciaLaboral.cs" />
     <Compile Include="Models\FeedResponse.cs" />
     <Compile Include="Models\Grupo.cs" />
     <Compile Include="Models\Habilidad.cs" />
+    <Compile Include="Models\HabilidadResponse.cs" />
     <Compile Include="Models\LikeRequest.cs" />
     <Compile Include="Models\MensajeBase.cs" />
     <Compile Include="Models\MensajeEmpresarial.cs" />
@@ -236,6 +243,8 @@
     <Compile Include="Models\MiRedResponse.cs" />
     <Compile Include="Models\NotificacionMensaje.cs" />
     <Compile Include="Models\OfertaLaboral.cs" />
+    <Compile Include="Models\OfertaLaboralHabilidad.cs" />
+    <Compile Include="Models\OfertasLaboralesResponse.cs" />
     <Compile Include="Models\ParticipanteChat.cs" />
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\Publicacion.cs" />
@@ -404,6 +413,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202508040110380_migpe2.resx">
       <DependentUpon>202508040110380_migpe2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202508110135199_Migracion8Agosto2.resx">
+      <DependentUpon>202508110135199_Migracion8Agosto2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

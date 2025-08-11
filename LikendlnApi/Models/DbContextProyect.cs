@@ -50,6 +50,7 @@ namespace LikendlnApi.Models
         public DbSet<EmpresaSeguidorCandidato> EmpresaSeguidoresCandidatos { get; set; }
         public DbSet<EmpresaSeguidorEmpresa> EmpresaSeguidoresEmpresas { get; set; }
         public DbSet<ChatParticipante> ChatParticipantes { get; set; }
+        public DbSet<OfertaLaboralHabilidad> OfertasLaboralesHabilidades { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -243,17 +244,6 @@ namespace LikendlnApi.Models
                 .HasForeignKey(csc => csc.IdCreadorEmpresa)
                 .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
 
-            //Habilidad
-            modelBuilder.Entity<Habilidad>()
-                .HasRequired(c => c.Candidato)
-                .WithMany()
-                .HasForeignKey(csc => csc.IdCandidato)
-                .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
-            modelBuilder.Entity<Habilidad>()
-                .HasRequired(c => c.OfertaLaboral)
-                .WithMany()
-                .HasForeignKey(csc => csc.IdOfertaLaboral)
-                .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
 
             //MensajeBase
             modelBuilder.Entity<MensajeBase>()
@@ -589,6 +579,12 @@ namespace LikendlnApi.Models
                 .WithRequired(of => of.OfertaLaboral )
                 .HasForeignKey(of => of.IdOfertaLaboral);
 
+            //OfertaLaboral -> Habilidad
+            modelBuilder.Entity<OfertaLaboral>()
+                .HasMany(h => h.HabilidadesRequeridas)
+                .WithRequired(h => h.OfertaLaboral)
+                .HasForeignKey(h => h.IdOfertaLaboral);
+
             //ParticipanteChat
 
             //uno a muchos
@@ -616,6 +612,16 @@ namespace LikendlnApi.Models
                 .HasMany(u => u.Empresas)
                 .WithRequired(e => e.Usuario)
                 .HasForeignKey(e => e.IdUsuario);
+
+            //Habilidad
+            //muchos a muchos
+            //Habilidad -> OfertaLaboralHabilidad
+            modelBuilder.Entity<Habilidad>()
+                .HasMany(olh => olh.HabilidadesRequeridas)
+                .WithRequired(h => h.Habilidad)
+                .HasForeignKey(h => h.IdHabilidad);
+
+
         }
 
 

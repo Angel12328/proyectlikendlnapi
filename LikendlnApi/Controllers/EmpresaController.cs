@@ -123,7 +123,7 @@ namespace LikendlnApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            empresa.FechaCreacion = DateTime.Now; // Asignar la fecha de creación actual
             db.Empresas.Add(empresa);
             await db.SaveChangesAsync();
 

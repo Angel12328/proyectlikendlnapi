@@ -28,7 +28,7 @@ namespace LikendlnApi.Controllers
         }
 
         /// <summary>
-        /// Obtiene una oferta laboral específica.
+        /// Obtiene un conjunto de ofertas laborales.
         /// </summary>
         /// <remarks>
         /// Ejemplo de solicitud:
@@ -36,7 +36,7 @@ namespace LikendlnApi.Controllers
         ///     // GET: api/OfertaLaboral/5
         ///
         /// </remarks>
-        /// <param name="id">El id de la oferta laboral a obtener</param>
+        /// <param name="idlog">El id de la oferta laboral a obtener</param>
         /// <returns>Información de la oferta laboral</returns>
         /// <response code="404">Si la oferta laboral no fue encontrada</response>
         /// <response code="200">Si la oferta laboral fue encontrada</response>
@@ -52,6 +52,7 @@ namespace LikendlnApi.Controllers
 
             return Ok(ofertaLaboral);
         }
+
 
         /// <summary>
         /// Actualiza completamente una oferta laboral.
