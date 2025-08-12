@@ -65,31 +65,31 @@ namespace LikendlnApi.Controllers
             return Ok(dto);
         }
 
-        // POST: api/OfertaLaboral
-        [HttpPost]
-        [ResponseType(typeof(OfertaLaboral))]
-        public async Task<IHttpActionResult> Post(CrearOfertaDto dto)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+        //// POST: api/OfertaLaboral
+        //[HttpPost]
+        //[ResponseType(typeof(OfertaLaboral))]
+        //public async Task<IHttpActionResult> Post(CrearOfertaDto dto)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return BadRequest(ModelState);
 
-            var nueva = new OfertaLaboral
-            {
-                Titulo = dto.Titulo,
-                Ubicacion = dto.Ubicacion,
-                TipoContrato = dto.TipoContrato,
-                SalarioMin = dto.SalarioMin,
-                SalarioMax = dto.SalarioMax,
-                Descripcion = dto.Descripcion,
-                FechaPublicacion = DateTime.Now,
-                IdEmpresa = dto.IdEmpresa,
-            };
+        //    var nueva = new OfertaLaboral
+        //    {
+        //        Titulo = dto.Titulo,
+        //        Ubicacion = dto.Ubicacion,
+        //        TipoContrato = dto.TipoContrato,
+        //        SalarioMin = dto.SalarioMin,
+        //        SalarioMax = dto.SalarioMax,
+        //        Descripcion = dto.Descripcion,
+        //        FechaPublicacion = DateTime.Now,
+        //        IdEmpresa = dto.IdEmpresa,
+        //    };
 
-            db.OfertasLaborales.Add(nueva);
-            await db.SaveChangesAsync();
+        //    db.OfertasLaborales.Add(nueva);
+        //    await db.SaveChangesAsync();
 
-            return Ok(nueva);
-        }
+        //    return Ok(nueva);
+        //}
 
         // PUT: api/OfertaLaboral/5
         [HttpPut]
@@ -125,6 +125,46 @@ namespace LikendlnApi.Controllers
             await db.SaveChangesAsync();
 
             return Ok(oferta);
+        }
+
+        // POST: api/OfertaLaboral
+        [HttpPost]
+        [ResponseType(typeof(OfertaLaboral))]
+        public async Task<IHttpActionResult> Post(CrearOfertaLaboralDto dto)
+        {
+            var minSql = new DateTime(1753, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
+            // Normalizar FechaPublicacion
+            var pub = dto.FechaPublicacion;
+            if (pub.Kind == DateTimeKind.Unspecified) pub = DateTime.SpecifyKind(pub, DateTimeKind.Utc);
+            if (pub.Kind == DateTimeKind.Local) pub = pub.ToUniversalTime();
+            if (pub < minSql) pub = minSql;
+
+            // Normalizar FechaExpiracion (si no viene, asigna +30 días)
+            var exp = dto.FechaExpiracion;
+            if (exp == default(DateTime)) exp = pub.AddDays(30);
+            if (exp.Kind == DateTimeKind.Unspecified) exp = DateTime.SpecifyKind(exp, DateTimeKind.Utc);
+            if (exp.Kind == DateTimeKind.Local) exp = exp.ToUniversalTime();
+            if (exp < minSql) exp = minSql;
+
+            var oferta = new OfertaLaboral
+            {
+                IdEmpresa = dto.IdEmpresa,
+                Titulo = dto.Titulo,
+                Descripcion = dto.Descripcion,
+                Ubicacion = dto.Ubicacion,
+                TipoContrato = dto.TipoContrato,
+                SalarioMin = dto.SalarioMin,
+                SalarioMax = dto.SalarioMax,
+                FechaPublicacion = pub,
+                FechaExpiracion = exp,
+                Disponible = dto.Disponible
+            };
+
+            db.OfertasLaborales.Add(oferta);
+            await db.SaveChangesAsync();
+
+            return Ok(new { oferta.ID });
         }
 
         protected override void Dispose(bool disposing)

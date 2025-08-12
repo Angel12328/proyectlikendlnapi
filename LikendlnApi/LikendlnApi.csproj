@@ -176,6 +176,7 @@
     <Compile Include="Controllers\CandidatoGrupoController.cs" />
     <Compile Include="Controllers\CandidatoHabilidadController.cs" />
     <Compile Include="Controllers\CandidatoOfertaLaboralsController.cs" />
+    <Compile Include="Controllers\CandidatoPruebaController.cs" />
     <Compile Include="Controllers\CandidatoSeguidorCandidatoController.cs" />
     <Compile Include="Controllers\CandidatoSeguidorEmpresaController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
@@ -196,6 +197,7 @@
     <Compile Include="Controllers\MiRedController.cs" />
     <Compile Include="Controllers\NotificacionMensajeController.cs" />
     <Compile Include="Controllers\OfertaLaboralController.cs" />
+    <Compile Include="Controllers\OfertaLaboralHabilidadesController.cs" />
     <Compile Include="Controllers\ParticipanteChatController.cs" />
     <Compile Include="Controllers\PublicacionController.cs" />
     <Compile Include="Controllers\RecomendacionController.cs" />
@@ -213,6 +215,10 @@
     <Compile Include="Migrations\202508040110380_migpe2.Designer.cs">
       <DependentUpon>202508040110380_migpe2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202508110229510_Migracion8Agosto2.cs" />
+    <Compile Include="Migrations\202508110229510_Migracion8Agosto2.Designer.cs">
+      <DependentUpon>202508110229510_Migracion8Agosto2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Candidato.cs" />
     <Compile Include="Models\Chat.cs" />
@@ -224,7 +230,21 @@
     <Compile Include="Models\DtoEmpresa\CrearEmpresaDto.cs" />
     <Compile Include="Models\DtoEmpresa\EmpresaDto.cs" />
     <Compile Include="Models\DtoOfertaLbrl\CrearOfertaDto.cs" />
+    <Compile Include="Models\DtoOfertaLbrl\CrearOfertaLaboralDto.cs" />
     <Compile Include="Models\DtoOfertaLbrl\DtoOfertaLaboral.cs" />
+    <Compile Include="Models\Dto_Candidato\CandidatoProfileDetailDto.cs" />
+    <Compile Include="Models\Dto_Candidato\CandidatoProfileHeaderDto.cs" />
+    <Compile Include="Models\Dto_Candidato\CandidatoProfileUpdateDto.cs" />
+    <Compile Include="Models\Dto_Candidato\CandidatoUpdateCvDto.cs" />
+    <Compile Include="Models\Dto_Candidato\CandidatoUpdateFotoDto.cs" />
+    <Compile Include="Models\Dto_Candidato\CrearCursoDto.cs" />
+    <Compile Include="Models\Dto_Candidato\CrearExperienciaLaboralDto.cs" />
+    <Compile Include="Models\Dto_Candidato\CrearPublicacionDto.cs" />
+    <Compile Include="Models\Dto_Candidato\CrearYAgregarHabilidadDto.cs" />
+    <Compile Include="Models\Dto_Candidato\CursoDto.cs" />
+    <Compile Include="Models\Dto_Candidato\ExperienciaLaboralDto.cs" />
+    <Compile Include="Models\Dto_Candidato\HabilidadDto.cs" />
+    <Compile Include="Models\Dto_Candidato\PublicacionResumenDto.cs" />
     <Compile Include="Models\Empresa.cs" />
     <Compile Include="Models\ExperienciaLaboral.cs" />
     <Compile Include="Models\FeedResponse.cs" />
@@ -240,6 +260,7 @@
     <Compile Include="Models\NotificacionMensaje.cs" />
     <Compile Include="Models\OfertaLaboral.cs" />
     <Compile Include="Models\OfertaLaboralDto.cs" />
+    <Compile Include="Models\OfertaLaboralHabilidad.cs" />
     <Compile Include="Models\ParticipanteChat.cs" />
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\Publicacion.cs" />
@@ -406,6 +427,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202508040110380_migpe2.resx">
       <DependentUpon>202508040110380_migpe2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202508110229510_Migracion8Agosto2.resx">
+      <DependentUpon>202508110229510_Migracion8Agosto2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

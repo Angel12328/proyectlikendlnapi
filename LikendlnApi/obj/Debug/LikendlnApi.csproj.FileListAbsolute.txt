@@ -184,11 +184,6 @@ C:\Users\angel\Source\Repos\proyectlikendlnapi\LikendlnApi\obj\Debug\LikendlnApi
 C:\Users\angel\Source\Repos\proyectlikendlnapi\LikendlnApi\obj\Debug\LikendlnApi.Migrations.migpe.resources
 C:\Users\angel\Source\Repos\proyectlikendlnapi\LikendlnApi\obj\Debug\LikendlnApi.csproj.GenerateResource.cache
 C:\Users\angel\Source\Repos\proyectlikendlnapi\LikendlnApi\obj\Debug\LikendlnApi.Migrations.migpe2.resources
-C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\obj\Debug\LikendlnApi.csproj.AssemblyReference.cache
-C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\obj\Debug\LikendlnApi.Migrations.migpe.resources
-C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\obj\Debug\LikendlnApi.Migrations.migpe2.resources
-C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\obj\Debug\LikendlnApi.csproj.GenerateResource.cache
-C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\obj\Debug\LikendlnApi.csproj.CoreCompileInputs.cache
 C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\bin\LikendlnApi.dll.config
 C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\bin\LikendlnApi.xml
 C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\bin\LikendlnApi.dll
@@ -276,6 +271,12 @@ C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\bin\System.Web.WebPages.
 C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\bin\System.Web.WebPages.Razor.xml
 C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\bin\Antlr3.Runtime.pdb
 C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\obj\Debug\LikendlnApi.csproj.AssemblyReference.cache
+C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\obj\Debug\LikendlnApi.Migrations.migpe.resources
+C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\obj\Debug\LikendlnApi.Migrations.migpe2.resources
+C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\obj\Debug\LikendlnApi.Migrations.Migracion8Agosto2.resources
+C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\obj\Debug\LikendlnApi.csproj.GenerateResource.cache
+C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\obj\Debug\LikendlnApi.csproj.CoreCompileInputs.cache
 C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\obj\Debug\Likendln.1EB67687.Up2Date
 C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\obj\Debug\LikendlnApi.dll
 C:\Users\USER\Documents\LinkedIn_Definitivo\LikendlnApi\obj\Debug\LikendlnApi.pdb

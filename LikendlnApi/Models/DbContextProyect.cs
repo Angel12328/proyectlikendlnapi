@@ -1,4 +1,5 @@
 ﻿
+
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -19,7 +20,7 @@ namespace LikendlnApi.Models
         public DbSet<Empresa> Empresas { get; set; }
         public DbSet<Candidato> Candidatos { get; set; }
         public DbSet<Habilidad> Habilidades { get; set; }
-        
+
         //public DbSet<MensajeBase> MensajeBases { get; set; }
         public DbSet<MensajePrivado> MensajesPrivados { get; set; }
         public DbSet<MensajeEmpresarial> MensajesEmpresariales { get; set; }
@@ -33,14 +34,14 @@ namespace LikendlnApi.Models
         public DbSet<Grupo> Grupos { get; set; }
         public DbSet<Chat> Chats { get; set; }
         public DbSet<ParticipanteChat> ParticipanteChats { get; set; }
-        
-        public  DbSet<Curso> Cursos { get; set; }
+
+        public DbSet<Curso> Cursos { get; set; }
         public DbSet<ExperienciaLaboral> ExperienciasLaborales { get; set; }
 
         public DbSet<SolicitudEmpleo> SolicitudEmpleos { get; set; }
 
         //DB Sets RELACIONES
-        public DbSet<CandidatoCandidatoConexiones> CandidatoCandidatoConexiones { get; set; } 
+        public DbSet<CandidatoCandidatoConexiones> CandidatoCandidatoConexiones { get; set; }
         public DbSet<CandidatoEmpresaConexiones> CandidatoEmpresaConexiones { get; set; }
         public DbSet<CandidatoOfertaLaboral> CandidatosOfertaLaborales { get; set; }
         public DbSet<CandidatoGrupo> CandidatosGrupos { get; set; }
@@ -50,12 +51,13 @@ namespace LikendlnApi.Models
         public DbSet<EmpresaSeguidorCandidato> EmpresaSeguidoresCandidatos { get; set; }
         public DbSet<EmpresaSeguidorEmpresa> EmpresaSeguidoresEmpresas { get; set; }
         public DbSet<ChatParticipante> ChatParticipantes { get; set; }
+        public DbSet<OfertaLaboralHabilidad> OfertasLaboralesHabilidades { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<MensajeEmpresarial>().ToTable("MensajesEmpresariales");
-            modelBuilder.Entity<MensajePrivado>().ToTable("MensajesPrivados");            
+            modelBuilder.Entity<MensajePrivado>().ToTable("MensajesPrivados");
             modelBuilder.Entity<Candidato>().ToTable("Candidatos");
             modelBuilder.Entity<Publicacion>().ToTable("Publicaciones");
 
@@ -233,27 +235,16 @@ namespace LikendlnApi.Models
                 .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
             //Grupo
             modelBuilder.Entity<Grupo>()
-                .HasOptional(c =>c.CreadorCandidato)
+                .HasOptional(c => c.CreadorCandidato)
                 .WithMany()
                 .HasForeignKey(csc => csc.IdCreadorCandidato)
                 .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
             modelBuilder.Entity<Grupo>()
-                .HasOptional(c =>c.CreadorEmpresa)
+                .HasOptional(c => c.CreadorEmpresa)
                 .WithMany()
                 .HasForeignKey(csc => csc.IdCreadorEmpresa)
                 .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
 
-            //Habilidad
-            modelBuilder.Entity<Habilidad>()
-                .HasRequired(c => c.Candidato)
-                .WithMany()
-                .HasForeignKey(csc => csc.IdCandidato)
-                .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
-            modelBuilder.Entity<Habilidad>()
-                .HasRequired(c => c.OfertaLaboral)
-                .WithMany()
-                .HasForeignKey(csc => csc.IdOfertaLaboral)
-                .WillCascadeOnDelete(false); // Evitar borrado en cascada para evitar problemas de integridad referencial
 
             //MensajeBase
             modelBuilder.Entity<MensajeBase>()
@@ -428,9 +419,9 @@ namespace LikendlnApi.Models
 
             //Candidato -> Publicacion
             modelBuilder.Entity<Candidato>()
-                .HasMany(c => c.Publicaciones )
-                .WithOptional(p=>p.Candidato)
-                .HasForeignKey(p=> p.IdCandidato);
+                .HasMany(c => c.Publicaciones)
+                .WithOptional(p => p.Candidato)
+                .HasForeignKey(p => p.IdCandidato);
             //Candidato -> Curso
             modelBuilder.Entity<Candidato>()
                 .HasMany(c => c.Cursos)
@@ -440,9 +431,9 @@ namespace LikendlnApi.Models
 
             //Candidato -> CandidatoOfertaLaboral
             modelBuilder.Entity<Candidato>()
-                .HasMany(co=> co.CandidadtosOfertas)
-                .WithRequired(c=>c.Candidato)
-                .HasForeignKey(c=>c.IdCandidato);
+                .HasMany(co => co.CandidadtosOfertas)
+                .WithRequired(c => c.Candidato)
+                .HasForeignKey(c => c.IdCandidato);
 
             //Candidato -> CandidatoGrupo
 
@@ -497,7 +488,7 @@ namespace LikendlnApi.Models
                 .HasMany(m => m.Mensajes)
                 .WithRequired(ch => ch.Chat)
                 .HasForeignKey(ch => ch.IdChat);
-            
+
             //muchos a muchos
 
             //Chat -> Participantes
@@ -586,8 +577,14 @@ namespace LikendlnApi.Models
             //OfertaLaboral - CandidatoOfertaLaboral
             modelBuilder.Entity<OfertaLaboral>()
                 .HasMany(co => co.CandidadtosOfertas)
-                .WithRequired(of => of.OfertaLaboral )
+                .WithRequired(of => of.OfertaLaboral)
                 .HasForeignKey(of => of.IdOfertaLaboral);
+
+            //OfertaLaboral -> Habilidad
+            modelBuilder.Entity<OfertaLaboral>()
+                .HasMany(h => h.HabilidadesRequeridas)
+                .WithRequired(h => h.OfertaLaboral)
+                .HasForeignKey(h => h.IdOfertaLaboral);
 
             //ParticipanteChat
 
@@ -616,6 +613,16 @@ namespace LikendlnApi.Models
                 .HasMany(u => u.Empresas)
                 .WithRequired(e => e.Usuario)
                 .HasForeignKey(e => e.IdUsuario);
+
+            //Habilidad
+            //muchos a muchos
+            //Habilidad -> OfertaLaboralHabilidad
+            modelBuilder.Entity<Habilidad>()
+                .HasMany(olh => olh.HabilidadesRequeridas)
+                .WithRequired(h => h.Habilidad)
+                .HasForeignKey(h => h.IdHabilidad);
+
+
         }
 
 
