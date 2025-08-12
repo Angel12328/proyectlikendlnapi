@@ -11,6 +11,10 @@ namespace LikendlnApi.Models
     {
         public DbContextProyect() : base("MyDbConnectionString")
         {
+            //this.Configuration.LazyLoadingEnabled = false;
+            //this.Configuration.ProxyCreationEnabled = false;
+            //this.Configuration.AutoDetectChangesEnabled = false;
+
         }
 
         //DB Sets CLASES PRINCIPALES

@@ -19,5 +19,13 @@ namespace LikendlnApi.Models
         public string TipoContrato { get; set; }
         public List<HabilidadResponse> HabilidadesRequeridas { get; set; }
         public int CantidadPostulaciones { get; set; }
+        public OfertasLaboralesResponse()
+        {
+            HabilidadesRequeridas = new List<HabilidadResponse>();
+        }
     }
+
+    // Contructor por defecto
+
+
 }

@@ -226,7 +226,7 @@
     <Compile Include="Models\ComentarioResponse.cs" />
     <Compile Include="Models\Curso.cs" />
     <Compile Include="Models\DbContextProyect.cs" />
-    <Compile Include="Models\EmpleosController.cs" />
+    <Compile Include="Controllers\EmpleosController.cs" />
     <Compile Include="Models\Empresa.cs" />
     <Compile Include="Models\ExperienciaLaboral.cs" />
     <Compile Include="Models\FeedResponse.cs" />

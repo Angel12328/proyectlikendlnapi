@@ -40,25 +40,39 @@ namespace LikendlnApi.Models
         /// <response code="404">Si el candidato no fue encontrada</response>
         /// <response code="200">Si la oferta laboral fue encontrada</response>
         // GET: api/Empleos/5
-        /*
-        [ResponseType(typeof(OfertasLaboralesResponse))]
+
+
+        [ResponseType(typeof(List<OfertaLaboral>))]
         public async Task<IHttpActionResult> GetEmpleos(int idlog)
         {
-            Candidato candidato = await db.Candidatos.FindAsync(idlog);
-            if (candidato == null)
-            {
-                return NotFound();
-            }
-            var filtro = await db.OfertasLaborales
-                .Include(o => o.HabilidadesRequeridas)
+            var ofertas = await db.OfertasLaborales
+                
+                .Where(o => o.HabilidadesRequeridas.Any(h =>
+                    db.CandidatosHabilidades.Any(ch =>
+                        ch.IdCandidato == idlog &&
+                        ch.IdHabilidad == h.IdHabilidad)))
+                .ToListAsync();
+
+            return Ok(ofertas);
+        }
+        /*
+        [ResponseType(typeof(List<OfertasLaboralesResponse>))]
+        public async Task<IHttpActionResult> GetEmpleos(int idlog)
+        {
+            var ofertas = await db.OfertasLaborales
+                .AsNoTracking() // Mejora rendimiento
+                .Include(o => o.Empresa)
+                .Include(o => o.HabilidadesRequeridas.Select(h => h.Habilidad))
                 .Include(o => o.CandidadtosOfertas)
-                .Include(e => e.Empresa)
-                .Where(o => o.HabilidadesRequeridas.Any(h => candidato.CandidatosHabilidades.Any(ch => ch.Habilidad.ID == h.ID)))
+                .Where(o => o.HabilidadesRequeridas.Any(h =>
+                    db.CandidatosHabilidades.Any(ch =>
+                        ch.IdCandidato == idlog &&
+                        ch.IdHabilidad == h.IdHabilidad)))
                 .Select(o => new OfertasLaboralesResponse
                 {
                     IdEmpleo = o.ID,
                     Titulo = o.Titulo,
-                    Empresa = o.Empresa.NombreEmpresa,
+                    Empresa = o.Empresa != null ? o.Empresa.NombreEmpresa : null,
                     Ubicacion = o.Ubicacion,
                     SalarioMin = o.SalarioMin,
                     SalarioMax = o.SalarioMax,
@@ -66,18 +80,21 @@ namespace LikendlnApi.Models
                     FechaPublicacion = o.FechaPublicacion,
                     FechaExpiracion = o.FechaExpiracion,
                     TipoContrato = o.TipoContrato,
-                    HabilidadesRequeridas = o.HabilidadesRequeridas.Select(h => new HabilidadResponse
-                    {
-                        IdHabilidad = h.ID,
-                        NombreHabilidad = h.Nombre
-                    }).ToList(),
-                    CantidadPostulaciones = o.CandidadtosOfertas.Count
+                    HabilidadesRequeridas = o.HabilidadesRequeridas != null ?
+                        o.HabilidadesRequeridas.Select(h => new HabilidadResponse
+                        {
+                            IdHabilidad = h.IdHabilidad,
+                            NombreHabilidad = h.Habilidad.Nombre
+                        }).ToList() : new List<HabilidadResponse>(),
+                    CantidadPostulaciones = o.CandidadtosOfertas != null ?
+                        o.CandidadtosOfertas.Count : 0
                 })
                 .ToListAsync();
 
-            return Ok(filtro);
+            return Ok(ofertas);
         }
         */
+
 
         // PUT: api/Empleos/5
         [ResponseType(typeof(void))]
@@ -119,7 +136,8 @@ namespace LikendlnApi.Models
         [Route("Postular")]
         public async Task<IHttpActionResult> Postular(int idEmpleo, int idlog)
         {
-            var ofertaLaboral = await db.OfertasLaborales.FindAsync(idEmpleo);
+            //var ofertaLaboral = await db.OfertasLaborales.FindAsync(idEmpleo);
+
             var postulacion = new CandidatoOfertaLaboral
             {
                 IdCandidato = idlog,
@@ -128,7 +146,7 @@ namespace LikendlnApi.Models
             };
             
             db.CandidatosOfertaLaborales.Add(postulacion);
-            db.Entry(postulacion).State = EntityState.Modified;
+            //db.Entry(postulacion).State = EntityState.Modified;
             try
             {
                 await db.SaveChangesAsync();
@@ -177,5 +195,10 @@ namespace LikendlnApi.Models
         {
             return db.OfertasLaborales.Count(e => e.ID == id) > 0;
         }
+
+        private  bool PostulacionExist(int idEmpleo, int idlog)
+        {
+            return db.CandidatosOfertaLaborales.Any(e => e.IdCandidato == idlog && e.IdOfertaLaboral == idEmpleo);
+        }   
     }
 }
