@@ -1,0 +1,11 @@
+graph TD
+    A[Usuario] -->|Usa| B[Frontend Web/Móvil]
+    B -->|Solicita| C[API Backend]
+    C -->|Lee/Escribe| D[(Base de Datos)]
+    C -->|Envía| E[Servicio de Email]
+    C -->|Consulta| F[Servicios externos]
+    B -->|Panel| G[Panel de Empresa]
+    G -->|Publica Vacantes| C
+    C -->|Notifica| A
+    C -->|Procesa pago| H[Pasarela de Pago]
+    F -->|LinkedIn/Google| A
